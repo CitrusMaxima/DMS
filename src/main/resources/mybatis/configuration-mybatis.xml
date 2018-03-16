@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings> 
+        <!-- 这个配置使全局的映射器启用或禁用缓存 -->  
+        <setting name="cacheEnabled" value="true" />  
+		<!-- 允许或不允许多种结果集从一个单独的语句中返回（需要适合的驱动） -->   
+        <setting name="useColumnLabel" value="true" />  
+		<!-- 允许JDBC支持生成的键。需要适合的驱动。如果设置为true则这个设置强制生成的键被使用，尽管一些驱动拒绝兼容但仍然有效（比如Derby） -->  
+        <setting name="useGeneratedKeys" value="true" />  
+		<!-- 配置默认的执行器。SIMPLE执行器没有什么特别之处。REUSE执行器重用预处理语句。BATCH执行器重用语句和批量更新 -->  
+        <setting name="defaultExecutorType" value="SIMPLE" /> 
+		<!-- 设置超时时间，它决定驱动等待一个数据库响应的时间 -->  
+        <setting name="defaultStatementTimeout" value="25000" />  
+		<!--MyBatis 利用本地缓存机制（Local Cache）防止循环引用（circular references）和加速重复嵌套查询。 默认值为 SESSION，这种情况下会缓存一个会话中执行的所有查询。 若设置值为 STATEMENT，本地会话仅用在语句执行上，对相同 SqlSession 的不同调用将不会共享数据。-->
+		<setting name="localCacheScope" value="SESSION"/>
+		<!-- 当没有为参数提供特定的 JDBC 类型时，为空值指定 JDBC 类型。 某些驱动需要指定列的 JDBC 类型，多数情况直接用一般类型即可，比如 NULL、VARCHAR
+		OTHER。-->
+		<setting name="jdbcTypeForNull" value="OTHER"/>
+	</settings>
+	<typeAliases>
+		<typeAlias alias="User" type="src/main/java/model/User"/>
+	</typeAliases>
+	<environments default="development">
+	    <environment id="development">
+				<transactionManager type="jdbc"/>
+				<dataSource type="POOLED">
+						<property name="driver" value="com.mysql.jdbc.Driver"/>
+						<property name="url" value="jdbc:mysql://localhost:3306/dmsdb"/>
+						<property name="username" value="root"/>
+						<property name="password" value="123456"/>
+				</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="src/main/java/mapper/*.xml"/>
+		
+	</mappers>
+</configuration>

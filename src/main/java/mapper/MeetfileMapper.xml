@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.MeetfileMapper" >
+  <resultMap id="BaseResultMap" type="model.Meetfile" >
+    <id column="meetNumber" property="meetnumber" jdbcType="VARCHAR" />
+    <result column="meetTime" property="meettime" jdbcType="TIMESTAMP" />
+    <result column="caller" property="caller" jdbcType="VARCHAR" />
+    <result column="meetNature" property="meetnature" jdbcType="VARCHAR" />
+    <result column="participant" property="participant" jdbcType="VARCHAR" />
+    <result column="meetPlace" property="meetplace" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    meetNumber, meetTime, caller, meetNature, participant, meetPlace
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from meetfile
+    where meetNumber = #{meetnumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from meetfile
+    where meetNumber = #{meetnumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.Meetfile" >
+    insert into meetfile (meetNumber, meetTime, caller, 
+      meetNature, participant, meetPlace
+      )
+    values (#{meetnumber,jdbcType=VARCHAR}, #{meettime,jdbcType=TIMESTAMP}, #{caller,jdbcType=VARCHAR}, 
+      #{meetnature,jdbcType=VARCHAR}, #{participant,jdbcType=VARCHAR}, #{meetplace,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="model.Meetfile" >
+    insert into meetfile
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="meetnumber != null" >
+        meetNumber,
+      </if>
+      <if test="meettime != null" >
+        meetTime,
+      </if>
+      <if test="caller != null" >
+        caller,
+      </if>
+      <if test="meetnature != null" >
+        meetNature,
+      </if>
+      <if test="participant != null" >
+        participant,
+      </if>
+      <if test="meetplace != null" >
+        meetPlace,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="meetnumber != null" >
+        #{meetnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="meettime != null" >
+        #{meettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caller != null" >
+        #{caller,jdbcType=VARCHAR},
+      </if>
+      <if test="meetnature != null" >
+        #{meetnature,jdbcType=VARCHAR},
+      </if>
+      <if test="participant != null" >
+        #{participant,jdbcType=VARCHAR},
+      </if>
+      <if test="meetplace != null" >
+        #{meetplace,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.Meetfile" >
+    update meetfile
+    <set >
+      <if test="meettime != null" >
+        meetTime = #{meettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caller != null" >
+        caller = #{caller,jdbcType=VARCHAR},
+      </if>
+      <if test="meetnature != null" >
+        meetNature = #{meetnature,jdbcType=VARCHAR},
+      </if>
+      <if test="participant != null" >
+        participant = #{participant,jdbcType=VARCHAR},
+      </if>
+      <if test="meetplace != null" >
+        meetPlace = #{meetplace,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where meetNumber = #{meetnumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.Meetfile" >
+    update meetfile
+    set meetTime = #{meettime,jdbcType=TIMESTAMP},
+      caller = #{caller,jdbcType=VARCHAR},
+      meetNature = #{meetnature,jdbcType=VARCHAR},
+      participant = #{participant,jdbcType=VARCHAR},
+      meetPlace = #{meetplace,jdbcType=VARCHAR}
+    where meetNumber = #{meetnumber,jdbcType=VARCHAR}
+  </update>
+</mapper>
