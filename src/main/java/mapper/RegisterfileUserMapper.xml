@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.RegisterfileUserMapper" >
+  <resultMap id="BaseResultMap" type="model.RegisterfileUser" >
+    <id column="sequenceNumber" property="sequencenumber" jdbcType="VARCHAR" />
+    <result column="receiveTime" property="receivetime" jdbcType="TIMESTAMP" />
+    <result column="sourceUnit" property="sourceunit" jdbcType="VARCHAR" />
+    <result column="fileTitle" property="filetitle" jdbcType="VARCHAR" />
+    <result column="handingTime" property="handingtime" jdbcType="TIMESTAMP" />
+    <result column="level2Instructions" property="level2instructions" jdbcType="VARCHAR" />
+    <result column="direction" property="direction" jdbcType="VARCHAR" />
+    <result column="filePath" property="filepath" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sequenceNumber, receiveTime, sourceUnit, fileTitle, handingTime, level2Instructions, 
+    direction, filePath
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from registerfile
+    where sequenceNumber = #{sequencenumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from registerfile
+    where sequenceNumber = #{sequencenumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.RegisterfileUser" >
+    insert into registerfile (sequenceNumber, receiveTime, sourceUnit, 
+      fileTitle, handingTime, level2Instructions, 
+      direction, filePath)
+    values (#{sequencenumber,jdbcType=VARCHAR}, #{receivetime,jdbcType=TIMESTAMP}, #{sourceunit,jdbcType=VARCHAR}, 
+      #{filetitle,jdbcType=VARCHAR}, #{handingtime,jdbcType=TIMESTAMP}, #{level2instructions,jdbcType=VARCHAR}, 
+      #{direction,jdbcType=VARCHAR}, #{filepath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.RegisterfileUser" >
+    insert into registerfile
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sequencenumber != null" >
+        sequenceNumber,
+      </if>
+      <if test="receivetime != null" >
+        receiveTime,
+      </if>
+      <if test="sourceunit != null" >
+        sourceUnit,
+      </if>
+      <if test="filetitle != null" >
+        fileTitle,
+      </if>
+      <if test="handingtime != null" >
+        handingTime,
+      </if>
+      <if test="level2instructions != null" >
+        level2Instructions,
+      </if>
+      <if test="direction != null" >
+        direction,
+      </if>
+      <if test="filepath != null" >
+        filePath,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sequencenumber != null" >
+        #{sequencenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="receivetime != null" >
+        #{receivetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sourceunit != null" >
+        #{sourceunit,jdbcType=VARCHAR},
+      </if>
+      <if test="filetitle != null" >
+        #{filetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="handingtime != null" >
+        #{handingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="level2instructions != null" >
+        #{level2instructions,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        #{direction,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null" >
+        #{filepath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.RegisterfileUser" >
+    update registerfile
+    <set >
+      <if test="receivetime != null" >
+        receiveTime = #{receivetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sourceunit != null" >
+        sourceUnit = #{sourceunit,jdbcType=VARCHAR},
+      </if>
+      <if test="filetitle != null" >
+        fileTitle = #{filetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="handingtime != null" >
+        handingTime = #{handingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="level2instructions != null" >
+        level2Instructions = #{level2instructions,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        direction = #{direction,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null" >
+        filePath = #{filepath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sequenceNumber = #{sequencenumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.RegisterfileUser" >
+    update registerfile
+    set receiveTime = #{receivetime,jdbcType=TIMESTAMP},
+      sourceUnit = #{sourceunit,jdbcType=VARCHAR},
+      fileTitle = #{filetitle,jdbcType=VARCHAR},
+      handingTime = #{handingtime,jdbcType=TIMESTAMP},
+      level2Instructions = #{level2instructions,jdbcType=VARCHAR},
+      direction = #{direction,jdbcType=VARCHAR},
+      filePath = #{filepath,jdbcType=VARCHAR}
+    where sequenceNumber = #{sequencenumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

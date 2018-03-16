@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.ApplyfileMapper" >
+  <resultMap id="BaseResultMap" type="model.Applyfile" >
+    <id column="sequenceNumber" property="sequencenumber" jdbcType="VARCHAR" />
+    <id column="timeLimit" property="timelimit" jdbcType="DATE" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="sourcePerson" property="sourceperson" jdbcType="VARCHAR" />
+    <result column="sourceTitle" property="sourcetitle" jdbcType="VARCHAR" />
+    <result column="instructions" property="instructions" jdbcType="VARCHAR" />
+    <result column="instructior" property="instructior" jdbcType="VARCHAR" />
+    <result column="direction" property="direction" jdbcType="VARCHAR" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sequenceNumber, timeLimit, time, sourcePerson, sourceTitle, instructions, instructior, 
+    direction, comment
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="model.ApplyfileKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from applyfile
+    where sequenceNumber = #{sequencenumber,jdbcType=VARCHAR}
+      and timeLimit = #{timelimit,jdbcType=DATE}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="model.ApplyfileKey" >
+    delete from applyfile
+    where sequenceNumber = #{sequencenumber,jdbcType=VARCHAR}
+      and timeLimit = #{timelimit,jdbcType=DATE}
+  </delete>
+  <insert id="insert" parameterType="model.Applyfile" >
+    insert into applyfile (sequenceNumber, timeLimit, time, 
+      sourcePerson, sourceTitle, instructions, 
+      instructior, direction, comment
+      )
+    values (#{sequencenumber,jdbcType=VARCHAR}, #{timelimit,jdbcType=DATE}, #{time,jdbcType=TIMESTAMP}, 
+      #{sourceperson,jdbcType=VARCHAR}, #{sourcetitle,jdbcType=VARCHAR}, #{instructions,jdbcType=VARCHAR}, 
+      #{instructior,jdbcType=VARCHAR}, #{direction,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="model.Applyfile" >
+    insert into applyfile
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sequencenumber != null" >
+        sequenceNumber,
+      </if>
+      <if test="timelimit != null" >
+        timeLimit,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="sourceperson != null" >
+        sourcePerson,
+      </if>
+      <if test="sourcetitle != null" >
+        sourceTitle,
+      </if>
+      <if test="instructions != null" >
+        instructions,
+      </if>
+      <if test="instructior != null" >
+        instructior,
+      </if>
+      <if test="direction != null" >
+        direction,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sequencenumber != null" >
+        #{sequencenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="timelimit != null" >
+        #{timelimit,jdbcType=DATE},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sourceperson != null" >
+        #{sourceperson,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcetitle != null" >
+        #{sourcetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="instructions != null" >
+        #{instructions,jdbcType=VARCHAR},
+      </if>
+      <if test="instructior != null" >
+        #{instructior,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        #{direction,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.Applyfile" >
+    update applyfile
+    <set >
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sourceperson != null" >
+        sourcePerson = #{sourceperson,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcetitle != null" >
+        sourceTitle = #{sourcetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="instructions != null" >
+        instructions = #{instructions,jdbcType=VARCHAR},
+      </if>
+      <if test="instructior != null" >
+        instructior = #{instructior,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        direction = #{direction,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sequenceNumber = #{sequencenumber,jdbcType=VARCHAR}
+      and timeLimit = #{timelimit,jdbcType=DATE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.Applyfile" >
+    update applyfile
+    set time = #{time,jdbcType=TIMESTAMP},
+      sourcePerson = #{sourceperson,jdbcType=VARCHAR},
+      sourceTitle = #{sourcetitle,jdbcType=VARCHAR},
+      instructions = #{instructions,jdbcType=VARCHAR},
+      instructior = #{instructior,jdbcType=VARCHAR},
+      direction = #{direction,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=VARCHAR}
+    where sequenceNumber = #{sequencenumber,jdbcType=VARCHAR}
+      and timeLimit = #{timelimit,jdbcType=DATE}
+  </update>
+</mapper>
