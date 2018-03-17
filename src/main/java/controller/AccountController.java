@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -39,7 +38,8 @@ public class AccountController {
 	
 		return "";
 	}
-	@RequestMapping(value="/getImage")
+
+	@RequestMapping(value="/getImage.do")
 	public void getImage(HttpServletRequest request,HttpServletResponse response) throws IOException
 	{
 		
