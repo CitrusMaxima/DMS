@@ -243,7 +243,6 @@
         <artifactId>maven-war-plugin</artifactId>
         <version>2.2</version>
         <configuration>
-          <version>3.0</version>
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
       </plugin>
