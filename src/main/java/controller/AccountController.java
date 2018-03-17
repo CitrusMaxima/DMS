@@ -33,9 +33,9 @@ public class AccountController {
 		
 	}
 	
-	@RequestMapping(value="/login",method=RequestMethod.POST)
+	@RequestMapping(value="/Login.do",method=RequestMethod.POST)
 	public  String login(HttpServletRequest request,HttpServletResponse response) {
-	
+
 		return "";
 	}
 
