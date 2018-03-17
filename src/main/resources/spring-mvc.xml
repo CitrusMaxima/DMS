@@ -22,7 +22,7 @@
      <!-- 视图解析器 -->                
      <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
            <!-- 配置从项目根目录到指定目录一端路径 ,建议指定浅一点的目录-->
-           <property name="prefix" value="/webapp/"></property>
+           <property name="prefix" value="/"></property>
            <!-- 文件的后缀名 -->
            <property name="suffix" value=".jsp"></property>
      </bean>

@@ -67,19 +67,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                            	注册
                         </div>
                         <div class="panel-body">
-                            <form action="Register.do" name="register-form" id="register-form" method="POST">
+                            <form action="/RegisterController" name="register-form" id="register-form" method="post">
 	                            <div class="form-group">
 	                                <label>用户名</label>
 	                                <input id="username" name="name" class="form-control" type="text" />
 	                            </div>
                                 <div class="form-group">
                                 	<label>密码</label>
-                    	<input id="password" class="form-control" type="password" name="password"/>
+                    				<input id="password" class="form-control" type="password" name="password"/>
 	                            </div>
 	                         	<div class="form-group">
 	                              	<label>确认密码</label>
 	                                <input id="re-password" class="form-control"  type="password" />
 	                            </div>
+								<div class="form-group">
+									<label>昵称</label>
+									<input id="nickname" name="name" class="form-control" type="text" />
+								</div>
+								<div class="form-group">
+									<label>邮箱</label>
+									<input id="email" class="form-control"  type="text" />
+								</div>
+								<div class="form-group">
+									<label>手机号码</label>
+									<input id="phone-number" class="form-control"  type="text" />
+								</div>
 	                            <div class="form-group">
 	                                <label>验证码</label>
 	                                <input id="checkCode" class="form-control" name="checkCode" type="text" />  
@@ -104,17 +116,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $("#textfield").text("用户名不能为空！");
             return false;
         }
-		var re = /^[\u4e00-\u9fa5]+$/;
-		if (re.test($("#username").val())){
-			$("#textfield").text("用户名不能有中文！");
+		var reg_user = /^[A-Za-z0-9]+$/;
+		if (!reg_user.test($("#username").val())){
+			$("#textfield").text("用户名不合法！");
 			return false;
 		}
 		if ($("#password").val() == "") {
             $("#textfield").text("密码不能为空！");
             return false;
         }
-		if ($("#password").val() != $("#re-password").val()) {
+        if ($("#password").val() != $("#re-password").val()) {
             $("#textfield").text("两次输入密码不同！");
+            return false;
+        }
+        if ($("#nickname").val() == "") {
+            $("#textfield").text("昵称不能为空！");
+            return false;
+        }
+        if ($("#email").val() == "") {
+            $("#textfield").text("邮箱不能为空！");
+            return false;
+        }
+        var reg_email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        if (!reg_email.test($("#email").val())){
+            $("#textfield").text("邮箱不合法！");
+            return false;
+		}
+        if ($("#phone-number").val() == "") {
+            $("#textfield").text("手机号码不能为空！");
+            return false;
+        }
+        var reg_phone=/^1[3,5,8]\d{9}$/;
+        if (!reg_phone.test($("#phone-number").val())){
+            $("#textfield").text("手机号码不合法！");
             return false;
         }
 		if ($("#checkCode").val() == "") {

@@ -86,10 +86,17 @@ border-radius:0px;
 }
 #page-wrapper {
   position: relative;
-  top: 55px;
   /* box-shadow: 0 0 10px #757575; */
+    top: 55px;
   -moz-box-shadow: 0 0 10px #757575;
   /* -webkit-box-shadow: 0 0 10px #757575; */
+}
+#page-wrapper2 {
+    position: relative;
+    /* box-shadow: 0 0 10px #757575; */
+    /*top: 55px;*/
+    -moz-box-shadow: 0 0 10px #757575;
+    /* -webkit-box-shadow: 0 0 10px #757575; */
 }
 .top-navbar .nav > li > a:hover, .top-navbar .nav > li > a:focus {text-decoration: none;background-color: #e0e8f5;color: #fff;}
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
@@ -521,7 +528,7 @@ margin: 8px 0;
 ul.dropdown-menu.dropdown-messages li a div {
   padding: 2px 0;
 }
-#page-wrapper{
+#page-wrapper,#page-wrapper2{
 	background: #e0e8f5;
 }
 .dashboard-cards .card-stacked{
@@ -546,7 +553,8 @@ ul.dropdown-menu.dropdown-messages li a div {
 	text-transform:uppercase;
 }
 .collection .collection-item{
-	padding: 16px 20px;
+	
+padding: 16px 20px;
 }
 /*----------------------------------------------
     UI ELEMENTS STYLES     
@@ -571,8 +579,14 @@ line-height: 1.428571429;
      #page-wrapper{
                margin: 0 0 0 260px;
                padding: 0;
-               min-height: 1200px;
+               /*min-height: 1200px;*/
     }
+
+     #page-wrapper2{
+         /*margin: 0 0 0 260px;*/
+         padding: 0;
+         /*min-height: 1200px;*/
+     }
 	
 	
     .navbar-side {
@@ -685,9 +699,12 @@ font-size: 19px;
 	color: #f44336;
 }
 .dropdown-content li{
-	padding: 15px;
-	color: #233342;
-	font-size: 13px;
+	
+padding: 15px;
+	
+color: #233342;
+	
+font-size: 13px;
 }
 .taskList li{padding: 20px 15px 5px;background: #fff;font-size: 12px;}
 .taskList > div{

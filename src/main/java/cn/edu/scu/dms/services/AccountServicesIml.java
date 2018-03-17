@@ -20,14 +20,16 @@ public class AccountServicesIml implements AccountServices {
 		return selectUser;
 	}
 
+
 	public int insertUser(User user) {
 		// TODO Auto-generated method stub
 		User tempUser=getUser(user.getAccount());
-		if(tempUser==null)
-			return 0;
-		else{
+		if(tempUser==null){
 			userdao.insert(user);
 			return 1;
+		}
+		else{
+			return 0;
 		}
 	}
 

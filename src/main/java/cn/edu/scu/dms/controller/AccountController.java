@@ -28,7 +28,7 @@ public class AccountController {
 	
 	@Autowired
 	AccountServices accountServices;
-	
+	  
 	@RequestMapping(value="/Register.do",method=RequestMethod.POST)
 	public  String registerControl(HttpServletRequest request,HttpServletResponse response){
 		
@@ -56,17 +56,38 @@ public class AccountController {
 	    	
 	    	request.setAttribute("flag", "namexist");
 	    	return "Register";
-	    	
+	
 	    }else{
 	    	
 	        return  "Main";
 	    }    
 	}
 	
-	@RequestMapping(value="/Login.do",method=RequestMethod.POST)
+	@RequestMapping(value="/Login.do",method=RequestMethod.GET)
 	public  String loginControl(HttpServletRequest request,HttpServletResponse response) {
-
-		return "";
+        
+		String name =request.getParameter("name");
+		String password=request.getParameter("password");
+		
+	    System.out.println(name+" "+password);
+		User temp=new User();
+		temp.setAccount(name);
+		temp.setPassword(password);
+		
+		User selectUser=accountServices.getUser(temp.getAccount());
+		
+		//System.out.println(selectUser.getAccount()+" "+selectUser.getPassword());
+		if(selectUser!=null){
+			if(temp.getPassword().equals(selectUser.getPassword())){
+				return "Main";
+			}else{
+				request.setAttribute("success","false");
+				return "Login";
+			}	
+		}else{
+			request.setAttribute("success","false");
+			return "Login";
+		}
 	}
 
 	@RequestMapping(value="/getImage.do")
