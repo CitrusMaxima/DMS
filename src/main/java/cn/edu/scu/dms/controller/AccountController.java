@@ -1,4 +1,4 @@
-package controller;
+package cn.edu.scu.dms.controller;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -16,31 +16,61 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+import cn.edu.scu.dms.services.AccountServices;
+import cn.edu.scu.dms.model.User;
 @Controller
 public class AccountController {
 	
-	@RequestMapping(value="/register",method=RequestMethod.POST)
-	public  String register(HttpServletRequest request,HttpServletResponse response){
+	@Autowired
+	AccountServices accountServices;
+	
+	@RequestMapping(value="/Register.do",method=RequestMethod.POST)
+	public  String registerControl(HttpServletRequest request,HttpServletResponse response){
 		
+		//查看验证码
+		System.out.println("注册");
+		String checkcode=request.getParameter("checkCode"); 
+		if(checkcode.equals("")||checkcode==null){  
+        	request.setAttribute("flag", "codeNull");
+            return "Register";
+        }else{  
+            if(!checkcode.equalsIgnoreCase((String)request.getSession().getAttribute("randCheckCode"))){  
+            	request.setAttribute("flag", "codeError");
+                return "Register";
+            }
+        } 
+            
 		String name=request.getParameter("name");
 		String pwd=request.getParameter("password");
-		return "";
-		
+		User temp = new User();
+		temp.setAccount(name);
+		temp.setPassword(pwd);
+		temp.setPower(0);
+		int returnResult=accountServices.insertUser(temp);
+	    if(returnResult==0){
+	    	
+	    	request.setAttribute("flag", "namexist");
+	    	return "Register";
+	    	
+	    }else{
+	    	
+	        return  "Main";
+	    }    
 	}
 	
 	@RequestMapping(value="/Login.do",method=RequestMethod.POST)
-	public  String login(HttpServletRequest request,HttpServletResponse response) {
+	public  String loginControl(HttpServletRequest request,HttpServletResponse response) {
 
 		return "";
 	}
 
 	@RequestMapping(value="/getImage.do")
-	public void getImage(HttpServletRequest request,HttpServletResponse response) throws IOException
+	public void getImageCode(HttpServletRequest request,HttpServletResponse response) throws IOException
 	{
 		
 		System.out.println("验证码");

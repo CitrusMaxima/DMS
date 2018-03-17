@@ -24,14 +24,13 @@
                 <property name="useGeneratedKeys" value="true" />
             </bean>
         </property>
-        <property name="typeAliasesPackage" value="src/main/java/model" />
-        <property name="mapperLocations" value="classpath*:src/main/java/mapper/*.xml" />
+        <property name="typeAliasesPackage" value="cn.edu.scu.dms.model" />
+        <property name="mapperLocations" value="classpath*:cn/edu/scu/dms/mapper/*.xml" />
     </bean>
     
      <!-- 配置扫描器 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <!-- 扫描cn.edu.uestc.ssm.dao这个包以及它的子包下的所有映射接口类 -->
-        <property name="basePackage" value="src/main/java/dao" />
+        <property name="basePackage" value="cn.edu.scu.dms.dao" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
     
@@ -42,7 +41,8 @@
     
     <!-- 使用注解管理事务 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
-    <context:component-scan base-package="src/main/java">
+    
+    <context:component-scan base-package="cn.edu.scu.dms">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     

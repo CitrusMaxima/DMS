@@ -17,26 +17,16 @@
         
      <mvc:annotation-driven/>
      <!-- 使用注解开发，不用配置controller，需要配置一个组件扫描器 -->  
-     <context:component-scan base-package="src/main/java/controller/"/>
-     <!-- 视图解析器 -->              
-       
+     <context:component-scan base-package="cn.edu.scu.dms.controller"/>
+     
+     <!-- 视图解析器 -->                
      <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
            <!-- 配置从项目根目录到指定目录一端路径 ,建议指定浅一点的目录-->
-           <property name="prefix" value="src/main/webapp/"></property>
+           <property name="prefix" value="/webapp/"></property>
            <!-- 文件的后缀名 -->
            <property name="suffix" value=".jsp"></property>
      </bean>
-     
-     <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-      	<property name="mappings">
-         	<props>
-            	<prop key="/getImage">AccountController</prop>           
-         	</props>
-      	</property>
-   	</bean>
-
-   <bean id="AccountController" class="controller.AccountController" />
-     
+          
      <!--5.配置适配器（不需时可省）  -->  
 <!--     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">  
         在业务方法的返回值和权限之间使用@ResponseBody注解表示返回值对象需要转成JSON文本   

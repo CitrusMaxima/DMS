@@ -1,19 +1,23 @@
-package model;
+package cn.edu.scu.dms.model;
 
 import java.util.Date;
 
-public class RegisterfileUser {
+public class Instructionsfile {
     private String sequencenumber;
 
     private Date receivetime;
 
-    private String sourceunit;
-
     private String filetitle;
 
-    private Date handingtime;
+    private String level1instructions;
 
     private String level2instructions;
+
+    private Date timelimit;
+
+    private String handingsituation;
+
+    private String telephone;
 
     private String direction;
 
@@ -35,14 +39,6 @@ public class RegisterfileUser {
         this.receivetime = receivetime;
     }
 
-    public String getSourceunit() {
-        return sourceunit;
-    }
-
-    public void setSourceunit(String sourceunit) {
-        this.sourceunit = sourceunit == null ? null : sourceunit.trim();
-    }
-
     public String getFiletitle() {
         return filetitle;
     }
@@ -51,12 +47,12 @@ public class RegisterfileUser {
         this.filetitle = filetitle == null ? null : filetitle.trim();
     }
 
-    public Date getHandingtime() {
-        return handingtime;
+    public String getLevel1instructions() {
+        return level1instructions;
     }
 
-    public void setHandingtime(Date handingtime) {
-        this.handingtime = handingtime;
+    public void setLevel1instructions(String level1instructions) {
+        this.level1instructions = level1instructions == null ? null : level1instructions.trim();
     }
 
     public String getLevel2instructions() {
@@ -65,6 +61,30 @@ public class RegisterfileUser {
 
     public void setLevel2instructions(String level2instructions) {
         this.level2instructions = level2instructions == null ? null : level2instructions.trim();
+    }
+
+    public Date getTimelimit() {
+        return timelimit;
+    }
+
+    public void setTimelimit(Date timelimit) {
+        this.timelimit = timelimit;
+    }
+
+    public String getHandingsituation() {
+        return handingsituation;
+    }
+
+    public void setHandingsituation(String handingsituation) {
+        this.handingsituation = handingsituation == null ? null : handingsituation.trim();
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone == null ? null : telephone.trim();
     }
 
     public String getDirection() {

@@ -1,6 +1,6 @@
-package dao;
+package cn.edu.scu.dms.dao;
 
-import model.Meetfile;
+import cn.edu.scu.dms.model.Meetfile;
 
 public interface MeetfileMapper {
     int deleteByPrimaryKey(String meetnumber);

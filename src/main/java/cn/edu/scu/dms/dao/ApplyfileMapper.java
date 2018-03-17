@@ -1,7 +1,7 @@
-package dao;
+package cn.edu.scu.dms.dao;
 
-import model.Applyfile;
-import model.ApplyfileKey;
+import cn.edu.scu.dms.model.Applyfile;
+import cn.edu.scu.dms.model.ApplyfileKey;
 
 public interface ApplyfileMapper {
     int deleteByPrimaryKey(ApplyfileKey key);

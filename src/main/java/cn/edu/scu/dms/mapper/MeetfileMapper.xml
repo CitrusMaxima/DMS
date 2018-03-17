@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="dao.MeetfileMapper" >
-  <resultMap id="BaseResultMap" type="model.Meetfile" >
+<mapper namespace="cn.edu.scu.dms.dao.MeetfileMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.scu.dms.model.Meetfile" >
     <id column="meetNumber" property="meetnumber" jdbcType="VARCHAR" />
     <result column="meetTime" property="meettime" jdbcType="TIMESTAMP" />
     <result column="caller" property="caller" jdbcType="VARCHAR" />
@@ -22,7 +22,7 @@
     delete from meetfile
     where meetNumber = #{meetnumber,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.Meetfile" >
+  <insert id="insert" parameterType="cn.edu.scu.dms.model.Meetfile" >
     insert into meetfile (meetNumber, meetTime, caller, 
       meetNature, participant, meetPlace
       )
@@ -30,7 +30,7 @@
       #{meetnature,jdbcType=VARCHAR}, #{participant,jdbcType=VARCHAR}, #{meetplace,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="model.Meetfile" >
+  <insert id="insertSelective" parameterType="cn.edu.scu.dms.model.Meetfile" >
     insert into meetfile
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="meetnumber != null" >
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.Meetfile" >
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.scu.dms.model.Meetfile" >
     update meetfile
     <set >
       <if test="meettime != null" >
@@ -94,7 +94,7 @@
     </set>
     where meetNumber = #{meetnumber,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.Meetfile" >
+  <update id="updateByPrimaryKey" parameterType="cn.edu.scu.dms.model.Meetfile" >
     update meetfile
     set meetTime = #{meettime,jdbcType=TIMESTAMP},
       caller = #{caller,jdbcType=VARCHAR},

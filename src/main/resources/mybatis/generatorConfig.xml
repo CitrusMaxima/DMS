@@ -25,18 +25,18 @@
     </javaTypeResolver>
 
     <!-- 数据表对应的model 层  -->
-    <javaModelGenerator targetPackage="model" targetProject="DMS1/src/main/java">
+    <javaModelGenerator targetPackage="cn.edu.scu.dms.model" targetProject="DMS/src/main/java">
       <property name="enableSubPackages" value="true" />
       <property name="trimStrings" value="true" />
     </javaModelGenerator>
 
     <!-- sql mapper 隐射配置文件 -->
-    <sqlMapGenerator targetPackage="mapper"  targetProject="DMS1/src/main/java">
+    <sqlMapGenerator targetPackage="cn.edu.scu.dms.mapper"  targetProject="DMS/src/main/java">
       <property name="enableSubPackages" value="true" />
     </sqlMapGenerator>
 
     <!-- 在ibatis2 中是dao层，但在mybatis3中，其实就是mapper接口 -->
-    <javaClientGenerator type="XMLMAPPER" targetPackage="dao"  targetProject="DMS1/src/main/java">
+    <javaClientGenerator type="XMLMAPPER" targetPackage="cn.edu.scu.dms.dao"  targetProject="DMS/src/main/java">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
 

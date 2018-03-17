@@ -1,4 +1,4 @@
-package model;
+package cn.edu.scu.dms.model;
 
 import java.util.Date;
 

@@ -1,6 +1,6 @@
-package dao;
+package cn.edu.scu.dms.dao;
 
-import model.Instructionsfile;
+import cn.edu.scu.dms.model.Instructionsfile;
 
 public interface InstructionsfileMapper {
     int deleteByPrimaryKey(String sequencenumber);

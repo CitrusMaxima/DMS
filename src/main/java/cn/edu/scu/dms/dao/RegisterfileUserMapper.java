@@ -1,6 +1,6 @@
-package dao;
+package cn.edu.scu.dms.dao;
 
-import model.RegisterfileUser;
+import cn.edu.scu.dms.model.RegisterfileUser;
 
 public interface RegisterfileUserMapper {
     int deleteByPrimaryKey(String sequencenumber);

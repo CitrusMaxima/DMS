@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                            	注册
                         </div>
                         <div class="panel-body">
-                            <form action="/RegisterController" name="register-form" id="register-form" method="post">
+                            <form action="Register.do" name="register-form" id="register-form" method="POST">
 	                            <div class="form-group">
 	                                <label>用户名</label>
 	                                <input id="username" name="name" class="form-control" type="text" />

@@ -1,44 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="dao.InstructionsfileMapper" >
-  <resultMap id="BaseResultMap" type="model.Instructionsfile" >
+<mapper namespace="cn.edu.scu.dms.dao.RegisterfileUserMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.scu.dms.model.RegisterfileUser" >
     <id column="sequenceNumber" property="sequencenumber" jdbcType="VARCHAR" />
     <result column="receiveTime" property="receivetime" jdbcType="TIMESTAMP" />
+    <result column="sourceUnit" property="sourceunit" jdbcType="VARCHAR" />
     <result column="fileTitle" property="filetitle" jdbcType="VARCHAR" />
-    <result column="level1Instructions" property="level1instructions" jdbcType="VARCHAR" />
+    <result column="handingTime" property="handingtime" jdbcType="TIMESTAMP" />
     <result column="level2Instructions" property="level2instructions" jdbcType="VARCHAR" />
-    <result column="timeLimit" property="timelimit" jdbcType="DATE" />
-    <result column="handingSituation" property="handingsituation" jdbcType="VARCHAR" />
-    <result column="telephone" property="telephone" jdbcType="CHAR" />
     <result column="direction" property="direction" jdbcType="VARCHAR" />
     <result column="filePath" property="filepath" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    sequenceNumber, receiveTime, fileTitle, level1Instructions, level2Instructions, timeLimit, 
-    handingSituation, telephone, direction, filePath
+    sequenceNumber, receiveTime, sourceUnit, fileTitle, handingTime, level2Instructions, 
+    direction, filePath
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from instructionsfile
+    from registerfile
     where sequenceNumber = #{sequencenumber,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from instructionsfile
+    delete from registerfile
     where sequenceNumber = #{sequencenumber,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.Instructionsfile" >
-    insert into instructionsfile (sequenceNumber, receiveTime, fileTitle, 
-      level1Instructions, level2Instructions, 
-      timeLimit, handingSituation, telephone, 
+  <insert id="insert" parameterType="cn.edu.scu.dms.model.RegisterfileUser" >
+    insert into registerfile (sequenceNumber, receiveTime, sourceUnit, 
+      fileTitle, handingTime, level2Instructions, 
       direction, filePath)
-    values (#{sequencenumber,jdbcType=VARCHAR}, #{receivetime,jdbcType=TIMESTAMP}, #{filetitle,jdbcType=VARCHAR}, 
-      #{level1instructions,jdbcType=VARCHAR}, #{level2instructions,jdbcType=VARCHAR}, 
-      #{timelimit,jdbcType=DATE}, #{handingsituation,jdbcType=VARCHAR}, #{telephone,jdbcType=CHAR}, 
+    values (#{sequencenumber,jdbcType=VARCHAR}, #{receivetime,jdbcType=TIMESTAMP}, #{sourceunit,jdbcType=VARCHAR}, 
+      #{filetitle,jdbcType=VARCHAR}, #{handingtime,jdbcType=TIMESTAMP}, #{level2instructions,jdbcType=VARCHAR}, 
       #{direction,jdbcType=VARCHAR}, #{filepath,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="model.Instructionsfile" >
-    insert into instructionsfile
+  <insert id="insertSelective" parameterType="cn.edu.scu.dms.model.RegisterfileUser" >
+    insert into registerfile
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="sequencenumber != null" >
         sequenceNumber,
@@ -46,23 +42,17 @@
       <if test="receivetime != null" >
         receiveTime,
       </if>
+      <if test="sourceunit != null" >
+        sourceUnit,
+      </if>
       <if test="filetitle != null" >
         fileTitle,
       </if>
-      <if test="level1instructions != null" >
-        level1Instructions,
+      <if test="handingtime != null" >
+        handingTime,
       </if>
       <if test="level2instructions != null" >
         level2Instructions,
-      </if>
-      <if test="timelimit != null" >
-        timeLimit,
-      </if>
-      <if test="handingsituation != null" >
-        handingSituation,
-      </if>
-      <if test="telephone != null" >
-        telephone,
       </if>
       <if test="direction != null" >
         direction,
@@ -78,23 +68,17 @@
       <if test="receivetime != null" >
         #{receivetime,jdbcType=TIMESTAMP},
       </if>
+      <if test="sourceunit != null" >
+        #{sourceunit,jdbcType=VARCHAR},
+      </if>
       <if test="filetitle != null" >
         #{filetitle,jdbcType=VARCHAR},
       </if>
-      <if test="level1instructions != null" >
-        #{level1instructions,jdbcType=VARCHAR},
+      <if test="handingtime != null" >
+        #{handingtime,jdbcType=TIMESTAMP},
       </if>
       <if test="level2instructions != null" >
         #{level2instructions,jdbcType=VARCHAR},
-      </if>
-      <if test="timelimit != null" >
-        #{timelimit,jdbcType=DATE},
-      </if>
-      <if test="handingsituation != null" >
-        #{handingsituation,jdbcType=VARCHAR},
-      </if>
-      <if test="telephone != null" >
-        #{telephone,jdbcType=CHAR},
       </if>
       <if test="direction != null" >
         #{direction,jdbcType=VARCHAR},
@@ -104,29 +88,23 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.Instructionsfile" >
-    update instructionsfile
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.scu.dms.model.RegisterfileUser" >
+    update registerfile
     <set >
       <if test="receivetime != null" >
         receiveTime = #{receivetime,jdbcType=TIMESTAMP},
       </if>
+      <if test="sourceunit != null" >
+        sourceUnit = #{sourceunit,jdbcType=VARCHAR},
+      </if>
       <if test="filetitle != null" >
         fileTitle = #{filetitle,jdbcType=VARCHAR},
       </if>
-      <if test="level1instructions != null" >
-        level1Instructions = #{level1instructions,jdbcType=VARCHAR},
+      <if test="handingtime != null" >
+        handingTime = #{handingtime,jdbcType=TIMESTAMP},
       </if>
       <if test="level2instructions != null" >
         level2Instructions = #{level2instructions,jdbcType=VARCHAR},
-      </if>
-      <if test="timelimit != null" >
-        timeLimit = #{timelimit,jdbcType=DATE},
-      </if>
-      <if test="handingsituation != null" >
-        handingSituation = #{handingsituation,jdbcType=VARCHAR},
-      </if>
-      <if test="telephone != null" >
-        telephone = #{telephone,jdbcType=CHAR},
       </if>
       <if test="direction != null" >
         direction = #{direction,jdbcType=VARCHAR},
@@ -137,15 +115,13 @@
     </set>
     where sequenceNumber = #{sequencenumber,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.Instructionsfile" >
-    update instructionsfile
+  <update id="updateByPrimaryKey" parameterType="cn.edu.scu.dms.model.RegisterfileUser" >
+    update registerfile
     set receiveTime = #{receivetime,jdbcType=TIMESTAMP},
+      sourceUnit = #{sourceunit,jdbcType=VARCHAR},
       fileTitle = #{filetitle,jdbcType=VARCHAR},
-      level1Instructions = #{level1instructions,jdbcType=VARCHAR},
+      handingTime = #{handingtime,jdbcType=TIMESTAMP},
       level2Instructions = #{level2instructions,jdbcType=VARCHAR},
-      timeLimit = #{timelimit,jdbcType=DATE},
-      handingSituation = #{handingsituation,jdbcType=VARCHAR},
-      telephone = #{telephone,jdbcType=CHAR},
       direction = #{direction,jdbcType=VARCHAR},
       filePath = #{filepath,jdbcType=VARCHAR}
     where sequenceNumber = #{sequencenumber,jdbcType=VARCHAR}

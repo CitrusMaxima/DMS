@@ -1,6 +1,6 @@
-package dao;
+package cn.edu.scu.dms.dao;
 
-import model.User;
+import cn.edu.scu.dms.model.User;
 
 public interface UserMapper {
     int deleteByPrimaryKey(String account);

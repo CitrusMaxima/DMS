@@ -1,4 +1,4 @@
-package model;
+package cn.edu.scu.dms.model;
 
 public class User {
     private String account;
