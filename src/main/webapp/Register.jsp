@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                            <div class="form-group">
 	                                <label>验证码</label>
 	                                <input id="checkCode" class="form-control" name="checkCode" type="text" />  
-				            		<img src="getImage" id="CreateCheckCode" align="middle">  
+				            		<img src="getImage.do" id="CreateCheckCode" align="middle">
 				            		<a onclick="myReload()"> 看不清,换一个</a>
 	                            </div>   
                                 <button type="submit" class="btn btn-danger">注册</button>
