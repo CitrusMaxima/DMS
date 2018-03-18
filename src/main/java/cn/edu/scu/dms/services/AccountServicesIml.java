@@ -23,7 +23,7 @@ public class AccountServicesIml implements AccountServices {
 	@Transactional
 	public int insertUser(User user) {
 		// TODO Auto-generated method stub
-		User tempUser=getUser(user.getAccount());
+		User tempUser=getUser(user.getUid());
 		if(tempUser==null){
 			userdao.insert(user);
 			return 1;

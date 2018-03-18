@@ -47,10 +47,16 @@ public class AccountController {
             
 		String name=request.getParameter("name");
 		String pwd=request.getParameter("password");
+		String nickname=request.getParameter("nickname");
+		String email=request.getParameter("email");
+		String phoneNumber=request.getParameter("phoneNumber");
+		
 		User temp = new User();
-		temp.setAccount(name);
+		temp.setUid(name);
 		temp.setPassword(pwd);
-		temp.setPower(0);
+		temp.setEmail(email);
+		temp.setPhonenumber(phoneNumber);
+		temp.setIsmanager(false);
 		try{
 			int returnResult=accountServices.insertUser(temp);
 		    if(returnResult==0){
@@ -78,14 +84,12 @@ public class AccountController {
 		
 	    System.out.println(name+" "+password);
 		User temp=new User();
-		temp.setAccount(name);
-		temp.setPassword(password);
 		
-		User selectUser=accountServices.getUser(temp.getAccount());
+		User selectUser=accountServices.getUser(name);
 		
-		//System.out.println(selectUser.getAccount()+" "+selectUser.getPassword());
+		System.out.println(selectUser.getUid()+" "+selectUser.getPassword());
 		if(selectUser!=null){
-			if(temp.getPassword().equals(selectUser.getPassword())){
+			if(password.equals(selectUser.getPassword())){
 				return "Main";
 			}else{
 				request.setAttribute("success","false");
