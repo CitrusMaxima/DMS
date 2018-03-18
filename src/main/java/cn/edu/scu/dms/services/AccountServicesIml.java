@@ -20,7 +20,7 @@ public class AccountServicesIml implements AccountServices {
 		return selectUser;
 	}
 
-
+	@Transactional
 	public int insertUser(User user) {
 		// TODO Auto-generated method stub
 		User tempUser=getUser(user.getAccount());

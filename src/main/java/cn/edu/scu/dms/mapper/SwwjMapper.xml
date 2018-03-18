@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.scu.dms.dao.SwwjMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.scu.dms.model.Swwj" >
+    <id column="sid" property="sid" jdbcType="VARCHAR" />
+    <result column="department" property="department" jdbcType="VARCHAR" />
+    <result column="number1" property="number1" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="dotime" property="dotime" jdbcType="TIMESTAMP" />
+    <result column="Wpishi" property="wpishi" jdbcType="VARCHAR" />
+    <result column="direction" property="direction" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sid, department, number1, title, dotime, Wpishi, direction
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from swwj
+    where sid = #{sid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from swwj
+    where sid = #{sid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.scu.dms.model.Swwj" >
+    insert into swwj (sid, department, number1, 
+      title, dotime, Wpishi, 
+      direction)
+    values (#{sid,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{number1,jdbcType=INTEGER}, 
+      #{title,jdbcType=VARCHAR}, #{dotime,jdbcType=TIMESTAMP}, #{wpishi,jdbcType=VARCHAR}, 
+      #{direction,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.scu.dms.model.Swwj" >
+    insert into swwj
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="number1 != null" >
+        number1,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="dotime != null" >
+        dotime,
+      </if>
+      <if test="wpishi != null" >
+        Wpishi,
+      </if>
+      <if test="direction != null" >
+        direction,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="number1 != null" >
+        #{number1,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="dotime != null" >
+        #{dotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wpishi != null" >
+        #{wpishi,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        #{direction,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.scu.dms.model.Swwj" >
+    update swwj
+    <set >
+      <if test="department != null" >
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="number1 != null" >
+        number1 = #{number1,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="dotime != null" >
+        dotime = #{dotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wpishi != null" >
+        Wpishi = #{wpishi,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        direction = #{direction,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.scu.dms.model.Swwj" >
+    update swwj
+    set department = #{department,jdbcType=VARCHAR},
+      number1 = #{number1,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      dotime = #{dotime,jdbcType=TIMESTAMP},
+      Wpishi = #{wpishi,jdbcType=VARCHAR},
+      direction = #{direction,jdbcType=VARCHAR}
+    where sid = #{sid,jdbcType=VARCHAR}
+  </update>
+</mapper>

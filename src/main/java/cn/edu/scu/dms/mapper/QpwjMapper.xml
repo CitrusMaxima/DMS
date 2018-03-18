@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.scu.dms.dao.QpwjMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.scu.dms.model.Qpwj" >
+    <id column="qpid" property="qpid" jdbcType="VARCHAR" />
+    <result column="qptime" property="qptime" jdbcType="TIMESTAMP" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="DATE" />
+    <result column="leader_name" property="leaderName" jdbcType="VARCHAR" />
+    <result column="Zpishi" property="zpishi" jdbcType="VARCHAR" />
+    <result column="direction" property="direction" jdbcType="VARCHAR" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    qpid, qptime, title, attribute, leader_name, Zpishi, direction, note
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from qpwj
+    where qpid = #{qpid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from qpwj
+    where qpid = #{qpid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.scu.dms.model.Qpwj" >
+    insert into qpwj (qpid, qptime, title, 
+      attribute, leader_name, Zpishi, 
+      direction, note)
+    values (#{qpid,jdbcType=VARCHAR}, #{qptime,jdbcType=TIMESTAMP}, #{title,jdbcType=VARCHAR}, 
+      #{attribute,jdbcType=DATE}, #{leaderName,jdbcType=VARCHAR}, #{zpishi,jdbcType=VARCHAR}, 
+      #{direction,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.scu.dms.model.Qpwj" >
+    insert into qpwj
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qpid != null" >
+        qpid,
+      </if>
+      <if test="qptime != null" >
+        qptime,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="attribute != null" >
+        attribute,
+      </if>
+      <if test="leaderName != null" >
+        leader_name,
+      </if>
+      <if test="zpishi != null" >
+        Zpishi,
+      </if>
+      <if test="direction != null" >
+        direction,
+      </if>
+      <if test="note != null" >
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qpid != null" >
+        #{qpid,jdbcType=VARCHAR},
+      </if>
+      <if test="qptime != null" >
+        #{qptime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null" >
+        #{attribute,jdbcType=DATE},
+      </if>
+      <if test="leaderName != null" >
+        #{leaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="zpishi != null" >
+        #{zpishi,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        #{direction,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.scu.dms.model.Qpwj" >
+    update qpwj
+    <set >
+      <if test="qptime != null" >
+        qptime = #{qptime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null" >
+        attribute = #{attribute,jdbcType=DATE},
+      </if>
+      <if test="leaderName != null" >
+        leader_name = #{leaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="zpishi != null" >
+        Zpishi = #{zpishi,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        direction = #{direction,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where qpid = #{qpid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.scu.dms.model.Qpwj" >
+    update qpwj
+    set qptime = #{qptime,jdbcType=TIMESTAMP},
+      title = #{title,jdbcType=VARCHAR},
+      attribute = #{attribute,jdbcType=DATE},
+      leader_name = #{leaderName,jdbcType=VARCHAR},
+      Zpishi = #{zpishi,jdbcType=VARCHAR},
+      direction = #{direction,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR}
+    where qpid = #{qpid,jdbcType=VARCHAR}
+  </update>
+</mapper>

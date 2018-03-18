@@ -1,18 +1,24 @@
 package cn.edu.scu.dms.model;
 
 public class User {
-    private String account;
+    private String uid;
 
     private String password;
 
-    private Integer power;
+    private String name;
 
-    public String getAccount() {
-        return account;
+    private Boolean ismanager;
+
+    private String phonenumber;
+
+    private String email;
+
+    public String getUid() {
+        return uid;
     }
 
-    public void setAccount(String account) {
-        this.account = account == null ? null : account.trim();
+    public void setUid(String uid) {
+        this.uid = uid == null ? null : uid.trim();
     }
 
     public String getPassword() {
@@ -23,11 +29,35 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public Integer getPower() {
-        return power;
+    public String getName() {
+        return name;
     }
 
-    public void setPower(Integer power) {
-        this.power = power;
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
+
+    public Boolean getIsmanager() {
+        return ismanager;
+    }
+
+    public void setIsmanager(Boolean ismanager) {
+        this.ismanager = ismanager;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber == null ? null : phonenumber.trim();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
     }
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.scu.dms.dao.Relationship_3Mapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.scu.dms.model.Relationship_3Key" >
+    <id column="mid" property="mid" jdbcType="VARCHAR" />
+    <id column="cid" property="cid" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="cn.edu.scu.dms.model.Relationship_3Key" >
+    delete from relationship_3
+    where mid = #{mid,jdbcType=VARCHAR}
+      and cid = #{cid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.scu.dms.model.Relationship_3Key" >
+    insert into relationship_3 (mid, cid)
+    values (#{mid,jdbcType=VARCHAR}, #{cid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.scu.dms.model.Relationship_3Key" >
+    insert into relationship_3
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mid != null" >
+        mid,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mid != null" >
+        #{mid,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

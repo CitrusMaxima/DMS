@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.scu.dms.dao.PswjMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.scu.dms.model.Pswj" >
+    <id column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="rectime" property="rectime" jdbcType="TIMESTAMP" />
+    <result column="numbers" property="numbers" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="Spishi" property="spishi" jdbcType="VARCHAR" />
+    <result column="Wpishi" property="wpishi" jdbcType="VARCHAR" />
+    <result column="deadline" property="deadline" jdbcType="DATE" />
+    <result column="IsDone" property="isdone" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="direction" property="direction" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pid, rectime, numbers, title, Spishi, Wpishi, deadline, IsDone, phone, direction
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from pswj
+    where pid = #{pid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from pswj
+    where pid = #{pid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.scu.dms.model.Pswj" >
+    insert into pswj (pid, rectime, numbers, 
+      title, Spishi, Wpishi, 
+      deadline, IsDone, phone, 
+      direction)
+    values (#{pid,jdbcType=VARCHAR}, #{rectime,jdbcType=TIMESTAMP}, #{numbers,jdbcType=INTEGER}, 
+      #{title,jdbcType=VARCHAR}, #{spishi,jdbcType=VARCHAR}, #{wpishi,jdbcType=VARCHAR}, 
+      #{deadline,jdbcType=DATE}, #{isdone,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{direction,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.scu.dms.model.Pswj" >
+    insert into pswj
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="rectime != null" >
+        rectime,
+      </if>
+      <if test="numbers != null" >
+        numbers,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="spishi != null" >
+        Spishi,
+      </if>
+      <if test="wpishi != null" >
+        Wpishi,
+      </if>
+      <if test="deadline != null" >
+        deadline,
+      </if>
+      <if test="isdone != null" >
+        IsDone,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="direction != null" >
+        direction,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="rectime != null" >
+        #{rectime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="numbers != null" >
+        #{numbers,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="spishi != null" >
+        #{spishi,jdbcType=VARCHAR},
+      </if>
+      <if test="wpishi != null" >
+        #{wpishi,jdbcType=VARCHAR},
+      </if>
+      <if test="deadline != null" >
+        #{deadline,jdbcType=DATE},
+      </if>
+      <if test="isdone != null" >
+        #{isdone,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        #{direction,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.scu.dms.model.Pswj" >
+    update pswj
+    <set >
+      <if test="rectime != null" >
+        rectime = #{rectime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="numbers != null" >
+        numbers = #{numbers,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="spishi != null" >
+        Spishi = #{spishi,jdbcType=VARCHAR},
+      </if>
+      <if test="wpishi != null" >
+        Wpishi = #{wpishi,jdbcType=VARCHAR},
+      </if>
+      <if test="deadline != null" >
+        deadline = #{deadline,jdbcType=DATE},
+      </if>
+      <if test="isdone != null" >
+        IsDone = #{isdone,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        direction = #{direction,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.scu.dms.model.Pswj" >
+    update pswj
+    set rectime = #{rectime,jdbcType=TIMESTAMP},
+      numbers = #{numbers,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      Spishi = #{spishi,jdbcType=VARCHAR},
+      Wpishi = #{wpishi,jdbcType=VARCHAR},
+      deadline = #{deadline,jdbcType=DATE},
+      IsDone = #{isdone,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      direction = #{direction,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=VARCHAR}
+  </update>
+</mapper>

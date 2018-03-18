@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.scu.dms.dao.DocumentMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.scu.dms.model.Document" >
+    <id column="wid" property="wid" jdbcType="VARCHAR" />
+    <result column="mid" property="mid" jdbcType="VARCHAR" />
+    <result column="wname" property="wname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    wid, mid, wname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from document
+    where wid = #{wid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from document
+    where wid = #{wid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.scu.dms.model.Document" >
+    insert into document (wid, mid, wname
+      )
+    values (#{wid,jdbcType=VARCHAR}, #{mid,jdbcType=VARCHAR}, #{wname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.scu.dms.model.Document" >
+    insert into document
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wid != null" >
+        wid,
+      </if>
+      <if test="mid != null" >
+        mid,
+      </if>
+      <if test="wname != null" >
+        wname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wid != null" >
+        #{wid,jdbcType=VARCHAR},
+      </if>
+      <if test="mid != null" >
+        #{mid,jdbcType=VARCHAR},
+      </if>
+      <if test="wname != null" >
+        #{wname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.scu.dms.model.Document" >
+    update document
+    <set >
+      <if test="mid != null" >
+        mid = #{mid,jdbcType=VARCHAR},
+      </if>
+      <if test="wname != null" >
+        wname = #{wname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where wid = #{wid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.scu.dms.model.Document" >
+    update document
+    set mid = #{mid,jdbcType=VARCHAR},
+      wname = #{wname,jdbcType=VARCHAR}
+    where wid = #{wid,jdbcType=VARCHAR}
+  </update>
+</mapper>

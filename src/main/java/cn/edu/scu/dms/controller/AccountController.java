@@ -51,16 +51,23 @@ public class AccountController {
 		temp.setAccount(name);
 		temp.setPassword(pwd);
 		temp.setPower(0);
-		int returnResult=accountServices.insertUser(temp);
-	    if(returnResult==0){
-	    	
-	    	request.setAttribute("flag", "namexist");
+		try{
+			int returnResult=accountServices.insertUser(temp);
+		    if(returnResult==0){
+		    	
+		    	request.setAttribute("flag", "namexist");
+		    	return "Register";
+		
+		    }else{
+		    	
+		        return  "Login";
+		    }  
+		}catch(Exception e){
+			System.out.println(e);
+			request.setAttribute("flag", "failhhh");
 	    	return "Register";
-	
-	    }else{
-	    	
-	        return  "Main";
-	    }    
+			
+		}
 	}
 	
 	@RequestMapping(value="/Login.do",method=RequestMethod.GET)

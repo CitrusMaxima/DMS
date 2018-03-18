@@ -46,22 +46,37 @@
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false"> 
     </table>
-    <table schema="" tableName="applyfile" domainObjectName="Applyfile" 
+    <table schema="" tableName="document" domainObjectName="Document" 
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false">     
     </table>    
-    <table schema="" tableName="instructionsfile" domainObjectName="Instructionsfile" 
+    <table schema="" tableName="meeting" domainObjectName="Meeting" 
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false">    
     </table> 
-    <table schema="" tableName="meetfile" domainObjectName="Meetfile" 
+    <table schema="" tableName="member" domainObjectName="Member" 
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false">      
     </table>   
-    <table schema="" tableName="registerfile" domainObjectName="RegisterfileUser" 
+    <table schema="" tableName="pswj" domainObjectName="Pswj" 
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false"> 
+     </table>    
+     <table schema="" tableName="qpwj" domainObjectName="Qpwj" 
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false"> 
+     </table>    
+     <table schema="" tableName="relationship_3" domainObjectName="Relationship_3" 
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false"> 
+     </table>    
+     <table schema="" tableName="swwj" domainObjectName="Swwj" 
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false"> 
