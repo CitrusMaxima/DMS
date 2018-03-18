@@ -87,7 +87,7 @@ public class AccountController {
 		
 		User selectUser=accountServices.getUser(name);
 		
-		System.out.println(selectUser.getUid()+" "+selectUser.getPassword());
+		//System.out.println(selectUser.getUid()+" "+selectUser.getPassword());
 		if(selectUser!=null){
 			if(password.equals(selectUser.getPassword())){
 				return "Main";
