@@ -7,9 +7,13 @@ public class Meeting {
 
     private Date mtime;
 
+    private String host;
+
     private String characters;
 
-    private String content;
+    private String place;
+
+    private String names;
 
     public String getMid() {
         return mid;
@@ -27,6 +31,14 @@ public class Meeting {
         this.mtime = mtime;
     }
 
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host == null ? null : host.trim();
+    }
+
     public String getCharacters() {
         return characters;
     }
@@ -35,11 +47,19 @@ public class Meeting {
         this.characters = characters == null ? null : characters.trim();
     }
 
-    public String getContent() {
-        return content;
+    public String getPlace() {
+        return place;
     }
 
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+    public void setPlace(String place) {
+        this.place = place == null ? null : place.trim();
+    }
+
+    public String getNames() {
+        return names;
+    }
+
+    public void setNames(String names) {
+        this.names = names == null ? null : names.trim();
     }
 }

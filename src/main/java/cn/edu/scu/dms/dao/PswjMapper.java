@@ -1,7 +1,5 @@
 package cn.edu.scu.dms.dao;
 
-import java.util.List;
-
 import cn.edu.scu.dms.model.Pswj;
 
 public interface PswjMapper {
@@ -12,7 +10,6 @@ public interface PswjMapper {
     int insertSelective(Pswj record);
 
     Pswj selectByPrimaryKey(String pid);
-    List<Pswj> getAll();
 
     int updateByPrimaryKeySelective(Pswj record);
 

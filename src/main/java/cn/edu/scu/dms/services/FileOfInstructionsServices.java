@@ -4,7 +4,7 @@ import java.util.List;
 
 import cn.edu.scu.dms.model.Pswj;
 
-public interface FileOfInstructions {
+public interface FileOfInstructionsServices {
 	
 	public Boolean registerFile(Pswj pswj);
 	public List<Pswj> getAllFile();

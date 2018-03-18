@@ -3,15 +3,16 @@
 <mapper namespace="cn.edu.scu.dms.dao.SwwjMapper" >
   <resultMap id="BaseResultMap" type="cn.edu.scu.dms.model.Swwj" >
     <id column="sid" property="sid" jdbcType="VARCHAR" />
+    <result column="time1" property="time1" jdbcType="TIMESTAMP" />
     <result column="department" property="department" jdbcType="VARCHAR" />
-    <result column="number1" property="number1" jdbcType="INTEGER" />
+    <result column="number1" property="number1" jdbcType="VARCHAR" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="dotime" property="dotime" jdbcType="TIMESTAMP" />
     <result column="Wpishi" property="wpishi" jdbcType="VARCHAR" />
     <result column="direction" property="direction" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    sid, department, number1, title, dotime, Wpishi, direction
+    sid, time1, department, number1, title, dotime, Wpishi, direction
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -24,18 +25,21 @@
     where sid = #{sid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="cn.edu.scu.dms.model.Swwj" >
-    insert into swwj (sid, department, number1, 
-      title, dotime, Wpishi, 
-      direction)
-    values (#{sid,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{number1,jdbcType=INTEGER}, 
-      #{title,jdbcType=VARCHAR}, #{dotime,jdbcType=TIMESTAMP}, #{wpishi,jdbcType=VARCHAR}, 
-      #{direction,jdbcType=VARCHAR})
+    insert into swwj (sid, time1, department, 
+      number1, title, dotime, 
+      Wpishi, direction)
+    values (#{sid,jdbcType=VARCHAR}, #{time1,jdbcType=TIMESTAMP}, #{department,jdbcType=VARCHAR}, 
+      #{number1,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{dotime,jdbcType=TIMESTAMP}, 
+      #{wpishi,jdbcType=VARCHAR}, #{direction,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.scu.dms.model.Swwj" >
     insert into swwj
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="sid != null" >
         sid,
+      </if>
+      <if test="time1 != null" >
+        time1,
       </if>
       <if test="department != null" >
         department,
@@ -60,11 +64,14 @@
       <if test="sid != null" >
         #{sid,jdbcType=VARCHAR},
       </if>
+      <if test="time1 != null" >
+        #{time1,jdbcType=TIMESTAMP},
+      </if>
       <if test="department != null" >
         #{department,jdbcType=VARCHAR},
       </if>
       <if test="number1 != null" >
-        #{number1,jdbcType=INTEGER},
+        #{number1,jdbcType=VARCHAR},
       </if>
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
@@ -83,11 +90,14 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.edu.scu.dms.model.Swwj" >
     update swwj
     <set >
+      <if test="time1 != null" >
+        time1 = #{time1,jdbcType=TIMESTAMP},
+      </if>
       <if test="department != null" >
         department = #{department,jdbcType=VARCHAR},
       </if>
       <if test="number1 != null" >
-        number1 = #{number1,jdbcType=INTEGER},
+        number1 = #{number1,jdbcType=VARCHAR},
       </if>
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
@@ -106,8 +116,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.edu.scu.dms.model.Swwj" >
     update swwj
-    set department = #{department,jdbcType=VARCHAR},
-      number1 = #{number1,jdbcType=INTEGER},
+    set time1 = #{time1,jdbcType=TIMESTAMP},
+      department = #{department,jdbcType=VARCHAR},
+      number1 = #{number1,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
       dotime = #{dotime,jdbcType=TIMESTAMP},
       Wpishi = #{wpishi,jdbcType=VARCHAR},

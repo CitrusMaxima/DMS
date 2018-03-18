@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="cn.edu.scu.dms.model.Pswj" >
     <id column="pid" property="pid" jdbcType="VARCHAR" />
     <result column="rectime" property="rectime" jdbcType="TIMESTAMP" />
-    <result column="numbers" property="numbers" jdbcType="INTEGER" />
+    <result column="numbers" property="numbers" jdbcType="VARCHAR" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="Spishi" property="spishi" jdbcType="VARCHAR" />
     <result column="Wpishi" property="wpishi" jdbcType="VARCHAR" />
@@ -16,11 +16,6 @@
   <sql id="Base_Column_List" >
     pid, rectime, numbers, title, Spishi, Wpishi, deadline, IsDone, phone, direction
   </sql>
-   <select id="getAll" resultMap="BaseResultMap" >
-    select 
-    <include refid="Base_Column_List" />
-    from pswj
-  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
@@ -36,7 +31,7 @@
       title, Spishi, Wpishi, 
       deadline, IsDone, phone, 
       direction)
-    values (#{pid,jdbcType=VARCHAR}, #{rectime,jdbcType=TIMESTAMP}, #{numbers,jdbcType=INTEGER}, 
+    values (#{pid,jdbcType=VARCHAR}, #{rectime,jdbcType=TIMESTAMP}, #{numbers,jdbcType=VARCHAR}, 
       #{title,jdbcType=VARCHAR}, #{spishi,jdbcType=VARCHAR}, #{wpishi,jdbcType=VARCHAR}, 
       #{deadline,jdbcType=DATE}, #{isdone,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{direction,jdbcType=VARCHAR})
@@ -83,7 +78,7 @@
         #{rectime,jdbcType=TIMESTAMP},
       </if>
       <if test="numbers != null" >
-        #{numbers,jdbcType=INTEGER},
+        #{numbers,jdbcType=VARCHAR},
       </if>
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
@@ -115,7 +110,7 @@
         rectime = #{rectime,jdbcType=TIMESTAMP},
       </if>
       <if test="numbers != null" >
-        numbers = #{numbers,jdbcType=INTEGER},
+        numbers = #{numbers,jdbcType=VARCHAR},
       </if>
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
@@ -144,7 +139,7 @@
   <update id="updateByPrimaryKey" parameterType="cn.edu.scu.dms.model.Pswj" >
     update pswj
     set rectime = #{rectime,jdbcType=TIMESTAMP},
-      numbers = #{numbers,jdbcType=INTEGER},
+      numbers = #{numbers,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
       Spishi = #{spishi,jdbcType=VARCHAR},
       Wpishi = #{wpishi,jdbcType=VARCHAR},

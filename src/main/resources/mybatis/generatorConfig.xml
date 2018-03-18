@@ -71,11 +71,6 @@
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false"> 
      </table>    
-     <table schema="" tableName="relationship_3" domainObjectName="Relationship_3" 
-        enableCountByExample="false" enableUpdateByExample="false"
-        enableDeleteByExample="false" enableSelectByExample="false"
-        selectByExampleQueryId="false"> 
-     </table>    
      <table schema="" tableName="swwj" domainObjectName="Swwj" 
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"

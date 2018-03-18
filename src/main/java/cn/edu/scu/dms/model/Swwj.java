@@ -5,9 +5,11 @@ import java.util.Date;
 public class Swwj {
     private String sid;
 
+    private Date time1;
+
     private String department;
 
-    private Integer number1;
+    private String number1;
 
     private String title;
 
@@ -25,6 +27,14 @@ public class Swwj {
         this.sid = sid == null ? null : sid.trim();
     }
 
+    public Date getTime1() {
+        return time1;
+    }
+
+    public void setTime1(Date time1) {
+        this.time1 = time1;
+    }
+
     public String getDepartment() {
         return department;
     }
@@ -33,12 +43,12 @@ public class Swwj {
         this.department = department == null ? null : department.trim();
     }
 
-    public Integer getNumber1() {
+    public String getNumber1() {
         return number1;
     }
 
-    public void setNumber1(Integer number1) {
-        this.number1 = number1;
+    public void setNumber1(String number1) {
+        this.number1 = number1 == null ? null : number1.trim();
     }
 
     public String getTitle() {

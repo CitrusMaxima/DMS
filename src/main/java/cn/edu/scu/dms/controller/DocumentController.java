@@ -15,15 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.edu.scu.dms.model.Pswj;
 import cn.edu.scu.dms.services.AccountServices;
-import cn.edu.scu.dms.services.FileOfInstructions;
+import cn.edu.scu.dms.services.FileOfInstructionsServices;
 
 @Controller
 @RequestMapping(value="/DocumentManaging")
 public class DocumentController {
 	
+	//批示文件
 	@Autowired
-	FileOfInstructions fileOfInstructions;
+	FileOfInstructionsServices fileOfInstructions;
 	
+	//批示文件操作对应的Conroller
 	@RequestMapping(value="/registerFileOfInstructions.do")
 	public String registerFileOfInstructions(HttpServletRequest request,HttpServletResponse response) throws ParseException{
 		
@@ -62,9 +64,9 @@ public class DocumentController {
 		
 		return "";
 	}
-	
+
 	@RequestMapping(value="/getFiles.do")
-	public String getFiles(HttpServletRequest request,HttpServletResponse response){
+	public String getFilesOfInstructions(HttpServletRequest request,HttpServletResponse response){
 		
 		List<Pswj> files=null;
 		try {
@@ -79,6 +81,13 @@ public class DocumentController {
 	}
 	
 	
+	//收文登记文件对应的Controller
+	public String registerFileOfReceving(HttpServletRequest request,HttpServletResponse response){
+		return "";
+	}
+	public String getFilesOfReceving(HttpServletRequest request,HttpServletResponse response){
+		return "";
+	}
 	
 	
 

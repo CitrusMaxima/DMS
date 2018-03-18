@@ -7,7 +7,7 @@ public class Pswj {
 
     private Date rectime;
 
-    private Integer numbers;
+    private String numbers;
 
     private String title;
 
@@ -39,12 +39,12 @@ public class Pswj {
         this.rectime = rectime;
     }
 
-    public Integer getNumbers() {
+    public String getNumbers() {
         return numbers;
     }
 
-    public void setNumbers(Integer numbers) {
-        this.numbers = numbers;
+    public void setNumbers(String numbers) {
+        this.numbers = numbers == null ? null : numbers.trim();
     }
 
     public String getTitle() {

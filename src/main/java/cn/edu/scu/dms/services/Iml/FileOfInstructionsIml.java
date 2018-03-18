@@ -8,10 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.scu.dms.dao.PswjMapper;
 import cn.edu.scu.dms.model.Pswj;
-import cn.edu.scu.dms.services.FileOfInstructions;
+import cn.edu.scu.dms.services.FileOfInstructionsServices;
 
 @Service
-public class FileOfInstructionsIml implements FileOfInstructions {
+public class FileOfInstructionsIml implements FileOfInstructionsServices {
     
 	
 	@Autowired

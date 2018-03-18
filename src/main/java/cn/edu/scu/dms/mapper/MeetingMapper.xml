@@ -4,11 +4,13 @@
   <resultMap id="BaseResultMap" type="cn.edu.scu.dms.model.Meeting" >
     <id column="mid" property="mid" jdbcType="VARCHAR" />
     <result column="mtime" property="mtime" jdbcType="TIMESTAMP" />
+    <result column="host" property="host" jdbcType="VARCHAR" />
     <result column="characters" property="characters" jdbcType="VARCHAR" />
-    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="place" property="place" jdbcType="VARCHAR" />
+    <result column="names" property="names" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    mid, mtime, characters, content
+    mid, mtime, host, characters, place, names
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -21,10 +23,12 @@
     where mid = #{mid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="cn.edu.scu.dms.model.Meeting" >
-    insert into meeting (mid, mtime, characters, 
-      content)
-    values (#{mid,jdbcType=VARCHAR}, #{mtime,jdbcType=TIMESTAMP}, #{characters,jdbcType=VARCHAR}, 
-      #{content,jdbcType=VARCHAR})
+    insert into meeting (mid, mtime, host, 
+      characters, place, names
+      )
+    values (#{mid,jdbcType=VARCHAR}, #{mtime,jdbcType=TIMESTAMP}, #{host,jdbcType=VARCHAR}, 
+      #{characters,jdbcType=VARCHAR}, #{place,jdbcType=VARCHAR}, #{names,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.scu.dms.model.Meeting" >
     insert into meeting
@@ -35,11 +39,17 @@
       <if test="mtime != null" >
         mtime,
       </if>
+      <if test="host != null" >
+        host,
+      </if>
       <if test="characters != null" >
         characters,
       </if>
-      <if test="content != null" >
-        content,
+      <if test="place != null" >
+        place,
+      </if>
+      <if test="names != null" >
+        names,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -49,11 +59,17 @@
       <if test="mtime != null" >
         #{mtime,jdbcType=TIMESTAMP},
       </if>
+      <if test="host != null" >
+        #{host,jdbcType=VARCHAR},
+      </if>
       <if test="characters != null" >
         #{characters,jdbcType=VARCHAR},
       </if>
-      <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
+      <if test="place != null" >
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="names != null" >
+        #{names,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -63,11 +79,17 @@
       <if test="mtime != null" >
         mtime = #{mtime,jdbcType=TIMESTAMP},
       </if>
+      <if test="host != null" >
+        host = #{host,jdbcType=VARCHAR},
+      </if>
       <if test="characters != null" >
         characters = #{characters,jdbcType=VARCHAR},
       </if>
-      <if test="content != null" >
-        content = #{content,jdbcType=VARCHAR},
+      <if test="place != null" >
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="names != null" >
+        names = #{names,jdbcType=VARCHAR},
       </if>
     </set>
     where mid = #{mid,jdbcType=VARCHAR}
@@ -75,8 +97,10 @@
   <update id="updateByPrimaryKey" parameterType="cn.edu.scu.dms.model.Meeting" >
     update meeting
     set mtime = #{mtime,jdbcType=TIMESTAMP},
+      host = #{host,jdbcType=VARCHAR},
       characters = #{characters,jdbcType=VARCHAR},
-      content = #{content,jdbcType=VARCHAR}
+      place = #{place,jdbcType=VARCHAR},
+      names = #{names,jdbcType=VARCHAR}
     where mid = #{mid,jdbcType=VARCHAR}
   </update>
 </mapper>
