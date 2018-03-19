@@ -150,7 +150,7 @@
             <ol class="breadcrumb">
                 <li><a>文档管理系统</a></li>
                 <li><a>收文登记表</a></li>
-                <li class="active">登记/修改</li>
+                <li class="active">登记</li>
             </ol>
 
         </div>
@@ -165,45 +165,41 @@
                         <div class="card-content">
                             <form class="col s12">
                                 <div class="row">
-                                    <div class="input-field col s4">
-                                        <input disabled id="pid" type="text" class="validate" value="1">
-                                        <label class="active" for="pid">序号</label>
-                                    </div>
-                                    <div class="input-field col s4">
-                                        <input id="number" type="text" class="validate" value="XXXXXXXXX">
-                                        <label class="active" for="number">来文号</label>
-                                    </div>
-                                    <div class="input-field col s4">
-                                        <input id="department" type="text" class="validate" value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="department">来文单位</label>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="title" type="text" class="validate" value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="title">来文标题</label>
+                                        <input id="title" type="text" class="validate" >
+                                        <label for="title">来文标题</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="time" type="text" class="validate" value="XXXX-XX-XX">
-                                        <label class="active" for="time">来文时间</label>
+                                        <input id="number" type="text" class="validate" >
+                                        <label for="number">来文号</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="dotime" type="text" class="validate" value="XXXX-XX-XX">
-                                        <label class="active" for="dotime">办理时间</label>
+                                        <input id="department" type="text" class="validate" >
+                                        <label for="department">来文单位</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <input id="time" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'dotime\')||\'new Date()\'}'})"/>
+                                        <label for="time">来文时间</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input id="dotime" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'time\')}'})"/>
+                                        <label for="dotime">办理时间</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="Wpishi" type="text" class="validate"value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="Wpishi">委领导批示</label>
+                                        <input id="Wpishi" type="text" class="validate">
+                                        <label for="Wpishi">委领导批示</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="direction" type="text" class="validate"value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="direction">流向</label>
+                                        <input id="direction" type="text" class="validate">
+                                        <label for="direction">流向</label>
                                     </div>
                                 </div>
                             </form>
@@ -243,6 +239,7 @@
 <!-- DATA TABLE SCRIPTS -->
 <script src="js/jquery.dataTables.js"></script>
 <script src="js/dataTables.bootstrap.js"></script>
+<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 <script>
     $(document).ready(function () {
         $('#dataTables-example').dataTable();
@@ -293,6 +290,9 @@
             $("#textfield").text("流向不能为空！");
             return false;
         }
+        $("#textfield").removeClass("alert alert-warning");
+        $("#textfield").text("");
+        return true;
     });
 </script>
 <script type="text/javascript">

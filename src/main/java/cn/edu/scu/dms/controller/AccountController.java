@@ -91,7 +91,11 @@ public class AccountController {
 		//System.out.println(selectUser.getUid()+" "+selectUser.getPassword());
 		if(selectUser!=null){
 			if(password.equals(selectUser.getPassword())){
-				return "Main";
+				if (selectUser.getIsmanager() == true)
+					request.getSession().setAttribute("power","1");
+				else
+					request.getSession().setAttribute("power","0");
+				return "Welcome";
 			}else{
 				request.setAttribute("success","false");
 				return "Login";

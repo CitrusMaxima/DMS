@@ -169,7 +169,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                     <tr>
-                                        <th class="center">序号</th>
+                                        <th class="center">编号</th>
                                         <th class="center">来文时间</th>
                                         <th class="center">来文单位</th>
                                         <th class="center">来文号</th>
@@ -183,11 +183,11 @@
                                     <tbody>
                                     <tr>
                                         <td class="center modify">1</td>
-                                        <td class="center modify">2017-12-21</td>
+                                        <td class="center modify time">2017-12-21</td>
                                         <td class="center modify">XX办事处</td>
                                         <td class="center modify">20</td>
                                         <td class="center modify">XXXXXXXXXX</td>
-                                        <td class="center modify">2018-1-23</td>
+                                        <td class="center modify time">2018-1-23</td>
                                         <td class="center modify">XXXXXXXXXX</td>
                                         <td class="center modify">XX办事处</td>
                                         <td class="center">

@@ -36,7 +36,6 @@
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="jdk" jdkName="1.8 (1)" jdkType="JavaSDK" />
-    <orderEntry type="library" name="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER" level="application" />
     <orderEntry type="library" name="servlet-api" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.glassfish:bean-validator:3.0-JBoss-4.0.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.glassfish:javax.enterprise.deploy:3.0.1" level="project" />

@@ -165,26 +165,26 @@
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="uid" type="text" class="validate" value="1">
-                                        <label class="active" for="uid">帐号</label>
+                                        <input id="uid" type="text" class="validate" >
+                                        <label for="uid">帐号</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="password" type="text" class="validate" value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="password">密码</label>
+                                        <input id="password" type="text" class="validate" >
+                                        <label for="password">密码</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input id="nickname" type="text" class="validate" value="杨旭">
-                                        <label class="active" for="nickname">昵称</label>
+                                        <input id="nickname" type="text" class="validate" >
+                                        <label for="nickname">昵称</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="phone" type="text" class="validate" value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="phone">手机号码</label>
+                                        <input id="phone" type="text" class="validate" >
+                                        <label for="phone">手机号码</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="email" type="text" class="validate" value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="email">邮箱</label>
+                                        <input id="email" type="text" class="validate" >
+                                        <label for="email">邮箱</label>
                                     </div>
                                 </div>
                                 <p>
@@ -275,6 +275,9 @@
             $("#textfield").text("邮箱不合法！");
             return false;
         }
+        $("#textfield").removeClass("alert alert-warning");
+        $("#textfield").text("");
+        return true;
     });
 </script>
 </body>

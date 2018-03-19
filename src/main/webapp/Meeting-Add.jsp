@@ -149,7 +149,7 @@
             <ol class="breadcrumb">
                 <li><a>文档管理系统</a></li>
                 <li><a>会议管理</a></li>
-                <li class="active">登记/修改</li>
+                <li class="active">登记</li>
             </ol>
 
         </div>
@@ -164,29 +164,25 @@
                         <div class="card-content">
                             <form class="col s12">
                                 <div class="row">
-                                    <div class="input-field col s4">
-                                        <input disabled id="mid" type="text" class="validate" value="1">
-                                        <label class="active" for="mid">会议编号</label>
+                                    <div class="input-field col s6">
+                                        <input id="time" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+                                        <label for="time">会议时间</label>
                                     </div>
-                                    <div class="input-field col s4">
-                                        <input id="time" type="text" class="validate" value="XXXX-XX-XX">
-                                        <label class="active" for="time">会议时间</label>
-                                    </div>
-                                    <div class="input-field col s4">
-                                        <input id="character" type="text" class="validate" value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="character">会议性质</label>
+                                    <div class="input-field col s6">
+                                        <input id="character" type="text" class="validate" >
+                                        <label for="character">会议性质</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="content" type="text" class="validate" value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="content">会议内容</label>
+                                        <input id="content" type="text" class="validate" >
+                                        <label for="content">会议内容</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="name" type="text" class="validate" value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="name">参与者</label>
+                                        <input id="name" type="text" class="validate" >
+                                        <label for="name">参与者</label>
                                     </div>
                                 </div>
                                 <div class="row col s12" style="margin-bottom: 0px; ">
@@ -233,6 +229,7 @@
 <!-- DATA TABLE SCRIPTS -->
 <script src="js/jquery.dataTables.js"></script>
 <script src="js/dataTables.bootstrap.js"></script>
+<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 <script>
     $(document).ready(function () {
         $('#dataTables-example').dataTable();
@@ -263,6 +260,9 @@
             $("#textfield").text("参与者不能为空！");
             return false;
         }
+        $("#textfield").removeClass("alert alert-warning");
+        $("#textfield").text("");
+        return true;
     });
 </script>
 <script type="text/javascript">

@@ -150,7 +150,7 @@
             <ol class="breadcrumb">
                 <li><a>文档管理系统</a></li>
                 <li><a>领导批示文件表</a></li>
-                <li class="active">登记/修改</li>
+                <li class="active">修改</li>
             </ol>
 
         </div>
@@ -171,11 +171,15 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="input-field col s6">
-                                        <input id="rectime" type="text" class="validate" value="XXXX-XX-XX">
+                                    <div class="input-field col s4">
+                                        <input id="rectime" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'deadline\')||\'new Date()\'}'})"/>
                                         <label class="active" for="rectime">收文时间</label>
                                     </div>
-                                    <div class="input-field col s6">
+                                    <div class="input-field col s4">
+                                        <input id="deadline" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'rectime\')}'})"/>
+                                        <label class="active" for="deadline">时限</label>
+                                    </div>
+                                    <div class="input-field col s4">
                                         <input id="numbers" type="text" class="validate" value="20">
                                         <label class="active" for="numbers">字号</label>
                                     </div>
@@ -193,21 +197,15 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="input-field col s6">
-                                        <input id="deadline" type="text" class="validate"value="XXXX-XX-XX">
-                                        <label class="active" for="deadline">时限</label>
-                                    </div>
-                                    <div class="input-field col s6">
+                                    <div class="input-field col s4">
                                         <input id="IsDone" type="text" class="validate"value="XXXXXXXXXXXXXX">
                                         <label class="active" for="IsDone">办理情况</label>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s6">
+                                    <div class="input-field col s4">
                                         <input id="phone" type="text" class="validate"value="XXXXXXXXXXXXXX">
                                         <label class="active" for="phone">承办处电话</label>
                                     </div>
-                                    <div class="input-field col s6">
+                                    <div class="input-field col s4">
                                         <input id="direction" type="text" class="validate"value="XXXXXXXXXXXXXX">
                                         <label class="active" for="direction">流向</label>
                                     </div>
@@ -250,6 +248,7 @@
 <!-- DATA TABLE SCRIPTS -->
 <script src="js/jquery.dataTables.js"></script>
 <script src="js/dataTables.bootstrap.js"></script>
+<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 <script>
     $(document).ready(function () {
         $(".validate").attr("disabled", true);
@@ -261,9 +260,6 @@
 
 <script type="text/javascript">
     $("#save").click(function () {
-        $(".validate").attr("disabled", true);
-        $("#save").attr("disabled", true);
-        $("#modify").attr("disabled", false);
         if ($("#title").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("来文标题不能为空！");
@@ -272,6 +268,11 @@
         if ($("#rectime").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("收文时间不能为空！");
+            return false;
+        }
+        if ($("#deadline").val() == "") {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("时限不能为空！");
             return false;
         }
         if ($("#numbers").val() == "") {
@@ -289,11 +290,6 @@
             $("#textfield").text("委领导批示不能为空！");
             return false;
         }
-        if ($("#deadline").val() == "") {
-            $("#textfield").addClass("alert alert-warning");
-            $("#textfield").text("时限不能为空！");
-            return false;
-        }
         if ($("#IsDone").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("办理情况不能为空！");
@@ -309,6 +305,12 @@
             $("#textfield").text("流向不能为空！");
             return false;
         }
+        $("#textfield").removeClass("alert alert-warning");
+        $("#textfield").text("");
+        $(".validate").attr("disabled", true);
+        $("#save").attr("disabled", true);
+        $("#modify").attr("disabled", false);
+        return true;
     });
 </script>
 <script type="text/javascript">

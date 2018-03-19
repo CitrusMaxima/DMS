@@ -237,10 +237,6 @@
 
 <script type="text/javascript">
     $("#save").click(function () {
-        $(".validate").attr("disabled", true);
-        $("#save").attr("disabled", true);
-        $("#IsAdmin").attr("disabled", true);
-        $("#modify").attr("disabled", false);
         if ($("#password").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("密码不能为空！");
@@ -278,6 +274,13 @@
             $("#textfield").text("邮箱不合法！");
             return false;
         }
+        $("#textfield").removeClass("alert alert-warning");
+        $("#textfield").text("");
+        $(".validate").attr("disabled", true);
+        $("#save").attr("disabled", true);
+        $("#IsAdmin").attr("disabled", true);
+        $("#modify").attr("disabled", false);
+        return true;
     });
     $("#modify").click(function () {
         $(".validate").attr("disabled", false);
