@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <%
-    	String flag = (String)request.getSession().getAttribute("flag");
+    	String flag = (String)request.getAttribute("flag");
     	PrintWriter pw = response.getWriter();
 		if (flag!=null && flag=="codeError") {
 			pw.print("<script>alert('验证码错误！')</script>");

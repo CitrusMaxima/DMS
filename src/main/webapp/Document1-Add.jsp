@@ -1,4 +1,6 @@
+<%@page import="java.awt.Window"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@page import="java.io.PrintWriter"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -28,6 +30,20 @@
 </head>
 
 <body>
+  <script>
+
+       var flag = '${flag}';
+		if (flag=="exist") {
+			alert('文件编号已存在！');
+			window.location.href="DocumentManaging/getFiles.do";
+		}else if(flag=="success"){
+			alert('登记成功！');
+			window.location.href="DocumentManaging/getFiles.do";
+		} else if(flag=="fail"){
+			alert('登记失败失败！');
+		}
+       
+ </script>
 <div id="wrapper">
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
@@ -162,62 +178,62 @@
                         <div class="card-action">
                             收文登记表
                         </div>
-                        <div class="card-content">
-                            <form class="col s12">
+                        <div class="card-content" >
+                            <form class="col s12" action="DocumentManaging/registerFileOfInstructions.do" id="fileform">
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input disabled id="pid" type="text" class="validate" value="1">
+                                        <input  id="pid" type="text" class="validate" value="1" name="pid">
                                         <label class="active" for="pid">序号</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="rectime" type="text" class="validate" value="XXXX-XX-XX">
+                                        <input id="rectime" type="text" class="validate" value="XXXX-XX-XX" name="rectime">
                                         <label class="active" for="rectime">收文时间</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="numbers" type="text" class="validate" value="20">
+                                        <input id="numbers" type="text" class="validate" value="20" name="numbers">
                                         <label class="active" for="numbers">字号</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="title" type="text" class="validate" value="XXXXXXXXXXXXXX">
+                                        <input id="title" type="text" class="validate" value="XXXXXXXXXXXXXX" name="title">
                                         <label class="active" for="title">来文标题</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="Spishi" type="text" class="validate" value="XXXXXXXXXXXXXX">
+                                        <input id="Spishi" type="text" class="validate" value="XXXXXXXXXXXXXX" name="spishi">
                                         <label class="active" for="Spishi">省领导批示</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="Wpishi" type="text" class="validate"value="XXXXXXXXXXXXXX">
+                                        <input id="Wpishi" type="text" class="validate"value="XXXXXXXXXXXXXX" name="wpishi">
                                         <label class="active" for="Wpishi">委领导批示</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="deadline" type="text" class="validate"value="XXXX-XX-XX">
+                                        <input id="deadline" type="text" class="validate"value="XXXX-XX-XX" name="deadline">
                                         <label class="active" for="deadline">时限</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="IsDone" type="text" class="validate"value="XXXXXXXXXXXXXX">
+                                        <input id="IsDone" type="text" class="validate"value="XXXXXXXXXXXXXX" name="isdone">
                                         <label class="active" for="IsDone">办理情况</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="phone" type="text" class="validate"value="XXXXXXXXXXXXXX">
+                                        <input id="phone" type="text" class="validate"value="XXXXXXXXXXXXXX" name="phone">
                                         <label class="active" for="phone">承办处电话</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="direction" type="text" class="validate"value="XXXXXXXXXXXXXX">
+                                        <input id="direction" type="text" class="validate"value="XXXXXXXXXXXXXX" name="direction">
                                         <label class="active" for="direction">流向</label>
                                     </div>
                                 </div>
                             </form>
-                            <a class="waves-effect waves-light btn-large" id="save">保存</a>
+                            <a  class="waves-effect waves-light btn-large" id="save" onclick="document.getElementById('fileform').submit();">保存</a>
                             <div id="textfield"></div>
                         </div>
                     </div>

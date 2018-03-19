@@ -29,10 +29,10 @@ public class DocumentController {
 	@Autowired
 	FileOfInstructionsServices fileOfInstructions;
 	//收文登记文件
-	@Autowired
+	//@Autowired
 	FileOfRecevingServices fileOfReceving;
 	//报批示文件
-	@Autowired
+	//@Autowired
     FileOfApplying fileOfApplying;
 	
 	//批示文件操作对应的Conroller
@@ -43,8 +43,15 @@ public class DocumentController {
 		
 		String timeString=request.getParameter("rectime");
 		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
-		
+		System.out.println("登记开始");
 		String pid= request.getParameter("pid");
+		Pswj isExist=fileOfInstructions.getPswjById(pid);
+		if(isExist!=null)
+		{
+			request.setAttribute("flag","exist");
+			return "forward:/Document1-Add.jsp";
+		}
+		
 		Date rectime =  formatter.parse(timeString);
 		String numbers=request.getParameter("numbers");
 		String title=request.getParameter("title");
@@ -70,24 +77,24 @@ public class DocumentController {
         try {
         	 fileOfInstructions.registerFile(file);
 		} catch (Exception e) {
-			 return "";
+			 request.setAttribute("flag","fail");
+			return "forward:/Document1-Add.jsp";
 		}
-		
-		return "";
+		request.setAttribute("flag","success");
+		return "forward:/Document1-Add.jsp";
 	}
 
 	@RequestMapping(value="/getFiles.do")
 	public String getFilesOfInstructions(HttpServletRequest request,HttpServletResponse response){
-		
 		List<Pswj> files=null;
+		System.out.print("获取文件");
 		try {
 			files=fileOfInstructions.getAllFile();
 		} catch (Exception e) {
 		   System.out.println("获取批示文件出错");	
 		}
-		
 		request.setAttribute("files", files);
-		return "";
+		return "forward:/Document1.jsp";
 	}
 	@RequestMapping(value="/deleteFile.do")
 	public String deleteFileOfInstructions(HttpServletRequest request,HttpServletResponse response){

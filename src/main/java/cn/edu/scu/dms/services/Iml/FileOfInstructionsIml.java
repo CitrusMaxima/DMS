@@ -16,7 +16,12 @@ public class FileOfInstructionsIml implements FileOfInstructionsServices {
 	
 	@Autowired
 	PswjMapper pswjMapper;
-	@Override
+	
+	public Pswj getPswjById(String id){
+		Pswj pswj=null;
+		pswj=pswjMapper.selectByPrimaryKey(id);
+		return pswj;
+	}
 	
 	@Transactional
 	public Boolean registerFile(Pswj pswj) {

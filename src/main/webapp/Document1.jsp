@@ -3,6 +3,8 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -26,7 +28,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="css/cssCharts.css">
 
   </head>
-  
 <body>
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
@@ -182,23 +183,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <th class="center">删除</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td class="center modify">1</td>
-                                            <td class="center modify">2017-12-21</td>
-                                            <td class="center modify">这是标题</td>
-                                            <td class="center modify">20</td>
-                                            <td class="center modify">XXXXXXXXXX</td>
-                                            <td class="center modify">XXXXXXXXXX</td>
-                                            <td class="center modify">2018-2-12</td>
-                                            <td class="center modify">已办理</td>
-                                            <td class="center modify">14578965482</td>
-                                            <td class="center modify">XX办事处</td>
-                                            <td class="center">
-                                                <button class="btn btn-danger">删除</button>
-                                            </td>
-                                        </tr>
-                                        </tbody>
+                                        
+                                        <c:forEach items="${files}"  var="pswj">  
+											    <tbody>
+											    <tr>
+												    <td class="center modify">${pswj.pid}</td>
+												    <td class="center modify"> <fmt:formatDate value="${pswj.rectime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+												    <td class="center modify">${pswj.title}</td>
+												    <td class="center modify">${pswj.numbers}</td>
+												    <td class="center modify">${pswj.spishi}</td>
+												    <td class="center modify">${pswj.wpishi}</td>
+												    <td class="center modify"><fmt:formatDate value="${pswj.deadline}" pattern="yyyy-MM-dd"/></td>
+												    <td class="center modify">${pswj.isdone}</td>
+												    <td class="center modify">${pswj.phone}</td>
+												    <td class="center modify">${pswj.direction}</td>
+												    <td class="center">
+												    <button class="btn btn-danger">删除</button></td>
+											    </tr>
+											    </tbody>
+										</c:forEach> 
                                     </table>
                                 </div>
 
