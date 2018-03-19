@@ -165,20 +165,6 @@
                         <div class="card-content">
                             <form class="col s12">
                                 <div class="row">
-                                    <div class="input-field col s4">
-                                        <input id="pid" type="text" class="validate" >
-                                        <label for="pid">编号</label>
-                                    </div>
-                                    <div class="input-field col s4">
-                                        <input id="number" type="text" class="validate" >
-                                        <label for="number">来文号</label>
-                                    </div>
-                                    <div class="input-field col s4">
-                                        <input id="department" type="text" class="validate" >
-                                        <label for="department">来文单位</label>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <div class="input-field col s12">
                                         <input id="title" type="text" class="validate" >
                                         <label for="title">来文标题</label>
@@ -186,11 +172,21 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="time" type="text" class="validate" >
+                                        <input id="number" type="text" class="validate" >
+                                        <label for="number">来文号</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input id="department" type="text" class="validate" >
+                                        <label for="department">来文单位</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <input id="time" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'dotime\')||\'new Date()\'}'})"/>
                                         <label for="time">来文时间</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="dotime" type="text" class="validate" >
+                                        <input id="dotime" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'time\')}'})"/>
                                         <label for="dotime">办理时间</label>
                                     </div>
                                 </div>
@@ -243,6 +239,7 @@
 <!-- DATA TABLE SCRIPTS -->
 <script src="js/jquery.dataTables.js"></script>
 <script src="js/dataTables.bootstrap.js"></script>
+<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 <script>
     $(document).ready(function () {
         $('#dataTables-example').dataTable();
@@ -253,11 +250,6 @@
 
 <script type="text/javascript">
     $("#save").click(function () {
-        if ($("#pid").val() == "") {
-            $("#textfield").addClass("alert alert-warning");
-            $("#textfield").text("编号不能为空！");
-            return false;
-        }
         if ($("#number").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("来文号不能为空！");
@@ -278,21 +270,9 @@
             $("#textfield").text("来文时间不能为空！");
             return false;
         }
-        var reg_time = /^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-)) (20|21|22|23|[0-1]?\d):[0-5]?\d:[0-5]?\d$/;
-        if (!reg_time.test($("#time").val())){
-            $("#textfield").addClass("alert alert-warning");
-            $("#textfield").text("来文时间不合法！格式应为YYYY-MM-DD HH:MM:SS");
-            return false;
-        }
         if ($("#dotime").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("办理时间不能为空！");
-            return false;
-        }
-        var reg_dotime = /^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-)) (20|21|22|23|[0-1]?\d):[0-5]?\d:[0-5]?\d$/;
-        if (!reg_dotime.test($("#dotime").val())){
-            $("#textfield").addClass("alert alert-warning");
-            $("#textfield").text("办理时间不合法！格式应为YYYY-MM-DD HH:MM:SS");
             return false;
         }
         if ($("#Spishi").val() == "") {

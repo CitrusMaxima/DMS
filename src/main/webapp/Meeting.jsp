@@ -180,7 +180,7 @@
                                     <tbody>
                                     <tr>
                                         <td class="center modify">1</td>
-                                        <td class="center modify">2017-12-21</td>
+                                        <td class="center modify time">2017-12-21</td>
                                         <td class="center modify">是</td>
                                         <td class="center modify">XXXXXXXXXX</td>
                                         <td class="center modify">XXXXXXXXXX</td>

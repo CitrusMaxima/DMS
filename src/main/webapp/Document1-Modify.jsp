@@ -171,11 +171,15 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="input-field col s6">
-                                        <input id="rectime" type="text" class="validate" value="XXXX-XX-XX">
+                                    <div class="input-field col s4">
+                                        <input id="rectime" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'deadline\')||\'new Date()\'}'})"/>
                                         <label class="active" for="rectime">收文时间</label>
                                     </div>
-                                    <div class="input-field col s6">
+                                    <div class="input-field col s4">
+                                        <input id="deadline" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'rectime\')}'})"/>
+                                        <label class="active" for="deadline">时限</label>
+                                    </div>
+                                    <div class="input-field col s4">
                                         <input id="numbers" type="text" class="validate" value="20">
                                         <label class="active" for="numbers">字号</label>
                                     </div>
@@ -193,21 +197,15 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="input-field col s6">
-                                        <input id="deadline" type="text" class="validate"value="XXXX-XX-XX">
-                                        <label class="active" for="deadline">时限</label>
-                                    </div>
-                                    <div class="input-field col s6">
+                                    <div class="input-field col s4">
                                         <input id="IsDone" type="text" class="validate"value="XXXXXXXXXXXXXX">
                                         <label class="active" for="IsDone">办理情况</label>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s6">
+                                    <div class="input-field col s4">
                                         <input id="phone" type="text" class="validate"value="XXXXXXXXXXXXXX">
                                         <label class="active" for="phone">承办处电话</label>
                                     </div>
-                                    <div class="input-field col s6">
+                                    <div class="input-field col s4">
                                         <input id="direction" type="text" class="validate"value="XXXXXXXXXXXXXX">
                                         <label class="active" for="direction">流向</label>
                                     </div>
@@ -250,6 +248,7 @@
 <!-- DATA TABLE SCRIPTS -->
 <script src="js/jquery.dataTables.js"></script>
 <script src="js/dataTables.bootstrap.js"></script>
+<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 <script>
     $(document).ready(function () {
         $(".validate").attr("disabled", true);
@@ -271,10 +270,9 @@
             $("#textfield").text("收文时间不能为空！");
             return false;
         }
-        var reg_rectime = /^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-)) (20|21|22|23|[0-1]?\d):[0-5]?\d:[0-5]?\d$/;
-        if (!reg_rectime.test($("#rectime").val())){
+        if ($("#deadline").val() == "") {
             $("#textfield").addClass("alert alert-warning");
-            $("#textfield").text("收文时间不合法！格式应为YYYY-MM-DD HH:MM:SS");
+            $("#textfield").text("时限不能为空！");
             return false;
         }
         if ($("#numbers").val() == "") {
@@ -290,17 +288,6 @@
         if ($("#Wpishi").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("委领导批示不能为空！");
-            return false;
-        }
-        if ($("#deadline").val() == "") {
-            $("#textfield").addClass("alert alert-warning");
-            $("#textfield").text("时限不能为空！");
-            return false;
-        }
-        var reg_deadline = /^(\d{4})-(0\d{1}|1[0-2])-(0\d{1}|[12]\d{1}|3[01])$/;
-        if (!reg_deadline.test($("#deadline").val())){
-            $("#textfield").addClass("alert alert-warning");
-            $("#textfield").text("时限不合法！格式应为YYYY-MM-DD");
             return false;
         }
         if ($("#IsDone").val() == "") {

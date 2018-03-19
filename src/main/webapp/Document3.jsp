@@ -183,9 +183,9 @@
                                     <tbody>
                                     <tr>
                                         <td class="center">1</td>
-                                        <td class="center">2017-12-21</td>
+                                        <td class="center time">2017-12-21</td>
                                         <td class="center">XXXXXXXXXX</td>
-                                        <td class="center">2018-1-23</td>
+                                        <td class="center time">2018-1-23</td>
                                         <td class="center">XXXXXXXXXX</td>
                                         <td class="center">XXXXXXXXXX</td>
                                         <td class="center">XX办事处</td>

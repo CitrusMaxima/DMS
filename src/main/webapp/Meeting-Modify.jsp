@@ -165,7 +165,7 @@
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="time" type="text" class="validate" value="XXXX-XX-XX">
+                                        <input id="time" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
                                         <label class="active" for="time">会议时间</label>
                                     </div>
                                     <div class="input-field col s6">
@@ -230,6 +230,7 @@
 <!-- DATA TABLE SCRIPTS -->
 <script src="js/jquery.dataTables.js"></script>
 <script src="js/dataTables.bootstrap.js"></script>
+<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 <script>
     $(document).ready(function () {
         $(".validate").attr("disabled", true);
@@ -244,12 +245,6 @@
         if ($("#time").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("会议时间不能为空！");
-            return false;
-        }
-        var reg_time = /^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-)) (20|21|22|23|[0-1]?\d):[0-5]?\d:[0-5]?\d$/;
-        if (!reg_time.test($("#time").val())){
-            $("#textfield").addClass("alert alert-warning");
-            $("#textfield").text("会议时间不合法！格式应为YYYY-MM-DD HH:MM:SS");
             return false;
         }
         if ($("#character").val() == "") {
