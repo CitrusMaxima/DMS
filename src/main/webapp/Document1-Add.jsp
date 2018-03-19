@@ -96,7 +96,7 @@
                             <a href="#">领导批示文件表<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    <a href="Document1-Add.jsp">登记</a>
+                                    <a href="Document1-Add.jsp" >登记</a>
                                 </li>
                                 <li>
                                     <a href="Document1.jsp">查询</a>
@@ -188,97 +188,42 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s4">
-<<<<<<< HEAD
-                                        <input  id="pid" type="text" class="validate" value="1" name="pid">
-                                        <label class="active" for="pid">序号</label>
-=======
                                         <input id="rectime" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'deadline\')||\'new Date()\'}'})"/>
                                         <label for="rectime">收文时间</label>
->>>>>>> branch 'master' of https://git.coding.net/zhanghuaibo/DMS.git
                                     </div>
                                     <div class="input-field col s4">
-<<<<<<< HEAD
-                                        <input id="rectime" type="text" class="validate" value="XXXX-XX-XX" name="rectime">
-                                        <label class="active" for="rectime">收文时间</label>
-=======
                                         <input id="deadline" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'rectime\')}'})"/>
                                         <label for="deadline">时限</label>
->>>>>>> branch 'master' of https://git.coding.net/zhanghuaibo/DMS.git
                                     </div>
                                     <div class="input-field col s4">
-<<<<<<< HEAD
-                                        <input id="numbers" type="text" class="validate" value="20" name="numbers">
-                                        <label class="active" for="numbers">字号</label>
-=======
                                         <input id="numbers" type="text" class="validate" >
                                         <label for="numbers">字号</label>
->>>>>>> branch 'master' of https://git.coding.net/zhanghuaibo/DMS.git
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-<<<<<<< HEAD
-                                        <input id="title" type="text" class="validate" value="XXXXXXXXXXXXXX" name="title">
-                                        <label class="active" for="title">来文标题</label>
-=======
                                         <input id="Spishi" type="text" class="validate" >
                                         <label for="Spishi">省领导批示</label>
->>>>>>> branch 'master' of https://git.coding.net/zhanghuaibo/DMS.git
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-<<<<<<< HEAD
-                                        <input id="Spishi" type="text" class="validate" value="XXXXXXXXXXXXXX" name="spishi">
-                                        <label class="active" for="Spishi">省领导批示</label>
-=======
                                         <input id="Wpishi" type="text" class="validate">
                                         <label for="Wpishi">委领导批示</label>
->>>>>>> branch 'master' of https://git.coding.net/zhanghuaibo/DMS.git
                                     </div>
                                 </div>
                                 <div class="row">
-<<<<<<< HEAD
-                                    <div class="input-field col s12">
-                                        <input id="Wpishi" type="text" class="validate"value="XXXXXXXXXXXXXX" name="wpishi">
-                                        <label class="active" for="Wpishi">委领导批示</label>
-=======
                                     <div class="input-field col s4">
                                         <input id="IsDone" type="text" class="validate">
                                         <label for="IsDone">办理情况</label>
->>>>>>> branch 'master' of https://git.coding.net/zhanghuaibo/DMS.git
                                     </div>
-<<<<<<< HEAD
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s6">
-                                        <input id="deadline" type="text" class="validate"value="XXXX-XX-XX" name="deadline">
-                                        <label class="active" for="deadline">时限</label>
-=======
                                     <div class="input-field col s4">
                                         <input id="phone" type="text" class="validate">
                                         <label for="phone">承办处电话</label>
->>>>>>> branch 'master' of https://git.coding.net/zhanghuaibo/DMS.git
                                     </div>
-<<<<<<< HEAD
-                                    <div class="input-field col s6">
-                                        <input id="IsDone" type="text" class="validate"value="XXXXXXXXXXXXXX" name="isdone">
-                                        <label class="active" for="IsDone">办理情况</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s6">
-                                        <input id="phone" type="text" class="validate"value="XXXXXXXXXXXXXX" name="phone">
-                                        <label class="active" for="phone">承办处电话</label>
-                                    </div>
-                                    <div class="input-field col s6">
-                                        <input id="direction" type="text" class="validate"value="XXXXXXXXXXXXXX" name="direction">
-                                        <label class="active" for="direction">流向</label>
-=======
                                     <div class="input-field col s4">
                                         <input id="direction" type="text" class="validate">
                                         <label for="direction">流向</label>
->>>>>>> branch 'master' of https://git.coding.net/zhanghuaibo/DMS.git
                                     </div>
                                 </div>
                             </form>
