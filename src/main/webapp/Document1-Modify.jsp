@@ -37,7 +37,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand waves-effect waves-dark" href="Welcome-Admin.jsp">
+            <a class="navbar-brand waves-effect waves-dark" href="Welcome.jsp">
                 <i class="large material-icons">track_changes</i>
                 <strong>文档管理系统</strong>
             </a>
@@ -58,10 +58,10 @@
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
         <li>
-            <a href="PersonalCenter-Admin.jsp"><i class="fa fa-user fa-fw"></i> 个人中心</a>
+            <a href="PersonalCenter.jsp"><i class="fa fa-user fa-fw"></i> 个人中心</a>
         </li>
         <li>
-            <a href="ModifyPassword-Admin.jsp"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
+            <a href="ModifyPassword.jsp"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
         </li>
         <li>
             <a href="Login.jsp"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
@@ -74,16 +74,16 @@
             <ul class="nav" id="main-menu">
 
                 <li>
-                    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 文档管理<span class="fa arrow"></span></a>
+                    <a href="#" class="active-menu waves-effect waves-dark"><i class="fa fa-sitemap"></i> 文档管理<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="#">领导批示文件表<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    <a href="Document1-Add-Admin.jsp">登记</a>
+                                    <a href="Document1-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document1-Admin.jsp">查询</a>
+                                    <a href="Document1.jsp">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -91,21 +91,21 @@
                             <a href="#">收文登记表<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    <a href="Document2-Add-Admin.jsp">登记</a>
+                                    <a href="Document2-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document2-Admin.jsp">查询</a>
+                                    <a href="Document2.jsp">查询</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#">主要领导签批文件登记表<span class="fa arrow"></span></a>
+                            <a href="#">报主要领导签批文件登记表<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    <a href="Document3-Add-Admin.jsp">登记</a>
+                                    <a href="Document3-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document3-Admin.jsp">查询</a>
+                                    <a href="Document3.jsp">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -115,24 +115,24 @@
                     <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-edit"></i> 会议管理<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="Meeting-Add-Admin.jsp">登记</a>
+                            <a href="Meeting-Add.jsp">登记</a>
                         </li>
                         <li>
-                            <a href="Meeting1-Admin.jsp">未召开会议查询</a>
+                            <a href="Meeting.jsp">会议查询</a>
                         </li>
                         <li>
-                            <a href="Meeting2-Admin.jsp">已召开会议查询</a>
+                            <a href="Meeting-Statistics.jsp">会议统计</a>
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li id="admin">
                     <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> 用户管理<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="User-Add-Admin.jsp">添加用户</a>
+                            <a href="User-Add.jsp">添加用户</a>
                         </li>
                         <li>
-                            <a href="User-Admin.jsp">用户查询</a>
+                            <a href="User.jsp">用户查询</a>
                         </li>
                     </ul>
                 </li>
@@ -145,11 +145,12 @@
     <div id="page-wrapper" >
         <div class="header">
             <h1 class="page-header">
-                修改密码
+                领导批示文件表
             </h1>
             <ol class="breadcrumb">
                 <li><a>文档管理系统</a></li>
-                <li class="active">修改密码</li>
+                <li><a>领导批示文件表</a></li>
+                <li class="active">登记/修改</li>
             </ol>
 
         </div>
@@ -159,30 +160,61 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-action">
-                            修改密码
+                            收文登记表
                         </div>
                         <div class="card-content">
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="old-password" type="password" class="validate">
-                                        <label for="old-password">旧密码</label>
+                                        <input id="title" type="text" class="validate" value="XXXXXXXXXXXXXX">
+                                        <label class="active" for="title">来文标题</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <input id="rectime" type="text" class="validate" value="XXXX-XX-XX">
+                                        <label class="active" for="rectime">收文时间</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input id="numbers" type="text" class="validate" value="20">
+                                        <label class="active" for="numbers">字号</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="new-password" type="password" class="validate">
-                                        <label for="new-password">新密码</label>
+                                        <input id="Spishi" type="text" class="validate" value="XXXXXXXXXXXXXX">
+                                        <label class="active" for="Spishi">省领导批示</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="re-password" type="password" class="validate">
-                                        <label for="re-password">确认密码</label>
+                                        <input id="Wpishi" type="text" class="validate"value="XXXXXXXXXXXXXX">
+                                        <label class="active" for="Wpishi">委领导批示</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <input id="deadline" type="text" class="validate"value="XXXX-XX-XX">
+                                        <label class="active" for="deadline">时限</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input id="IsDone" type="text" class="validate"value="XXXXXXXXXXXXXX">
+                                        <label class="active" for="IsDone">办理情况</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <input id="phone" type="text" class="validate"value="XXXXXXXXXXXXXX">
+                                        <label class="active" for="phone">承办处电话</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input id="direction" type="text" class="validate"value="XXXXXXXXXXXXXX">
+                                        <label class="active" for="direction">流向</label>
                                     </div>
                                 </div>
                             </form>
-                            <a class="waves-effect waves-light btn-large" id="save">保存</a>
+                            <a class="waves-effect waves-light btn-large" id="modify">修改</a>
+                            <a disabled class="waves-effect waves-light btn-large" id="save">保存</a>
                             <div id="textfield"></div>
                         </div>
                     </div>
@@ -220,6 +252,7 @@
 <script src="js/dataTables.bootstrap.js"></script>
 <script>
     $(document).ready(function () {
+        $(".validate").attr("disabled", true);
         $('#dataTables-example').dataTable();
     });
 </script>
@@ -228,23 +261,67 @@
 
 <script type="text/javascript">
     $("#save").click(function () {
-        if ($("#old-password").val() == "") {
+        $(".validate").attr("disabled", true);
+        $("#save").attr("disabled", true);
+        $("#modify").attr("disabled", false);
+        if ($("#title").val() == "") {
             $("#textfield").addClass("alert alert-warning");
-            $("#textfield").text("旧密码不能为空！");
+            $("#textfield").text("来文标题不能为空！");
             return false;
         }
-        if ($("#new-password").val() == "") {
+        if ($("#rectime").val() == "") {
             $("#textfield").addClass("alert alert-warning");
-            $("#textfield").text("新密码不能为空！");
+            $("#textfield").text("收文时间不能为空！");
             return false;
         }
-        if ($("#new-password").val() != $("#re-password").val()) {
+        if ($("#numbers").val() == "") {
             $("#textfield").addClass("alert alert-warning");
-            $("#textfield").text("两次输入密码不同！");
+            $("#textfield").text("字号不能为空！");
+            return false;
+        }
+        if ($("#Spishi").val() == "") {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("省领导批示不能为空！");
+            return false;
+        }
+        if ($("#Wpishi").val() == "") {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("委领导批示不能为空！");
+            return false;
+        }
+        if ($("#deadline").val() == "") {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("时限不能为空！");
+            return false;
+        }
+        if ($("#IsDone").val() == "") {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("办理情况不能为空！");
+            return false;
+        }
+        if ($("#phone").val() == "") {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("承办处电话不能为空！");
+            return false;
+        }
+        if ($("#direction").val() == "") {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("流向不能为空！");
             return false;
         }
     });
 </script>
-
+<script type="text/javascript">
+    var power = '<%=request.getSession().getAttribute("power")%>' ;
+    var admin = document.getElementById("admin");
+    if (power == "0")
+        admin.style.display="none";
+    //document.getElementsByClassName("validate").disabled=true;
+    $("#modify").click(function () {
+        $(".validate").attr("disabled", false);
+        $("#save").attr("disabled", false);
+        $("#modify").attr("disabled", true);
+    });
+</script>
 </body>
 </html>

@@ -37,7 +37,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand waves-effect waves-dark" href="Welcome-Admin.jsp">
+            <a class="navbar-brand waves-effect waves-dark" href="Welcome.jsp">
                 <i class="large material-icons">track_changes</i>
                 <strong>文档管理系统</strong>
             </a>
@@ -58,10 +58,10 @@
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
         <li>
-            <a href="PersonalCenter-Admin.jsp"><i class="fa fa-user fa-fw"></i> 个人中心</a>
+            <a href="PersonalCenter.jsp"><i class="fa fa-user fa-fw"></i> 个人中心</a>
         </li>
         <li>
-            <a href="ModifyPassword-Admin.jsp"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
+            <a href="ModifyPassword.jsp"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
         </li>
         <li>
             <a href="Login.jsp"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
@@ -80,10 +80,10 @@
                             <a href="#">领导批示文件表<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    <a href="Document1-Add-Admin.jsp">登记</a>
+                                    <a href="Document1-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document1-Admin.jsp">查询</a>
+                                    <a href="Document1.jsp">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -91,21 +91,21 @@
                             <a href="#">收文登记表<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    <a href="Document2-Add-Admin.jsp">登记</a>
+                                    <a href="Document2-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document2-Admin.jsp">查询</a>
+                                    <a href="Document2.jsp">查询</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#">主要领导签批文件登记表<span class="fa arrow"></span></a>
+                            <a href="#">报主要领导签批文件登记表<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    <a href="Document3-Add-Admin.jsp">登记</a>
+                                    <a href="Document3-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document3-Admin.jsp">查询</a>
+                                    <a href="Document3.jsp">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -115,24 +115,24 @@
                     <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-edit"></i> 会议管理<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="Meeting-Add-Admin.jsp">登记</a>
+                            <a href="Meeting-Add.jsp">登记</a>
                         </li>
                         <li>
-                            <a href="Meeting1-Admin.jsp">未召开会议查询</a>
+                            <a href="Meeting.jsp">会议查询</a>
                         </li>
                         <li>
-                            <a href="Meeting2-Admin.jsp">已召开会议查询</a>
+                            <a href="Meeting-Statistics.jsp">会议统计</a>
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li id="admin">
                     <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> 用户管理<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="User-Add-Admin.jsp">添加用户</a>
+                            <a href="User-Add.jsp">添加用户</a>
                         </li>
                         <li>
-                            <a href="User-Admin.jsp">用户查询</a>
+                            <a href="User.jsp">用户查询</a>
                         </li>
                     </ul>
                 </li>
@@ -263,6 +263,11 @@
             }
         });
     </script>
-
+    <script type="text/javascript">
+        var power = '<%=request.getSession().getAttribute("power")%>' ;
+        var admin = document.getElementById("admin");
+        if (power == "0")
+            admin.style.display="none";
+    </script>
 </body>
 </html>

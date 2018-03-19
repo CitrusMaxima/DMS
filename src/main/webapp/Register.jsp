@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <%
-    	String flag = (String)request.getAttribute("flag");
+    	String flag = (String)request.getSession().getAttribute("flag");
     	PrintWriter pw = response.getWriter();
 		if (flag!=null && flag=="codeError") {
 			pw.print("<script>alert('验证码错误！')</script>");
@@ -82,15 +82,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                            </div>
 								<div class="form-group">
 									<label>昵称</label>
-									<input id="nickname" name="nickname" class="form-control" type="text" />
+									<input id="nickname" name="name" class="form-control" type="text" />
 								</div>
 								<div class="form-group">
 									<label>邮箱</label>
-									<input id="email" name="email" class="form-control"  type="text" />
+									<input id="email" class="form-control"  type="text" />
 								</div>
 								<div class="form-group">
 									<label>手机号码</label>
-									<input id="phone-number" name="phoneNumber" class="form-control"  type="text" />
+									<input id="phone-number" class="form-control"  type="text" />
 								</div>
 	                            <div class="form-group">
 	                                <label>验证码</label>

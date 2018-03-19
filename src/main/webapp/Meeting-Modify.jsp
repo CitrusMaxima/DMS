@@ -24,7 +24,6 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/cssCharts.css">
-
 </head>
 
 <body>
@@ -37,7 +36,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand waves-effect waves-dark" href="Welcome-Admin.jsp">
+            <a class="navbar-brand waves-effect waves-dark" href="Welcome.jsp">
                 <i class="large material-icons">track_changes</i>
                 <strong>文档管理系统</strong>
             </a>
@@ -58,10 +57,10 @@
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
         <li>
-            <a href="PersonalCenter-User.jsp"><i class="fa fa-user fa-fw"></i> 个人中心</a>
+            <a href="PersonalCenter.jsp"><i class="fa fa-user fa-fw"></i> 个人中心</a>
         </li>
         <li>
-            <a href="ModifyPassword-User.jsp"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
+            <a href="ModifyPassword.jsp"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
         </li>
         <li>
             <a href="Login.jsp"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
@@ -80,10 +79,10 @@
                             <a href="#">领导批示文件表<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    <a href="Document1-Add-Admin.jsp">登记</a>
+                                    <a href="Document1-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document1-Admin.jsp">查询</a>
+                                    <a href="Document1.jsp">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -91,37 +90,48 @@
                             <a href="#">收文登记表<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    <a href="Document2-Add-Admin.jsp">登记</a>
+                                    <a href="Document2-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document2-Admin.jsp">查询</a>
+                                    <a href="Document2.jsp">查询</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#">主要领导签批文件登记表<span class="fa arrow"></span></a>
+                            <a href="#">报主要领导签批文件登记表<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    <a href="Document3-Add-Admin.jsp">登记</a>
+                                    <a href="Document3-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document3-Admin.jsp">查询</a>
+                                    <a href="Document3.jsp">查询</a>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-edit"></i> 会议管理<span class="fa arrow"></span></a>
+                    <a href="form.html" class="active-menu waves-effect waves-dark"><i class="fa fa-edit"></i> 会议管理<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="Meeting-Add-Admin.jsp">登记</a>
+                            <a href="Meeting-Add.jsp">登记</a>
                         </li>
                         <li>
-                            <a href="Meeting1-Admin.jsp">未召开会议查询</a>
+                            <a href="Meeting.jsp">会议查询</a>
                         </li>
                         <li>
-                            <a href="Meeting2-Admin.jsp">已召开会议查询</a>
+                            <a href="Meeting-Statistics.jsp">会议统计</a>
+                        </li>
+                    </ul>
+                </li>
+                <li id="admin">
+                    <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> 用户管理<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="User-Add.jsp">添加用户</a>
+                        </li>
+                        <li>
+                            <a href="User.jsp">用户查询</a>
                         </li>
                     </ul>
                 </li>
@@ -134,11 +144,12 @@
     <div id="page-wrapper" >
         <div class="header">
             <h1 class="page-header">
-                修改密码
+                会议管理
             </h1>
             <ol class="breadcrumb">
                 <li><a>文档管理系统</a></li>
-                <li class="active">修改密码</li>
+                <li><a>会议管理</a></li>
+                <li class="active">登记/修改</li>
             </ol>
 
         </div>
@@ -148,27 +159,42 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-action">
-                            修改密码
+                            会议管理
                         </div>
                         <div class="card-content">
                             <form class="col s12">
                                 <div class="row">
-                                    <div class="input-field col s12">
-                                        <input id="old-password" type="password" class="validate">
-                                        <label for="old-password">旧密码</label>
+                                    <div class="input-field col s4">
+                                        <input disabled id="mid" type="text" class="validate" value="1">
+                                        <label class="active" for="mid">会议编号</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                        <input id="time" type="text" class="validate" value="XXXX-XX-XX">
+                                        <label class="active" for="time">会议时间</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                        <input id="character" type="text" class="validate" value="XXXXXXXXXXXXXX">
+                                        <label class="active" for="character">会议性质</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="new-password" type="password" class="validate">
-                                        <label for="new-password">新密码</label>
+                                        <input id="content" type="text" class="validate" value="XXXXXXXXXXXXXX">
+                                        <label class="active" for="content">会议内容</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="re-password" type="password" class="validate">
-                                        <label for="re-password">确认密码</label>
+                                        <input id="name" type="text" class="validate" value="XXXXXXXXXXXXXX">
+                                        <label class="active" for="name">参与者</label>
                                     </div>
+                                </div>
+                                <div class="row col s12" style="margin-bottom: 0px; ">
+                                        <label class="active row" for="document">会议文件</label>
+                                        <div class="row">
+                                            <input id="document" type="file" multiple onchange="change()" />
+                                        </div>
+                                        <div id="show" class="row" style="margin-bottom: 0px; "></div>
                                 </div>
                             </form>
                             <a class="waves-effect waves-light btn-large" id="save">保存</a>
@@ -217,23 +243,44 @@
 
 <script type="text/javascript">
     $("#save").click(function () {
-        if ($("#old-password").val() == "") {
+        if ($("#time").val() == "") {
             $("#textfield").addClass("alert alert-warning");
-            $("#textfield").text("旧密码不能为空！");
+            $("#textfield").text("会议时间不能为空！");
             return false;
         }
-        if ($("#new-password").val() == "") {
+        if ($("#character").val() == "") {
             $("#textfield").addClass("alert alert-warning");
-            $("#textfield").text("新密码不能为空！");
+            $("#textfield").text("会议性质不能为空！");
             return false;
         }
-        if ($("#new-password").val() != $("#re-password").val()) {
+        if ($("#content").val() == "") {
             $("#textfield").addClass("alert alert-warning");
-            $("#textfield").text("两次输入密码不同！");
+            $("#textfield").text("会议内容不能为空！");
+            return false;
+        }
+        if ($("#name").val() == "") {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("参与者不能为空！");
             return false;
         }
     });
 </script>
+<script type="text/javascript">
+    var power = '<%=request.getSession().getAttribute("power")%>' ;
+    var admin = document.getElementById("admin");
+    if (power == "0")
+        admin.style.display="none";
 
+    function change(){
+        document.getElementById("show").innerHTML = "";
+        var obj = document.getElementById("document");
+        var length = obj.files.length;
+        for(var i=0;i<length;i++){
+            var temp = obj.files[i].name;
+            //alert(temp);
+            document.getElementById("show").innerHTML += temp + "&nbsp;&nbsp;&nbsp;";
+        }
+    }
+</script>
 </body>
 </html>

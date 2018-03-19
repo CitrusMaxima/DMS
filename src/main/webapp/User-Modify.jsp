@@ -165,8 +165,8 @@
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="uid" type="text" class="validate" value="1">
-                                        <label class="active" for="uid">帐号</label>
+                                        <input id="nickname" type="text" class="validate" value="杨旭">
+                                        <label class="active" for="nickname">昵称</label>
                                     </div>
                                     <div class="input-field col s6">
                                         <input id="password" type="text" class="validate" value="XXXXXXXXXXXXXX">
@@ -174,15 +174,11 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="input-field col s4">
-                                        <input id="nickname" type="text" class="validate" value="杨旭">
-                                        <label class="active" for="nickname">昵称</label>
-                                    </div>
-                                    <div class="input-field col s4">
+                                    <div class="input-field col s6">
                                         <input id="phone" type="text" class="validate" value="XXXXXXXXXXXXXX">
                                         <label class="active" for="phone">手机号码</label>
                                     </div>
-                                    <div class="input-field col s4">
+                                    <div class="input-field col s6">
                                         <input id="email" type="text" class="validate" value="XXXXXXXXXXXXXX">
                                         <label class="active" for="email">邮箱</label>
                                     </div>
@@ -192,7 +188,8 @@
                                     <label for="IsAdmin">管理员</label>
                                 </p>
                             </form>
-                            <a class="waves-effect waves-light btn-large" id="save">保存</a>
+                            <a class="waves-effect waves-light btn-large" id="modify">修改</a>
+                            <a disabled class="waves-effect waves-light btn-large" id="save">保存</a>
                             <div id="textfield"></div>
                         </div>
                     </div>
@@ -230,6 +227,8 @@
 <script src="js/dataTables.bootstrap.js"></script>
 <script>
     $(document).ready(function () {
+        $(".validate").attr("disabled", true);
+        $("#IsAdmin").attr("disabled", true);
         $('#dataTables-example').dataTable();
     });
 </script>
@@ -238,11 +237,10 @@
 
 <script type="text/javascript">
     $("#save").click(function () {
-        if ($("#uid").val() == "") {
-            $("#textfield").addClass("alert alert-warning");
-            $("#textfield").text("帐号不能为空！");
-            return false;
-        }
+        $(".validate").attr("disabled", true);
+        $("#save").attr("disabled", true);
+        $("#IsAdmin").attr("disabled", true);
+        $("#modify").attr("disabled", false);
         if ($("#password").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("密码不能为空！");
@@ -269,12 +267,23 @@
             $("#textfield").text("邮箱不能为空！");
             return false;
         }
+        if ($("#email").val() == "") {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("邮箱不能为空！");
+            return false;
+        }
         var reg_email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
         if (!reg_email.test($("#email").val())){
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("邮箱不合法！");
             return false;
         }
+    });
+    $("#modify").click(function () {
+        $(".validate").attr("disabled", false);
+        $("#save").attr("disabled", false);
+        $("#IsAdmin").attr("disabled", false);
+        $("#modify").attr("disabled", true);
     });
 </script>
 </body>

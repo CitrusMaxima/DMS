@@ -24,11 +24,6 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/cssCharts.css">
-
-    <style type="text/css">
-        html { overflow: hidden; }
-    </style>
-
 </head>
 
 <body>
@@ -41,7 +36,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand waves-effect waves-dark" href="Welcome-Admin.jsp">
+            <a class="navbar-brand waves-effect waves-dark" href="Welcome.jsp">
                 <i class="large material-icons">track_changes</i>
                 <strong>文档管理系统</strong>
             </a>
@@ -62,10 +57,10 @@
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
         <li>
-            <a href="PersonalCenter-Admin.jsp"><i class="fa fa-user fa-fw"></i> 个人中心</a>
+            <a href="PersonalCenter.jsp"><i class="fa fa-user fa-fw"></i> 个人中心</a>
         </li>
         <li>
-            <a href="ModifyPassword-Admin.jsp"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
+            <a href="ModifyPassword.jsp"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
         </li>
         <li>
             <a href="Login.jsp"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
@@ -78,65 +73,65 @@
             <ul class="nav" id="main-menu">
 
                 <li>
-                    <a href="#" class="active-menu waves-effect waves-dark"><i class="fa fa-sitemap"></i> 文档管理<span class="fa arrow"></span></a>
+                    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> 文档管理<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="#">领导批示文件表<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    <a href="Document1-Add-Admin.jsp">登记</a>
+                                    <a href="Document1-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document1-Admin.jsp">查询</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="active-menu" href="#">收文登记表<span class="fa arrow"></span></a>
-                            <ul class="nav nav-third-level">
-                                <li>
-                                    <a class="active-menu" href="Document2-Add-Admin.jsp">登记</a>
-                                </li>
-                                <li>
-                                    <a href="Document2-Admin.jsp">查询</a>
+                                    <a href="Document1.jsp">查询</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#">主要领导签批文件登记表<span class="fa arrow"></span></a>
+                            <a href="#">收文登记表<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    <a href="Document3-Add-Admin.jsp">登记</a>
+                                    <a href="Document2-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document3-Admin.jsp">查询</a>
+                                    <a href="Document2.jsp">查询</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">报主要领导签批文件登记表<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    <a href="Document3-Add.jsp">登记</a>
+                                </li>
+                                <li>
+                                    <a href="Document3.jsp">查询</a>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-edit"></i> 会议管理<span class="fa arrow"></span></a>
+                    <a href="form.html" class="active-menu waves-effect waves-dark"><i class="fa fa-edit"></i> 会议管理<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="Meeting-Add-Admin.jsp">登记</a>
+                            <a href="Meeting-Add.jsp">登记</a>
                         </li>
                         <li>
-                            <a href="Meeting1-Admin.jsp">未召开会议查询</a>
+                            <a href="Meeting.jsp">会议查询</a>
                         </li>
                         <li>
-                            <a href="Meeting2-Admin.jsp">已召开会议查询</a>
+                            <a href="Meeting-Statistics.jsp">会议统计</a>
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li id="admin">
                     <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> 用户管理<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="User-Add-Admin.jsp">添加用户</a>
+                            <a href="User-Add.jsp">添加用户</a>
                         </li>
                         <li>
-                            <a href="User-Admin.jsp">用户查询</a>
+                            <a href="User.jsp">用户查询</a>
                         </li>
                     </ul>
                 </li>
@@ -146,9 +141,66 @@
 
     </nav>
     <!-- /. NAV SIDE  -->
-    <div id="page-wrapper">
-        <%--<img src="images/welcome.jpg" alt="Welcome" style="width: 1660px; height: 855px;">--%>
-        <iframe src="Document2-Add.jsp" width="100%" ; height="100%" ;></iframe>
+    <div id="page-wrapper" >
+        <div class="header">
+            <h1 class="page-header">
+                会议查询
+            </h1>
+            <ol class="breadcrumb">
+                <li><a>文档管理系统</a></li>
+                <li class="active">会议查询</li>
+            </ol>
+
+        </div>
+
+        <div id="page-inner">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="card">
+                        <div class="card-action">
+                            会议查询
+                        </div>
+                        <div class="card-content">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                    <tr>
+                                        <th class="center">会议编号</th>
+                                        <th class="center">会议时间</th>
+                                        <th class="center">是否召开</th>
+                                        <th class="center">会议性质</th>
+                                        <th class="center">内容</th>
+                                        <th class="center">参与者</th>
+                                        <th class="center">会议文档</th>
+                                        <th class="center">删除</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="center modify">1</td>
+                                        <td class="center modify">2017-12-21</td>
+                                        <td class="center modify">是</td>
+                                        <td class="center modify">XXXXXXXXXX</td>
+                                        <td class="center modify">XXXXXXXXXX</td>
+                                        <td class="center modify">XXXXXXXXXX</td>
+                                        <td class="center modify">XXXXXXXXXX</td>
+                                        <td class="center">
+                                            <button class="btn btn-danger">删除</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+        </div>
+        <!-- /. PAGE INNER  -->
     </div>
 
 
@@ -181,7 +233,15 @@
     </script>
     <!-- Custom Js -->
     <script src="js/custom-scripts.js"></script>
-
-
+    <script type="text/javascript">
+        var power = '<%=request.getSession().getAttribute("power")%>' ;
+        var admin = document.getElementById("admin");
+        if (power == "0")
+            admin.style.display="none";
+        $(".modify").click(function() {
+            window.location.href="Document2-Modify.jsp";
+        });
+    </script>
+</div>
 </body>
 </html>

@@ -37,7 +37,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand waves-effect waves-dark" href="Welcome-Admin.jsp">
+            <a class="navbar-brand waves-effect waves-dark" href="Welcome.jsp">
                 <i class="large material-icons">track_changes</i>
                 <strong>文档管理系统</strong>
             </a>
@@ -58,10 +58,10 @@
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
         <li>
-            <a href="PersonalCenter-User.jsp"><i class="fa fa-user fa-fw"></i> 个人中心</a>
+            <a href="PersonalCenter.jsp"><i class="fa fa-user fa-fw"></i> 个人中心</a>
         </li>
         <li>
-            <a href="ModifyPassword-User.jsp"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
+            <a href="ModifyPassword.jsp"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
         </li>
         <li>
             <a href="Login.jsp"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
@@ -80,10 +80,10 @@
                             <a href="#">领导批示文件表<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    <a href="Document1-Add-Admin.jsp">登记</a>
+                                    <a href="Document1-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document1-Admin.jsp">查询</a>
+                                    <a href="Document1.jsp">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -91,21 +91,21 @@
                             <a href="#">收文登记表<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    <a href="Document2-Add-Admin.jsp">登记</a>
+                                    <a href="Document2-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document2-Admin.jsp">查询</a>
+                                    <a href="Document2.jsp">查询</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#">主要领导签批文件登记表<span class="fa arrow"></span></a>
+                            <a href="#">报主要领导签批文件登记表<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li>
-                                    <a href="Document3-Add-Admin.jsp">登记</a>
+                                    <a href="Document3-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document3-Admin.jsp">查询</a>
+                                    <a href="Document3.jsp">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -115,13 +115,24 @@
                     <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-edit"></i> 会议管理<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="Meeting-Add-Admin.jsp">登记</a>
+                            <a href="Meeting-Add.jsp">登记</a>
                         </li>
                         <li>
-                            <a href="Meeting1-Admin.jsp">未召开会议查询</a>
+                            <a href="Meeting.jsp">会议查询</a>
                         </li>
                         <li>
-                            <a href="Meeting2-Admin.jsp">已召开会议查询</a>
+                            <a href="Meeting-Statistics.jsp">会议统计</a>
+                        </li>
+                    </ul>
+                </li>
+                <li id="admin">
+                    <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> 用户管理<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="User-Add.jsp">添加用户</a>
+                        </li>
+                        <li>
+                            <a href="User.jsp">用户查询</a>
                         </li>
                     </ul>
                 </li>
@@ -134,11 +145,11 @@
     <div id="page-wrapper" >
         <div class="header">
             <h1 class="page-header">
-                个人中心
+                修改密码
             </h1>
             <ol class="breadcrumb">
                 <li><a>文档管理系统</a></li>
-                <li class="active">个人中心</li>
+                <li class="active">修改密码</li>
             </ol>
 
         </div>
@@ -148,32 +159,26 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-action">
-                            个人信息
+                            修改密码
                         </div>
                         <div class="card-content">
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input disabled id="username" type="text" class="validate" value="Citrus">
-                                        <label class="active" for="username">用户名</label>
+                                        <input id="old-password" type="password" class="validate">
+                                        <label for="old-password">旧密码</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="nickname" type="text" class="validate" value="杨旭">
-                                        <label class="active" for="nickname">昵称</label>
+                                        <input id="new-password" type="password" class="validate">
+                                        <label for="new-password">新密码</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="email" type="text" class="validate" value="2663753900@qq.com">
-                                        <label class="active" for="email">邮箱</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input id="mobile" type="text" class="validate"value="13147855506">
-                                        <label class="active" for="mobile">手机号码</label>
+                                        <input id="re-password" type="password" class="validate">
+                                        <label for="re-password">确认密码</label>
                                     </div>
                                 </div>
                             </form>
@@ -191,67 +196,61 @@
 </div>
 
 
-    <!-- jQuery Js -->
-    <script src="js/jquery-1.10.2.js"></script>
+<!-- jQuery Js -->
+<script src="js/jquery-1.10.2.js"></script>
 
-    <!-- Bootstrap Js -->
-    <script src="js/bootstrap.min.js"></script>
+<!-- Bootstrap Js -->
+<script src="js/bootstrap.min.js"></script>
 
-    <script src="js/materialize.min.js"></script>
+<script src="js/materialize.min.js"></script>
 
-    <!-- Metis Menu Js -->
-    <script src="js/jquery.metisMenu.js"></script>
-    <!-- Morris Chart Js -->
-    <script src="js/raphael-2.1.0.min.js"></script>
-    <script src="js/morris.js"></script>
+<!-- Metis Menu Js -->
+<script src="js/jquery.metisMenu.js"></script>
+<!-- Morris Chart Js -->
+<script src="js/raphael-2.1.0.min.js"></script>
+<script src="js/morris.js"></script>
 
 
-    <script src="js/easypiechart.js"></script>
-    <script src="js/easypiechart-data.js"></script>
+<script src="js/easypiechart.js"></script>
+<script src="js/easypiechart-data.js"></script>
 
-    <script src="js/jquery.chart.js"></script>
-    <!-- DATA TABLE SCRIPTS -->
-    <script src="js/jquery.dataTables.js"></script>
-    <script src="js/dataTables.bootstrap.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#dataTables-example').dataTable();
-        });
-    </script>
-    <!-- Custom Js -->
-    <script src="js/custom-scripts.js"></script>
+<script src="js/jquery.chart.js"></script>
+<!-- DATA TABLE SCRIPTS -->
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/dataTables.bootstrap.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable();
+    });
+</script>
+<!-- Custom Js -->
+<script src="js/custom-scripts.js"></script>
 
-    <script type="text/javascript">
-        $("#save").click(function () {
-            if ($("#nickname").val() == "") {
-                $("#textfield").addClass("alert alert-warning");
-                $("#textfield").text("昵称不能为空！");
-                return false;
-            }
-            if ($("#email").val() == "") {
-                $("#textfield").addClass("alert alert-warning");
-                $("#textfield").text("邮箱不能为空！");
-                return false;
-            }
-            var reg_email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-            if (!reg_email.test($("#email").val())){
-                $("#textfield").addClass("alert alert-warning");
-                $("#textfield").text("邮箱不合法！");
-                return false;
-            }
-            if ($("#mobile").val() == "") {
-                $("#textfield").addClass("alert alert-warning");
-                $("#textfield").text("手机号码不能为空！");
-                return false;
-            }
-            var reg_phone=/^1[3,5,8]\d{9}$/;
-            if (!reg_phone.test($("#mobile").val())){
-                $("#textfield").addClass("alert alert-warning");
-                $("#textfield").text("手机号码不合法！");
-                return false;
-            }
-        });
-    </script>
+<script type="text/javascript">
+    $("#save").click(function () {
+        if ($("#old-password").val() == "") {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("旧密码不能为空！");
+            return false;
+        }
+        if ($("#new-password").val() == "") {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("新密码不能为空！");
+            return false;
+        }
+        if ($("#new-password").val() != $("#re-password").val()) {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("两次输入密码不同！");
+            return false;
+        }
+    });
+</script>
+<script type="text/javascript">
+    var power = '<%=request.getSession().getAttribute("power")%>' ;
+    var admin = document.getElementById("admin");
+    if (power == "0")
+        admin.style.display="none";
+</script>
 
 </body>
 </html>

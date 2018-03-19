@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script> 
 
   //取出传回来的参数error并与yes比较
-  var errori ='<%=request.getAttribute("success")%>';
+  var errori ='<%=request.getSession().getAttribute("success")%>';
   if(errori=='false'){
    alert("登录失败! 账户或密码不正确");
   }

@@ -22,6 +22,11 @@
     from pswj
     where pid = #{pid,jdbcType=VARCHAR}
   </select>
+  <select id="getAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from pswj
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from pswj
     where pid = #{pid,jdbcType=VARCHAR}

@@ -8,5 +8,5 @@ public interface FileOfInstructionsServices {
 	
 	public Boolean registerFile(Pswj pswj);
 	public List<Pswj> getAllFile();
-	
+	public Boolean deleteFile(String id);
 }

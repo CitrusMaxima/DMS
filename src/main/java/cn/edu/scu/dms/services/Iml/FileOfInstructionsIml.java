@@ -33,4 +33,12 @@ public class FileOfInstructionsIml implements FileOfInstructionsServices {
 		return tempList;
 	}
 
+	@Override
+	@Transactional
+	public Boolean deleteFile(String id) {
+		// TODO Auto-generated method stub
+		pswjMapper.deleteByPrimaryKey(id);
+		return true;
+	}
+
 }
