@@ -29,10 +29,10 @@ public class DocumentController {
 	@Autowired
 	FileOfInstructionsServices fileOfInstructions;
 	//收文登记文件
-	@Autowired
+	//@Autowired
 	FileOfRecevingServices fileOfReceving;
 	//报批示文件
-	@Autowired
+	//@Autowired
     FileOfApplying fileOfApplying;
 	
 	//批示文件操作对应的Conroller

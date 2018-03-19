@@ -150,7 +150,7 @@
             <ol class="breadcrumb">
                 <li><a>文档管理系统</a></li>
                 <li><a>收文登记表</a></li>
-                <li class="active">登记/修改</li>
+                <li class="active">登记</li>
             </ol>
 
         </div>
@@ -166,44 +166,44 @@
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input disabled id="pid" type="text" class="validate" value="1">
-                                        <label class="active" for="pid">序号</label>
+                                        <input id="pid" type="text" class="validate" >
+                                        <label for="pid">编号</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="number" type="text" class="validate" value="XXXXXXXXX">
-                                        <label class="active" for="number">来文号</label>
+                                        <input id="number" type="text" class="validate" >
+                                        <label for="number">来文号</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="department" type="text" class="validate" value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="department">来文单位</label>
+                                        <input id="department" type="text" class="validate" >
+                                        <label for="department">来文单位</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="title" type="text" class="validate" value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="title">来文标题</label>
+                                        <input id="title" type="text" class="validate" >
+                                        <label for="title">来文标题</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="time" type="text" class="validate" value="XXXX-XX-XX">
-                                        <label class="active" for="time">来文时间</label>
+                                        <input id="time" type="text" class="validate" >
+                                        <label for="time">来文时间</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="dotime" type="text" class="validate" value="XXXX-XX-XX">
-                                        <label class="active" for="dotime">办理时间</label>
+                                        <input id="dotime" type="text" class="validate" >
+                                        <label for="dotime">办理时间</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="Wpishi" type="text" class="validate"value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="Wpishi">委领导批示</label>
+                                        <input id="Wpishi" type="text" class="validate">
+                                        <label for="Wpishi">委领导批示</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="direction" type="text" class="validate"value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="direction">流向</label>
+                                        <input id="direction" type="text" class="validate">
+                                        <label for="direction">流向</label>
                                     </div>
                                 </div>
                             </form>
@@ -253,6 +253,11 @@
 
 <script type="text/javascript">
     $("#save").click(function () {
+        if ($("#pid").val() == "") {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("编号不能为空！");
+            return false;
+        }
         if ($("#number").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("来文号不能为空！");
@@ -273,9 +278,21 @@
             $("#textfield").text("来文时间不能为空！");
             return false;
         }
+        var reg_time = /^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-)) (20|21|22|23|[0-1]?\d):[0-5]?\d:[0-5]?\d$/;
+        if (!reg_time.test($("#time").val())){
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("来文时间不合法！格式应为YYYY-MM-DD HH:MM:SS");
+            return false;
+        }
         if ($("#dotime").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("办理时间不能为空！");
+            return false;
+        }
+        var reg_dotime = /^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-)) (20|21|22|23|[0-1]?\d):[0-5]?\d:[0-5]?\d$/;
+        if (!reg_dotime.test($("#dotime").val())){
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("办理时间不合法！格式应为YYYY-MM-DD HH:MM:SS");
             return false;
         }
         if ($("#Spishi").val() == "") {
@@ -293,6 +310,9 @@
             $("#textfield").text("流向不能为空！");
             return false;
         }
+        $("#textfield").removeClass("alert alert-warning");
+        $("#textfield").text("");
+        return true;
     });
 </script>
 <script type="text/javascript">

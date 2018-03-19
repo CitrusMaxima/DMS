@@ -149,7 +149,7 @@
             <ol class="breadcrumb">
                 <li><a>文档管理系统</a></li>
                 <li><a>会议管理</a></li>
-                <li class="active">登记/修改</li>
+                <li class="active">修改</li>
             </ol>
 
         </div>
@@ -164,15 +164,11 @@
                         <div class="card-content">
                             <form class="col s12">
                                 <div class="row">
-                                    <div class="input-field col s4">
-                                        <input disabled id="mid" type="text" class="validate" value="1">
-                                        <label class="active" for="mid">会议编号</label>
-                                    </div>
-                                    <div class="input-field col s4">
+                                    <div class="input-field col s6">
                                         <input id="time" type="text" class="validate" value="XXXX-XX-XX">
                                         <label class="active" for="time">会议时间</label>
                                     </div>
-                                    <div class="input-field col s4">
+                                    <div class="input-field col s6">
                                         <input id="character" type="text" class="validate" value="XXXXXXXXXXXXXX">
                                         <label class="active" for="character">会议性质</label>
                                     </div>
@@ -197,7 +193,8 @@
                                         <div id="show" class="row" style="margin-bottom: 0px; "></div>
                                 </div>
                             </form>
-                            <a class="waves-effect waves-light btn-large" id="save">保存</a>
+                            <a class="waves-effect waves-light btn-large" id="modify">修改</a>
+                            <a disabled class="waves-effect waves-light btn-large" id="save">保存</a>
                             <div id="textfield"></div>
                         </div>
                     </div>
@@ -235,6 +232,7 @@
 <script src="js/dataTables.bootstrap.js"></script>
 <script>
     $(document).ready(function () {
+        $(".validate").attr("disabled", true);
         $('#dataTables-example').dataTable();
     });
 </script>
@@ -246,6 +244,12 @@
         if ($("#time").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("会议时间不能为空！");
+            return false;
+        }
+        var reg_time = /^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-)) (20|21|22|23|[0-1]?\d):[0-5]?\d:[0-5]?\d$/;
+        if (!reg_time.test($("#time").val())){
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("会议时间不合法！格式应为YYYY-MM-DD HH:MM:SS");
             return false;
         }
         if ($("#character").val() == "") {
@@ -263,6 +267,12 @@
             $("#textfield").text("参与者不能为空！");
             return false;
         }
+        $("#textfield").removeClass("alert alert-warning");
+        $("#textfield").text("");
+        $(".validate").attr("disabled", true);
+        $("#save").attr("disabled", true);
+        $("#modify").attr("disabled", false);
+        return true;
     });
 </script>
 <script type="text/javascript">
@@ -270,6 +280,12 @@
     var admin = document.getElementById("admin");
     if (power == "0")
         admin.style.display="none";
+
+    $("#modify").click(function () {
+        $(".validate").attr("disabled", false);
+        $("#save").attr("disabled", false);
+        $("#modify").attr("disabled", true);
+    });
 
     function change(){
         document.getElementById("show").innerHTML = "";

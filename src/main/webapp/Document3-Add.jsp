@@ -166,44 +166,44 @@
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input disabled id="pid" type="text" class="validate" value="1">
-                                        <label class="active" for="pid">序号</label>
+                                        <input id="pid" type="text" class="validate" >
+                                        <label for="pid">编号</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="time" type="text" class="validate" value="XXXX-XX-XX">
-                                        <label class="active" for="time">来文时间</label>
+                                        <input id="time" type="text" class="validate" >
+                                        <label for="time">来文时间</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="deadline" type="text" class="validate" value="XXXX-XX-XX">
-                                        <label class="active" for="deadline">时限</label>
+                                        <input id="deadline" type="text" class="validate" >
+                                        <label for="deadline">时限</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="title" type="text" class="validate" value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="title">来文标题</label>
+                                        <input id="title" type="text" class="validate" >
+                                        <label for="title">来文标题</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="leader" type="text" class="validate" value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="leader">分管领导</label>
+                                        <input id="leader" type="text" class="validate" >
+                                        <label for="leader">分管领导</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="direction" type="text" class="validate" value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="direction">流向</label>
+                                        <input id="direction" type="text" class="validate" >
+                                        <label for="direction">流向</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="Zpishi" type="text" class="validate"value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="Zpishi">主要领导批示</label>
+                                        <input id="Zpishi" type="text" class="validate">
+                                        <label for="Zpishi">主要领导批示</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="note" type="text" class="validate"value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="note">备注</label>
+                                        <input id="note" type="text" class="validate">
+                                        <label for="note">备注</label>
                                     </div>
                                 </div>
                             </form>
@@ -253,14 +253,31 @@
 
 <script type="text/javascript">
     $("#save").click(function () {
+        if ($("#pid").val() == "") {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("编号不能为空！");
+            return false;
+        }
         if ($("#time").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("来文时间不能为空！");
             return false;
         }
+        var reg_time = /^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-)) (20|21|22|23|[0-1]?\d):[0-5]?\d:[0-5]?\d$/;
+        if (!reg_time.test($("#time").val())){
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("来文时间不合法！格式应为YYYY-MM-DD HH:MM:SS");
+            return false;
+        }
         if ($("#deadline").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("时限不能为空！");
+            return false;
+        }
+        var reg_deadline = /^(\d{4})-(0\d{1}|1[0-2])-(0\d{1}|[12]\d{1}|3[01])$/;
+        if (!reg_deadline.test($("#deadline").val())){
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("时限不合法！格式应为YYYY-MM-DD");
             return false;
         }
         if ($("#title").val() == "") {
@@ -288,7 +305,9 @@
             $("#textfield").text("备注不能为空！");
             return false;
         }
-
+        $("#textfield").removeClass("alert alert-warning");
+        $("#textfield").text("");
+        return true;
     });
 </script>
 <script type="text/javascript">

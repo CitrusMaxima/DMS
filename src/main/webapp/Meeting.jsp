@@ -239,7 +239,7 @@
         if (power == "0")
             admin.style.display="none";
         $(".modify").click(function() {
-            window.location.href="Document2-Modify.jsp";
+            window.location.href="Meeting-Modify.jsp";
         });
     </script>
 </div>

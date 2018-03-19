@@ -169,7 +169,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                     <tr>
-                                        <th class="center">序号</th>
+                                        <th class="center">编号</th>
                                         <th class="center">来文时间</th>
                                         <th class="center">来文单位</th>
                                         <th class="center">来文号</th>

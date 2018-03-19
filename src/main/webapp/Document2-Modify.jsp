@@ -150,7 +150,7 @@
             <ol class="breadcrumb">
                 <li><a>文档管理系统</a></li>
                 <li><a>收文登记表</a></li>
-                <li class="active">登记/修改</li>
+                <li class="active">修改</li>
             </ol>
 
         </div>
@@ -251,9 +251,6 @@
 
 <script type="text/javascript">
     $("#save").click(function () {
-        $(".validate").attr("disabled", true);
-        $("#save").attr("disabled", true);
-        $("#modify").attr("disabled", false);
         if ($("#title").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("来文标题不能为空！");
@@ -274,9 +271,21 @@
             $("#textfield").text("来文时间不能为空！");
             return false;
         }
+        var reg_time = /^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-)) (20|21|22|23|[0-1]?\d):[0-5]?\d:[0-5]?\d$/;
+        if (!reg_time.test($("#time").val())){
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("来文时间不合法！格式应为YYYY-MM-DD HH:MM:SS");
+            return false;
+        }
         if ($("#dotime").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("办理时间不能为空！");
+            return false;
+        }
+        var reg_dotime = /^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-)) (20|21|22|23|[0-1]?\d):[0-5]?\d:[0-5]?\d$/;
+        if (!reg_dotime.test($("#dotime").val())){
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("办理时间不合法！格式应为YYYY-MM-DD HH:MM:SS");
             return false;
         }
         if ($("#Spishi").val() == "") {
@@ -294,6 +303,12 @@
             $("#textfield").text("流向不能为空！");
             return false;
         }
+        $("#textfield").removeClass("alert alert-warning");
+        $("#textfield").text("");
+        $(".validate").attr("disabled", true);
+        $("#save").attr("disabled", true);
+        $("#modify").attr("disabled", false);
+        return true;
     });
 </script>
 <script type="text/javascript">

@@ -149,7 +149,7 @@
             <ol class="breadcrumb">
                 <li><a>文档管理系统</a></li>
                 <li><a>会议管理</a></li>
-                <li class="active">登记/修改</li>
+                <li class="active">登记</li>
             </ol>
 
         </div>
@@ -165,28 +165,28 @@
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input disabled id="mid" type="text" class="validate" value="1">
-                                        <label class="active" for="mid">会议编号</label>
+                                        <input id="mid" type="text" class="validate" >
+                                        <label for="mid">会议编号</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="time" type="text" class="validate" value="XXXX-XX-XX">
-                                        <label class="active" for="time">会议时间</label>
+                                        <input id="time" type="text" class="validate" >
+                                        <label for="time">会议时间</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="character" type="text" class="validate" value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="character">会议性质</label>
+                                        <input id="character" type="text" class="validate" >
+                                        <label for="character">会议性质</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="content" type="text" class="validate" value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="content">会议内容</label>
+                                        <input id="content" type="text" class="validate" >
+                                        <label for="content">会议内容</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="name" type="text" class="validate" value="XXXXXXXXXXXXXX">
-                                        <label class="active" for="name">参与者</label>
+                                        <input id="name" type="text" class="validate" >
+                                        <label for="name">参与者</label>
                                     </div>
                                 </div>
                                 <div class="row col s12" style="margin-bottom: 0px; ">
@@ -243,9 +243,20 @@
 
 <script type="text/javascript">
     $("#save").click(function () {
+        if ($("#mid").val() == "") {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("会议编号不能为空！");
+            return false;
+        }
         if ($("#time").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("会议时间不能为空！");
+            return false;
+        }
+        var reg_time = /^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-)) (20|21|22|23|[0-1]?\d):[0-5]?\d:[0-5]?\d$/;
+        if (!reg_time.test($("#time").val())){
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("会议时间不合法！格式应为YYYY-MM-DD HH:MM:SS");
             return false;
         }
         if ($("#character").val() == "") {
@@ -263,6 +274,9 @@
             $("#textfield").text("参与者不能为空！");
             return false;
         }
+        $("#textfield").removeClass("alert alert-warning");
+        $("#textfield").text("");
+        return true;
     });
 </script>
 <script type="text/javascript">
