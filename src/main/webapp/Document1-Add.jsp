@@ -182,47 +182,47 @@
                             <form class="col s12" action="DocumentManaging/registerFileOfInstructions.do" id="fileform">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="title" type="text" class="validate" >
+                                        <input id="title" type="text" class="validate" name="title">
                                         <label for="title">来文标题</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input id="rectime" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'deadline\')||\'new Date()\'}'})"/>
+                                        <input id="rectime" name="rectime" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'deadline\')||\'new Date()\'}'})"/>
                                         <label for="rectime">收文时间</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="deadline" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'rectime\')}'})"/>
+                                        <input id="deadline" type="text" name="deadline" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'rectime\')}'})"/>
                                         <label for="deadline">时限</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="numbers" type="text" class="validate" >
+                                        <input id="numbers" name="numbers" type="text" class="validate" >
                                         <label for="numbers">字号</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="Spishi" type="text" class="validate" >
+                                        <input id="Spishi"  name="spishi" type="text" class="validate" >
                                         <label for="Spishi">省领导批示</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="Wpishi" type="text" class="validate">
+                                        <input id="Wpishi" type="text" name="wpishi" class="validate">
                                         <label for="Wpishi">委领导批示</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input id="IsDone" type="text" class="validate">
+                                        <input id="IsDone" type="text" name="isdone" class="validate">
                                         <label for="IsDone">办理情况</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="phone" type="text" class="validate">
+                                        <input id="phone" type="text" name="phone" class="validate">
                                         <label for="phone">承办处电话</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="direction" type="text" class="validate">
+                                        <input id="direction" type="text" name="direction" class="validate">
                                         <label for="direction">流向</label>
                                     </div>
                                 </div>

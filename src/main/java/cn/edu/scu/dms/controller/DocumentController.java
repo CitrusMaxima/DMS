@@ -5,7 +5,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
+import javax.enterprise.inject.New;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -44,13 +46,15 @@ public class DocumentController {
 		String timeString=request.getParameter("rectime");
 		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
 		System.out.println("登记开始");
-		String pid= request.getParameter("pid");
-		Pswj isExist=fileOfInstructions.getPswjById(pid);
-		if(isExist!=null)
-		{
-			request.setAttribute("flag","exist");
-			return "forward:/Document1-Add.jsp";
-		}
+		String pid=null;
+		Pswj isExist=null;
+		Random ranInt=new Random();
+		
+		do{
+			pid=ranInt.nextInt(100000)+""+ranInt.nextInt(100);
+			isExist=fileOfInstructions.getPswjById(pid);
+		}while(isExist!=null);
+
 		
 		Date rectime =  formatter.parse(timeString);
 		String numbers=request.getParameter("numbers");
