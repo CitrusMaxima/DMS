@@ -1,5 +1,7 @@
 package cn.edu.scu.dms.model;
 
+import cn.edu.scu.dms.tool.CharacTool;
+
 public class User {
     private String uid;
 
@@ -12,12 +14,14 @@ public class User {
     private String phonenumber;
 
     private String email;
+    private CharacTool tool=new CharacTool();
 
     public String getUid() {
         return uid;
     }
 
     public void setUid(String uid) {
+    	uid=tool.encoding(uid);
         this.uid = uid == null ? null : uid.trim();
     }
 
@@ -26,6 +30,7 @@ public class User {
     }
 
     public void setPassword(String password) {
+    	password=tool.encoding(password);
         this.password = password == null ? null : password.trim();
     }
 
@@ -34,6 +39,7 @@ public class User {
     }
 
     public void setName(String name) {
+    	name=tool.encoding(name);
         this.name = name == null ? null : name.trim();
     }
 
@@ -50,6 +56,7 @@ public class User {
     }
 
     public void setPhonenumber(String phonenumber) {
+    	phonenumber=tool.encoding(phonenumber);
         this.phonenumber = phonenumber == null ? null : phonenumber.trim();
     }
 

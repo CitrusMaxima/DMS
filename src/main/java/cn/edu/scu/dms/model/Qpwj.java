@@ -2,6 +2,8 @@ package cn.edu.scu.dms.model;
 
 import java.util.Date;
 
+import cn.edu.scu.dms.tool.CharacTool;
+
 public class Qpwj {
     private String qpid;
 
@@ -18,12 +20,14 @@ public class Qpwj {
     private String direction;
 
     private String note;
+    private CharacTool tool=new CharacTool();
 
     public String getQpid() {
         return qpid;
     }
 
     public void setQpid(String qpid) {
+    	qpid=tool.encoding(qpid);
         this.qpid = qpid == null ? null : qpid.trim();
     }
 
@@ -40,6 +44,7 @@ public class Qpwj {
     }
 
     public void setTitle(String title) {
+    	title=tool.encoding(title);
         this.title = title == null ? null : title.trim();
     }
 
@@ -56,6 +61,7 @@ public class Qpwj {
     }
 
     public void setLeaderName(String leaderName) {
+    	leaderName=tool.encoding(leaderName);
         this.leaderName = leaderName == null ? null : leaderName.trim();
     }
 
@@ -64,6 +70,7 @@ public class Qpwj {
     }
 
     public void setZpishi(String zpishi) {
+    	zpishi=tool.encoding(zpishi);
         this.zpishi = zpishi == null ? null : zpishi.trim();
     }
 
@@ -72,6 +79,7 @@ public class Qpwj {
     }
 
     public void setDirection(String direction) {
+    	direction=tool.encoding(direction);
         this.direction = direction == null ? null : direction.trim();
     }
 
@@ -80,6 +88,7 @@ public class Qpwj {
     }
 
     public void setNote(String note) {
+    	note=tool.encoding(note);
         this.note = note == null ? null : note.trim();
     }
 }
