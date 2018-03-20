@@ -3,7 +3,8 @@ package cn.edu.scu.dms.model;
 import java.util.Date;
 
 public class Qpwj {
-    private String qpid;
+  
+	private String qpid;
 
     private Date qptime;
 
@@ -11,7 +12,7 @@ public class Qpwj {
 
     private Date attribute;
 
-    private String leaderName;
+    private String leadername;
 
     private String zpishi;
 
@@ -52,11 +53,11 @@ public class Qpwj {
     }
 
     public String getLeaderName() {
-        return leaderName;
+        return leadername;
     }
 
     public void setLeaderName(String leaderName) {
-        this.leaderName = leaderName == null ? null : leaderName.trim();
+        this.leadername = leaderName == null ? null : leaderName.trim();
     }
 
     public String getZpishi() {
