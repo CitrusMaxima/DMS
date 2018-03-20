@@ -163,7 +163,7 @@
                             收文登记表
                         </div>
                         <div class="card-content">
-                            <form class="col s12">
+                            <form class="col s12" action="DocumentManaging/registerFileOfReceving.do" id="fileform">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="title" name="title" type="text" class="validate" >
@@ -203,7 +203,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <a class="waves-effect waves-light btn-large" id="save">保存</a>
+                            <a class="waves-effect waves-light btn-large" id="save"  onclick="document.getElementById('fileform').submit();">保存</a>
                             <div id="textfield"></div>
                         </div>
                     </div>

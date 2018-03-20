@@ -189,7 +189,7 @@ public class DocumentController {
 	@RequestMapping(value="/registerFileOfReceving.do")
 	public String registerFileOfReceving(HttpServletRequest request,HttpServletResponse response) throws ParseException{
 		
-		Swwj swwj=null;
+		Swwj swwj=new Swwj();
 		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
 		
 		NumberFormat numberformat1 = NumberFormat.getNumberInstance();     
@@ -201,12 +201,17 @@ public class DocumentController {
 		
 		System.out.println("收文登记开始");
 		String sid=null;
-		Pswj isExist=null;
+		Swwj isExist=null;
 		Random ranInt=new Random();
 		
 		do{
 			sid=numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
-			isExist=fileOfInstructions.getPswjById(sid);
+			try {
+				isExist=fileOfReceving.getSwwjById(sid);
+			} catch (Exception e){
+
+			}
+
 		}while(isExist!=null);
 		
 	    Date time1=formatter.parse(request.getParameter("time1"));
@@ -216,8 +221,9 @@ public class DocumentController {
         Date dotime=formatter.parse(request.getParameter("dotime"));
         String wpishi=request.getParameter("wpishi");
 	    String direction=request.getParameter("direction");
-		
-	    swwj.setSid(sid);
+
+
+		swwj.setSid(sid);
 	    swwj.setTime1(time1);
 	    swwj.setDepartment(department);
 	    swwj.setNumber1(number1);
@@ -225,14 +231,16 @@ public class DocumentController {
 	    swwj.setDotime(dotime);
 	    swwj.setWpishi(wpishi);
 	    swwj.setDirection(direction);
-	    
-	    try {
+
+
+		try {
 	    	 fileOfReceving.registerFile(swwj);
-	    	 return "forward:Document2.jsp";
+			 request.setAttribute("flag","success");
+	    	 return "forward:/Document2.jsp";
 		} catch (Exception e) {
 			// TODO: handle exception
 			request.setAttribute("flag","fail");
-			return "forward:Document2-Add.jsp";
+			return "forward:/Document2-Add.jsp";
 		}
 	}
 	@RequestMapping(value="/getFilesOfReceving.do")
