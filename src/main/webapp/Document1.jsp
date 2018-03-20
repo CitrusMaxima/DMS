@@ -187,12 +187,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											    <tbody>
 											    <tr>
 												    <td class="center modify">${pswj.pid}</td>
-												    <td class="center modify time"> <fmt:formatDate value="${pswj.rectime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+												    <td class="center modify"> <fmt:formatDate value="${pswj.rectime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 												    <td class="center modify">${pswj.title}</td>
 												    <td class="center modify">${pswj.numbers}</td>
 												    <td class="center modify">${pswj.spishi}</td>
 												    <td class="center modify">${pswj.wpishi}</td>
-												    <td class="center modify time"><fmt:formatDate value="${pswj.deadline}" pattern="yyyy-MM-dd"/></td>
+												    <td class="center modify"><fmt:formatDate value="${pswj.deadline}" pattern="yyyy-MM-dd"/></td>
 												    <td class="center modify">${pswj.isdone}</td>
 												    <td class="center modify">${pswj.phone}</td>
 												    <td class="center modify">${pswj.direction}</td>
