@@ -238,7 +238,7 @@
 <!-- DATA TABLE SCRIPTS -->
 <script src="js/jquery.dataTables.js"></script>
 <script src="js/dataTables.bootstrap.js"></script>
-<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
 <script>
     $(document).ready(function () {
         $(".validate").attr("disabled", true);
