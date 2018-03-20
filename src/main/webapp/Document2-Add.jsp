@@ -83,7 +83,7 @@
                                     <a href="Document1-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="DocumentManaging/getFiles.do">查询</a>
+                                    <a href="/DocumentManaging/getFiles.do">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -94,7 +94,7 @@
                                     <a href="Document2-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document2.jsp">查询</a>
+                                    <a href="/DocumentManaging/getFilesOfReceiving.do">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -163,7 +163,7 @@
                             收文登记表
                         </div>
                         <div class="card-content">
-                            <form class="col s12" action="DocumentManaging/registerFileOfReceving.do" id="fileform">
+                            <form class="col s12" action="DocumentManaging/registerFileOfReceiving.do" id="fileform">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="title" name="title" type="text" class="validate" >

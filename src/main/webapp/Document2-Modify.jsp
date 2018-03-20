@@ -84,7 +84,7 @@
                                     <a href="Document1-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="DocumentManaging/getFiles.do">查询</a>
+                                    <a href="/DocumentManaging/getFiles.do">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -95,7 +95,7 @@
                                     <a href="Document2-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document2.jsp">查询</a>
+                                    <a href="/DocumentManaging/getFilesOfReceiving.do">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -164,48 +164,49 @@
                             收文登记表
                         </div>
                         <div class="card-content">
-                            <form class="col s12">
+                            <form class="col s12" action="DocumentManaging/updateFileofReceiving.do" id="fileform1" method="POST">
+                                <input name="sid" type="hidden" value="${file.sid}">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="title" name="title" type="text" class="validate" value="XXXXXXXXXXXXXX">
+                                        <input id="title" name="title" type="text" class="validate" value="${file.title}">
                                         <label class="active" for="title">来文标题</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="number" name="number1" type="text" class="validate" value="XXXXXXXXX">
+                                        <input id="number" name="number1" type="text" class="validate" value="${file.number1}">
                                         <label class="active" for="number">来文号</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="department" name="department" type="text" class="validate" value="XXXXXXXXXXXXXX">
+                                        <input id="department" name="department" type="text" class="validate" value="${file.department}">
                                         <label class="active" for="department">来文单位</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="time" name="time1" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'dotime\')||\'new Date()\'}'})"/>
+                                        <input id="time" name="time1" type="text" class="Wdate validate" value="<fmt:formatDate value='${file.time1}' pattern='yyyy-MM-dd HH:mm:ss' />" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'dotime\')||\'new Date()\'}'})"/>
                                         <label class="active" for="time">来文时间</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="dotime" name="dotime" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'time\')}'})"/>
+                                        <input id="dotime" name="dotime" type="text" class="Wdate validate" value="<fmt:formatDate value='${file.dotime}' pattern='yyyy-MM-dd HH:mm:ss' />" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'time\')}'})"/>
                                         <label class="active" for="dotime">办理时间</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="Wpishi" name="wpishi" type="text" class="validate"value="XXXXXXXXXXXXXX">
+                                        <input id="Wpishi" name="wpishi" type="text" class="validate"value="${file.wpishi}">
                                         <label class="active" for="Wpishi">委领导批示</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="direction" name="direction" type="text" class="validate"value="XXXXXXXXXXXXXX">
+                                        <input id="direction" name="direction" type="text" class="validate"value="${file.direction}">
                                         <label class="active" for="direction">流向</label>
                                     </div>
                                 </div>
                             </form>
                             <a class="waves-effect waves-light btn-large" id="modify">修改</a>
-                            <a disabled class="waves-effect waves-light btn-large" id="save">保存</a>
+                            <a disabled class="waves-effect waves-light btn-large" id="save" onclick="document.getElementById('fileform1').submit();">保存</a>
                             <div id="textfield"></div>
                         </div>
                     </div>

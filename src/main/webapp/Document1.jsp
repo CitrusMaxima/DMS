@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <a href="Document1-Add.jsp">登记</a>
                                     </li>
                                     <li>
-                                        <a href="">查询</a>
+                                        <a href="/DocumentManaging/getFiles.do">查询</a>
                                     </li>
                                 </ul>
                             </li>
@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <a href="Document2-Add.jsp">登记</a>
                                     </li>
                                     <li>
-                                        <a href="Document2.jsp">查询</a>
+                                        <a href="/DocumentManaging/getFilesOfReceiving.do">查询</a>
                                     </li>
                                 </ul>
                             </li>
@@ -186,7 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <c:forEach items="${files}"  var="pswj">
                                                 <tr>
 												    <td class="center modify">${pswj.pid}</td>
-												    <td class="center modify"> <fmt:formatDate value="${pswj.rectime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+												    <td class="center modify"><fmt:formatDate value="${pswj.rectime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 												    <td class="center modify">${pswj.title}</td>
 												    <td class="center modify">${pswj.numbers}</td>
 												    <td class="center modify">${pswj.spishi}</td>

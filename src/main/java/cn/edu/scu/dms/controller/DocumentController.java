@@ -22,7 +22,7 @@ import cn.edu.scu.dms.model.Swwj;
 import cn.edu.scu.dms.services.AccountServices;
 import cn.edu.scu.dms.services.FileOfApplying;
 import cn.edu.scu.dms.services.FileOfInstructionsServices;
-import cn.edu.scu.dms.services.FileOfRecevingServices;
+import cn.edu.scu.dms.services.FileOfReceivingServices;
 
 @Controller
 @RequestMapping(value="/DocumentManaging")
@@ -32,8 +32,8 @@ public class DocumentController {
 	@Autowired
 	FileOfInstructionsServices fileOfInstructions;
 	//收文登记文件
-	//@Autowired
-	FileOfRecevingServices fileOfReceving;
+	@Autowired
+	FileOfReceivingServices fileOfReceiving;
 	//报批示文件
 	//@Autowired
     FileOfApplying fileOfApplying;
@@ -135,7 +135,6 @@ public class DocumentController {
 		System.out.println("更新开始");
 		
 		String pid=request.getParameter("pid");
-		
 
 		Pswj file=new Pswj();
 		
@@ -204,8 +203,8 @@ public class DocumentController {
 		
 	}
 	//收文登记文件对应的Controller
-	@RequestMapping(value="/registerFileOfReceving.do")
-	public String registerFileOfReceving(HttpServletRequest request,HttpServletResponse response) throws ParseException{
+	@RequestMapping(value="/registerFileOfReceiving.do")
+	public String registerFileOfReceiving(HttpServletRequest request,HttpServletResponse response) throws ParseException{
 		
 		Swwj swwj=new Swwj();
 		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
@@ -224,8 +223,7 @@ public class DocumentController {
 		
 		do{
 			sid=numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
-			isExist=fileOfReceving.getSwwjById(sid);
-			System.out.println(isExist.toString());
+			isExist=fileOfReceiving.getSwwjById(sid);
 		}while(isExist!=null);
 		
 	    Date time1=formatter.parse(request.getParameter("time1"));
@@ -248,29 +246,104 @@ public class DocumentController {
 
 
 		try {
-	    	 fileOfReceving.registerFile(swwj);
-			 request.setAttribute("flag","success");
-	    	 return "forward:/Document2.jsp";
+	    	 fileOfReceiving.registerFile(swwj);
 		} catch (Exception e) {
 			// TODO: handle exception
 			request.setAttribute("flag","fail");
 			return "forward:/Document2-Add.jsp";
 		}
+
+		List<Swwj> files=null;
+		try {
+			files=fileOfReceiving.getAllFile();
+		} catch (Exception e) {
+			System.out.println("获取批示文件出错");
+		}
+		request.setAttribute("files",files);
+		return "forward:/Document2.jsp";
 	}
-	@RequestMapping(value="/getFilesOfReceving.do")
-	public String getFilesOfReceving(HttpServletRequest request,HttpServletResponse response){
+	@RequestMapping(value="/getFilesOfReceiving.do")
+	public String getFilesOfReceiving(HttpServletRequest request,HttpServletResponse response){
 		
 		List<Swwj> temp=null;
 		
 		try {
-			temp =fileOfReceving.getAllFile();
+			temp =fileOfReceiving.getAllFile();
 			request.setAttribute("files",temp);
 			
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("获取文件出错");
 		}
-		return "forward:Document2.jsp";
+		return "forward:/Document2.jsp";
+	}
+	@RequestMapping(value="/getFileOfReceivingById.do")
+	public String getFileOfReceivingById(HttpServletRequest request,HttpServletResponse response){
+		String sid=request.getParameter("sid");
+		System.out.print(sid);
+		String jsp=request.getParameter("jsp");
+		System.out.println(jsp);
+		Swwj swwj=fileOfReceiving.getSwwjById(sid);
+
+		request.setAttribute("file",swwj);
+		return "forward:/"+jsp;
+
+	}
+	@RequestMapping(value="/updateFileofReceiving.do")
+	public  String updateFileofReceiving(HttpServletRequest request,HttpServletResponse response) throws ParseException{
+
+		System.out.println("更新开始");
+
+		String sid=request.getParameter("sid");
+
+		Swwj file=new Swwj();
+
+		String timeString=request.getParameter("time1");
+		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss");
+		String timeString2=request.getParameter("dotime");
+
+		Swwj isExist=null;
+
+		isExist=fileOfReceiving.getSwwjById(sid);
+		if(isExist==null)
+		{
+			request.setAttribute("flag", "fail");
+			return "forward:/Document2-Modify.jsp";
+		}
+
+
+		Date time1 =  formatter.parse(timeString);
+		String department=request.getParameter("department");
+		String number1=request.getParameter("number1");
+		String title=request.getParameter("title");
+		Date dotime=formatter.parse(timeString2);
+		String wpishi=request.getParameter("wpishi");
+		String direction=request.getParameter("direction");
+
+		file.setSid(sid);
+		file.setTime1(time1);
+		file.setDepartment(department);
+		file.setNumber1(number1);
+		file.setTitle(title);
+		file.setDotime(dotime);
+		file.setWpishi(wpishi);
+		file.setDirection(direction);
+
+		try {
+			fileOfReceiving.update(file);
+		} catch (Exception e) {
+			request.setAttribute("flag", "fail");
+		}
+
+		List<Swwj> files=null;
+		try {
+			files=fileOfReceiving.getAllFile();
+		} catch (Exception e) {
+			System.out.println("获取收文文件出错");
+		}
+
+		request.setAttribute("files",files);
+		return "forward:/Document2.jsp";
 	}
 	
 	//报批示文件对应的Controller
