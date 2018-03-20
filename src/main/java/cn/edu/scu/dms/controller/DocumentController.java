@@ -1,6 +1,7 @@
 package cn.edu.scu.dms.controller;
 
 import java.nio.file.Files;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -46,12 +47,20 @@ public class DocumentController {
 		String timeString=request.getParameter("rectime");
 		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
 		System.out.println("登记开始");
+		
+		NumberFormat numberformat1 = NumberFormat.getNumberInstance();     
+		numberformat1.setMinimumIntegerDigits(7);
+		
+		NumberFormat numberformat2 = NumberFormat.getNumberInstance();     
+		numberformat2.setMinimumIntegerDigits(3);
+		
+		
 		String pid=null;
 		Pswj isExist=null;
 		Random ranInt=new Random();
 		
 		do{
-			pid=ranInt.nextInt(100000)+""+ranInt.nextInt(100);
+			pid=numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
 			isExist=fileOfInstructions.getPswjById(pid);
 		}while(isExist!=null);
 
@@ -120,7 +129,23 @@ public class DocumentController {
 		Swwj swwj=null;
 		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
 		
-		String sid=request.getParameter("sid");
+		NumberFormat numberformat1 = NumberFormat.getNumberInstance();     
+		numberformat1.setMinimumIntegerDigits(7);
+		
+		NumberFormat numberformat2 = NumberFormat.getNumberInstance();     
+		numberformat2.setMinimumIntegerDigits(3);
+		
+		
+		System.out.println("收文登记开始");
+		String sid=null;
+		Pswj isExist=null;
+		Random ranInt=new Random();
+		
+		do{
+			sid=numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
+			isExist=fileOfInstructions.getPswjById(sid);
+		}while(isExist!=null);
+		
 	    Date time1=formatter.parse(request.getParameter("time1"));
 	    String department=request.getParameter("department");
 	    String number1=request.getParameter("number1");
@@ -140,10 +165,12 @@ public class DocumentController {
 	    
 	    try {
 	    	 fileOfReceving.registerFile(swwj);
+	    	 return "forward:Document2.jsp";
 		} catch (Exception e) {
 			// TODO: handle exception
+			request.setAttribute("flag","fail");
+			return "forward:Document2-Add.jsp";
 		}
-		return "";
 	}
 	@RequestMapping(value="/getFilesOfReceving.do")
 	public String getFilesOfReceving(HttpServletRequest request,HttpServletResponse response){
@@ -152,6 +179,7 @@ public class DocumentController {
 		
 		try {
 			temp =fileOfReceving.getAllFile();
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

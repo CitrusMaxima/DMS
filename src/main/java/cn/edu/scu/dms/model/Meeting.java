@@ -15,6 +15,8 @@ public class Meeting {
 
     private String names;
 
+    private Boolean ishold;
+
     public String getMid() {
         return mid;
     }
@@ -61,5 +63,13 @@ public class Meeting {
 
     public void setNames(String names) {
         this.names = names == null ? null : names.trim();
+    }
+
+    public Boolean getIshold() {
+        return ishold;
+    }
+
+    public void setIshold(Boolean ishold) {
+        this.ishold = ishold;
     }
 }
