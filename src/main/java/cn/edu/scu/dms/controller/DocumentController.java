@@ -176,6 +176,7 @@ public class DocumentController {
 		String pid=request.getParameter("pid");
 		System.out.print(pid);
 		String jsp=request.getParameter("jsp");
+		System.out.println(jsp);
 		Pswj pswj=fileOfInstructions.getPswjById(pid);
 		request.setAttribute("file",pswj);
 		return "forward:/"+jsp;

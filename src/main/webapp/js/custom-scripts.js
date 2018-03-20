@@ -25,35 +25,7 @@
 			-----------------------------------------*/
             Morris.Bar({
                 element: 'morris-bar-chart',
-                data: [{
-                    y: '2006',
-                    a: 70,
-                    b: 65
-                }, {
-                    y: '2007',
-                    a: 75,
-                    b: 65
-                }, {
-                    y: '2008',
-                    a: 50,
-                    b: 40
-                }, {
-                    y: '2009',
-                    a: 75,
-                    b: 65
-                }, {
-                    y: '2010',
-                    a: 50,
-                    b: 40
-                }, {
-                    y: '2011',
-                    a: 75,
-                    b: 65
-                }, {
-                    y: '2012',
-                    a: 30,
-                    b: 55
-                }],
+                data:arr1,
                 xkey: 'y',
                 ykeys: ['a', 'b'],
                 labels: ['已召开', '未召开'],
@@ -71,13 +43,7 @@
 			----------------------------------------*/
             Morris.Donut({
                 element: 'morris-donut-chart',
-                data: [{
-                    label: "未召开",
-                    value: 30
-                }, {
-                    label: "已召开",
-                    value: 20
-                }],
+                data:arr2,
 				   colors: [
     '#414e63',
     '#e96562' 
@@ -117,6 +83,27 @@
 		
         mainApp.initFunction(); 
     });
+
+    var a = new Array("y: '2006',a: 70,b: 65",
+                "y: '2007',a: 75,b: 65",
+                "y: '2008',a: 50,b: 40",
+                "y: '2009',a: 75,b: 65",
+                "y: '2010',a: 50,b: 40",
+                "y: '2011',a: 75,b: 65",
+                "y: '2012',a: 30,b: 55");
+    var b = new Array("label: '未召开',value: 30", "label: '已召开',value: 50");
+    var arr1 = [];
+    var arr2 = [];
+    var obj1 = new Object();
+    var obj2 = new Object();
+    for(var i=0; i<a.length; i++){
+        obj1[i] = eval('(' + "{"+a[i].toString()+"}" + ')');
+        arr1.push(obj1[i]);
+    }
+    for(var j=0; j<b.length; j++){
+        obj2[i] = eval('(' + "{"+b[j].toString()+"}" + ')');
+        arr2.push(obj2[i]);
+    }
 
 	$(".dropdown-button").dropdown();
 	
