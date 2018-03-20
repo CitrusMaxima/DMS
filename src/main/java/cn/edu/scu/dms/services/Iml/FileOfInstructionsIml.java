@@ -34,7 +34,7 @@ public class FileOfInstructionsIml implements FileOfInstructionsServices {
 	@Override
 	public List<Pswj> getAllFile() {
 		// TODO Auto-generated method stub
-		List<Pswj> tempList=pswjMapper.getAll();
+		List<Pswj> tempList=pswjMapper.getAllFile();
 		return tempList;
 	}
 

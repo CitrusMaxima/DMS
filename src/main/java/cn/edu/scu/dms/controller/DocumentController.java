@@ -1,6 +1,7 @@
 package cn.edu.scu.dms.controller;
 
 import java.nio.file.Files;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -120,7 +121,23 @@ public class DocumentController {
 		Swwj swwj=null;
 		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
 		
-		String sid=request.getParameter("sid");
+		NumberFormat numberformat1 = NumberFormat.getNumberInstance();     
+		numberformat1.setMinimumIntegerDigits(7);
+		
+		NumberFormat numberformat2 = NumberFormat.getNumberInstance();     
+		numberformat2.setMinimumIntegerDigits(7);
+		
+		
+		System.out.println("收文登记开始");
+		String sid=null;
+		Pswj isExist=null;
+		Random ranInt=new Random();
+		
+		do{
+			sid=numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
+			isExist=fileOfInstructions.getPswjById(sid);
+		}while(isExist!=null);
+		
 	    Date time1=formatter.parse(request.getParameter("time1"));
 	    String department=request.getParameter("department");
 	    String number1=request.getParameter("number1");
@@ -140,10 +157,12 @@ public class DocumentController {
 	    
 	    try {
 	    	 fileOfReceving.registerFile(swwj);
+	    	 return "forward:Document2.jsp";
 		} catch (Exception e) {
 			// TODO: handle exception
+			request.setAttribute("flag","fail");
+			return "forward:Document2-Add.jsp";
 		}
-		return "";
 	}
 	@RequestMapping(value="/getFilesOfReceving.do")
 	public String getFilesOfReceving(HttpServletRequest request,HttpServletResponse response){

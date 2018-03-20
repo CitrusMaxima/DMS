@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <a href="Document1-Add.jsp">登记</a>
                                     </li>
                                     <li>
-                                        <a href="DocumentManaging/getFiles.do">查询</a>
+                                        <a href="">查询</a>
                                     </li>
                                 </ul>
                             </li>
@@ -197,7 +197,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												    <td class="center modify">${pswj.phone}</td>
 												    <td class="center modify">${pswj.direction}</td>
 												    <td class="center">
-												    <button class="btn btn-danger">删除</button></td>
+												    <button class="btn btn-danger" >删除</button></td>
 											    </tr>
 											    </tbody>
 										</c:forEach> 

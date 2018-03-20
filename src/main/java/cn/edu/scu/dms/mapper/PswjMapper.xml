@@ -22,7 +22,7 @@
     from pswj
     where pid = #{pid,jdbcType=VARCHAR}
   </select>
-  <select id="getAll" resultMap="BaseResultMap" >
+  <select id="getAllFile" resultMap="BaseResultMap" >
     select 
     <include refid="Base_Column_List" />
     from pswj
