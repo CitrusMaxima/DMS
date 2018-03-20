@@ -48,7 +48,7 @@
             <li>
                 <a class="dropdown-button waves-effect waves-dark" data-activates="dropdown1">
                     <i class="fa fa-user fa-fw"></i>
-                    <b>杨旭</b>
+                    <b><%=request.getSession().getAttribute("name")%></b>
                     <i class="material-icons right">arrow_drop_down</i>
                 </a>
             </li>
