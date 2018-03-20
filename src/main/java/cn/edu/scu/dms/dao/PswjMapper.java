@@ -12,9 +12,10 @@ public interface PswjMapper {
     int insertSelective(Pswj record);
 
     Pswj selectByPrimaryKey(String pid);
-    List<Pswj> getAllFile();
 
     int updateByPrimaryKeySelective(Pswj record);
 
     int updateByPrimaryKey(Pswj record);
+    
+    List<Pswj> getAllFile();
 }

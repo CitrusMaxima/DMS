@@ -2,8 +2,6 @@ package cn.edu.scu.dms.model;
 
 import java.util.Date;
 
-import cn.edu.scu.dms.tool.CharacTool;
-
 public class Swwj {
     private String sid;
 
@@ -20,14 +18,12 @@ public class Swwj {
     private String wpishi;
 
     private String direction;
-    private CharacTool tool=new CharacTool();
 
     public String getSid() {
         return sid;
     }
 
     public void setSid(String sid) {
-    	sid=tool.encoding(sid);
         this.sid = sid == null ? null : sid.trim();
     }
 
@@ -44,7 +40,6 @@ public class Swwj {
     }
 
     public void setDepartment(String department) {
-    	department=tool.encoding(department);
         this.department = department == null ? null : department.trim();
     }
 
@@ -53,7 +48,6 @@ public class Swwj {
     }
 
     public void setNumber1(String number1) {
-    	 number1=tool.encoding(number1);
         this.number1 = number1 == null ? null : number1.trim();
     }
 
@@ -62,7 +56,6 @@ public class Swwj {
     }
 
     public void setTitle(String title) {
-    	title=tool.encoding(title);
         this.title = title == null ? null : title.trim();
     }
 
@@ -79,7 +72,6 @@ public class Swwj {
     }
 
     public void setWpishi(String wpishi) {
-    	wpishi=tool.encoding(wpishi);
         this.wpishi = wpishi == null ? null : wpishi.trim();
     }
 
@@ -88,7 +80,6 @@ public class Swwj {
     }
 
     public void setDirection(String direction) {
-    	direction=tool.encoding(direction);
         this.direction = direction == null ? null : direction.trim();
     }
 }

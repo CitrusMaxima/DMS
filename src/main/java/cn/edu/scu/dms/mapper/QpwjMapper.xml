@@ -20,7 +20,7 @@
     from qpwj
     where qpid = #{qpid,jdbcType=VARCHAR}
   </select>
-  <select id="getAllFile" resultMap="BaseResultMap" >
+  <select id="getAllFile()" resultMap="BaseResultMap" >
     select 
     <include refid="Base_Column_List" />
     from qpwj

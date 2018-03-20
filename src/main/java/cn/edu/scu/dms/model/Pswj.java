@@ -2,8 +2,6 @@ package cn.edu.scu.dms.model;
 
 import java.util.Date;
 
-import cn.edu.scu.dms.tool.CharacTool;
-
 public class Pswj {
     private String pid;
 
@@ -24,14 +22,12 @@ public class Pswj {
     private String phone;
 
     private String direction;
-    private CharacTool tool=new CharacTool();
 
     public String getPid() {
         return pid;
     }
 
     public void setPid(String pid) {
-    	pid=tool.encoding(pid);
         this.pid = pid == null ? null : pid.trim();
     }
 
@@ -48,7 +44,6 @@ public class Pswj {
     }
 
     public void setNumbers(String numbers) {
-    	numbers=tool.encoding(numbers);
         this.numbers = numbers == null ? null : numbers.trim();
     }
 
@@ -57,7 +52,6 @@ public class Pswj {
     }
 
     public void setTitle(String title) {
-    	title=tool.encoding(title);
         this.title = title == null ? null : title.trim();
     }
 
@@ -66,7 +60,6 @@ public class Pswj {
     }
 
     public void setSpishi(String spishi) {
-    	spishi=tool.encoding(spishi);
         this.spishi = spishi == null ? null : spishi.trim();
     }
 
@@ -75,7 +68,6 @@ public class Pswj {
     }
 
     public void setWpishi(String wpishi) {
-    	wpishi=tool.encoding(wpishi);
         this.wpishi = wpishi == null ? null : wpishi.trim();
     }
 
@@ -92,7 +84,6 @@ public class Pswj {
     }
 
     public void setIsdone(String isdone) {
-    	isdone=tool.encoding(isdone);
         this.isdone = isdone == null ? null : isdone.trim();
     }
 
@@ -101,7 +92,6 @@ public class Pswj {
     }
 
     public void setPhone(String phone) {
-    	phone=tool.encoding(phone);
         this.phone = phone == null ? null : phone.trim();
     }
 
@@ -110,7 +100,6 @@ public class Pswj {
     }
 
     public void setDirection(String direction) {
-    	direction=tool.encoding(direction);
         this.direction = direction == null ? null : direction.trim();
     }
 }

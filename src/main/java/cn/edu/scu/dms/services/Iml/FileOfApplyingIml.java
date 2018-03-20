@@ -27,9 +27,8 @@ public class FileOfApplyingIml implements FileOfApplying {
 	public List<Qpwj> getAllFile() {
 		// TODO Auto-generated method stub
 		List<Qpwj> temp=null;
-		//temp=
-		
-		return null;
+		temp=qpwjMapper.getAllFile();
+		return temp;
 	}
 
 	@Override

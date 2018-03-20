@@ -11,10 +11,12 @@ public interface QpwjMapper {
     int insert(Qpwj record);
 
     int insertSelective(Qpwj record);
-    List<Qpwj> getAllFile();
+
     Qpwj selectByPrimaryKey(String qpid);
 
     int updateByPrimaryKeySelective(Qpwj record);
 
     int updateByPrimaryKey(Qpwj record);
+    
+    List<Qpwj> getAllFile();
 }

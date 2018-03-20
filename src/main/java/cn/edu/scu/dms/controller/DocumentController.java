@@ -43,6 +43,12 @@ public class DocumentController {
 	@RequestMapping(value="/registerFileOfInstructions.do")
 	public String registerFileOfInstructions(HttpServletRequest request,HttpServletResponse response) throws ParseException{
 		
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		Pswj file=new Pswj();
 		
 		String timeString=request.getParameter("rectime");
@@ -89,6 +95,7 @@ public class DocumentController {
         file.setDirection(direction);
         
         try {
+        	 System.out.println(file.getTitle());
         	 fileOfInstructions.registerFile(file);
 		} catch (Exception e) {
 			 request.setAttribute("flag","fail");
@@ -278,7 +285,14 @@ public class DocumentController {
 	@RequestMapping(value="/registerFileOfApplying.do")
 	public String registerFileOfApplying(HttpServletRequest request,HttpServletResponse response) throws ParseException{
 		
-		Qpwj qpwj=null;
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		Qpwj qpwj=new Qpwj();
 		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
 		
 		NumberFormat numberformat1 = NumberFormat.getNumberInstance();     
@@ -294,6 +308,8 @@ public class DocumentController {
 			qpid=numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
 			isExist=fileOfInstructions.getPswjById(qpid);
 		}while(isExist!=null);
+		
+		System.out.println("报批示文件"+qpid);
 		
         Date qptime=formatter.parse(request.getParameter("qptime"));
 		String title=request.getParameter("title");
@@ -341,17 +357,4 @@ public class DocumentController {
 		request.setAttribute("files", files);
 		return "forward:/Document1.jsp";
 	}
-	public  String updateFileofApplying(HttpServletRequest request,HttpServletResponse response) throws ParseException{
-		System.out.println("报批示更新开始");
-		
-		String qpid=request.getParameter("qpid");
-		Qpwj file=new Qpwj();
-		
-		
-		
-		
-		return "";
-	}
-	
-	
 }
