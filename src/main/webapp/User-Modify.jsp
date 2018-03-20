@@ -165,26 +165,26 @@
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="nickname" type="text" class="validate" value="杨旭">
+                                        <input id="nickname" name="name" type="text" class="validate" value="杨旭">
                                         <label class="active" for="nickname">昵称</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="password" type="text" class="validate" value="XXXXXXXXXXXXXX">
+                                        <input id="password" name="password" type="text" class="validate" value="XXXXXXXXXXXXXX">
                                         <label class="active" for="password">密码</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="phone" type="text" class="validate" value="XXXXXXXXXXXXXX">
+                                        <input id="phone" name="phonenumber" type="text" class="validate" value="XXXXXXXXXXXXXX">
                                         <label class="active" for="phone">手机号码</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="email" type="text" class="validate" value="XXXXXXXXXXXXXX">
+                                        <input id="email" name="email" type="text" class="validate" value="XXXXXXXXXXXXXX">
                                         <label class="active" for="email">邮箱</label>
                                     </div>
                                 </div>
                                 <p>
-                                    <input type="checkbox" id="IsAdmin" />
+                                    <input type="checkbox" id="IsAdmin" name="ismanager"/>
                                     <label for="IsAdmin">管理员</label>
                                 </p>
                             </form>

@@ -83,7 +83,7 @@
                                     <a href="Document1-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="DocumentManaging/getFiles.do"">查询</a>
+                                    <a href="DocumentManaging/getFiles.do">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -169,25 +169,25 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                     <tr>
-                                        <th class="center">编号</th>
-                                        <th class="center">来文时间</th>
-                                        <th class="center">来文单位</th>
-                                        <th class="center">来文号</th>
-                                        <th class="center">来文标题</th>
-                                        <th class="center">办理时间</th>
-                                        <th class="center">委领导批示</th>
-                                        <th class="center">流向</th>
-                                        <th class="center">删除</th>
+                                        <th class="center single-line">编号</th>
+                                        <th class="center single-line">来文时间</th>
+                                        <th class="center single-line">来文单位</th>
+                                        <th class="center single-line">来文号</th>
+                                        <th class="center single-line">来文标题</th>
+                                        <th class="center single-line">办理时间</th>
+                                        <th class="center single-line">委领导批示</th>
+                                        <th class="center single-line">流向</th>
+                                        <th class="center single-line">删除</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
                                         <td class="center modify">1</td>
-                                        <td class="center modify time">2017-12-21</td>
+                                        <td class="center modify">2017-12-21</td>
                                         <td class="center modify">XX办事处</td>
                                         <td class="center modify">20</td>
                                         <td class="center modify">XXXXXXXXXX</td>
-                                        <td class="center modify time">2018-1-23</td>
+                                        <td class="center modify">2018-1-23</td>
                                         <td class="center modify">XXXXXXXXXX</td>
                                         <td class="center modify">XX办事处</td>
                                         <td class="center">

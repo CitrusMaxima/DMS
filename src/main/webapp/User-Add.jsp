@@ -165,30 +165,30 @@
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="uid" type="text" class="validate" >
+                                        <input id="uid" name="uid" type="text" class="validate" >
                                         <label for="uid">帐号</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="password" type="text" class="validate" >
+                                        <input id="password" name="password" type="text" class="validate" >
                                         <label for="password">密码</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input id="nickname" type="text" class="validate" >
+                                        <input id="nickname" name="name" type="text" class="validate" >
                                         <label for="nickname">昵称</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="phone" type="text" class="validate" >
+                                        <input id="phone" name="phonenumber" type="text" class="validate" >
                                         <label for="phone">手机号码</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="email" type="text" class="validate" >
+                                        <input id="email" name="email" type="text" class="validate" >
                                         <label for="email">邮箱</label>
                                     </div>
                                 </div>
                                 <p>
-                                    <input type="checkbox" id="IsAdmin" />
+                                    <input type="checkbox" id="IsAdmin" name="ismanager"/>
                                     <label for="IsAdmin">管理员</label>
                                 </p>
                             </form>

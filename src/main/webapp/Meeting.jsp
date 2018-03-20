@@ -82,7 +82,7 @@
                                     <a href="Document1-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="DocumentManaging/getFiles.do"">查询</a>
+                                    <a href="DocumentManaging/getFiles.do">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -167,20 +167,20 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                     <tr>
-                                        <th class="center">会议编号</th>
-                                        <th class="center">会议时间</th>
-                                        <th class="center">是否召开</th>
-                                        <th class="center">会议性质</th>
-                                        <th class="center">内容</th>
-                                        <th class="center">参与者</th>
-                                        <th class="center">会议文档</th>
-                                        <th class="center">删除</th>
+                                        <th class="center single-line">会议编号</th>
+                                        <th class="center single-line">会议时间</th>
+                                        <th class="center single-line">是否召开</th>
+                                        <th class="center single-line">会议性质</th>
+                                        <th class="center single-line">内容</th>
+                                        <th class="center single-line">参与者</th>
+                                        <th class="center single-line">会议文档</th>
+                                        <th class="center single-line">删除</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
                                         <td class="center modify">1</td>
-                                        <td class="center modify time">2017-12-21</td>
+                                        <td class="center modify">2017-12-21</td>
                                         <td class="center modify">是</td>
                                         <td class="center modify">XXXXXXXXXX</td>
                                         <td class="center modify">XXXXXXXXXX</td>

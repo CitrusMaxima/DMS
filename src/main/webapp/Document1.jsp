@@ -170,38 +170,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <thead>
                                         <tr>
-                                            <th class="center">编号</th>
-                                            <th class="center">收文时间</th>
-                                            <th class="center">来文标题</th>
-                                            <th class="center">字号</th>
-                                            <th class="center">省领导批示</th>
-                                            <th class="center">委领导批示</th>
-                                            <th class="center">时限</th>
-                                            <th class="center">办理情况</th>
-                                            <th class="center">承办处电话</th>
-                                            <th class="center">流向</th>
-                                            <th class="center">删除</th>
+                                            <th class="center single-line">编号</th>
+                                            <th class="center single-line">收文时间</th>
+                                            <th class="center single-line">来文标题</th>
+                                            <th class="center single-line">字号</th>
+                                            <th class="center single-line">省领导批示</th>
+                                            <th class="center single-line">委领导批示</th>
+                                            <th class="center single-line">时限</th>
+                                            <th class="center single-line">办理情况</th>
+                                            <th class="center single-line">承办处电话</th>
+                                            <th class="center single-line">流向</th>
+                                            <th class="center single-line">删除</th>
                                         </tr>
-                                        </thead> 
-											    <tbody>
-											     <c:forEach items="${files}"  var="pswj">  
-											    <tr>
+                                            <tbody>
+                                            <c:forEach items="${files}"  var="pswj">
+                                                <tr>
 												    <td class="center modify">${pswj.pid}</td>
-												    <td class="center modify time"> <fmt:formatDate value="${pswj.rectime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+												    <td class="center modify"> <fmt:formatDate value="${pswj.rectime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 												    <td class="center modify">${pswj.title}</td>
 												    <td class="center modify">${pswj.numbers}</td>
 												    <td class="center modify">${pswj.spishi}</td>
 												    <td class="center modify">${pswj.wpishi}</td>
-												    <td class="center modify time"><fmt:formatDate value="${pswj.deadline}" pattern="yyyy-MM-dd"/></td>
+												    <td class="center modify"><fmt:formatDate value="${pswj.deadline}" pattern="yyyy-MM-dd"/></td>
 												    <td class="center modify">${pswj.isdone}</td>
 												    <td class="center modify">${pswj.phone}</td>
 												    <td class="center modify">${pswj.direction}</td>
 												    <td class="center">
 												    <button class="btn btn-danger" >删除</button></td>
 											    </tr>
-											  </c:forEach> 
-											    </tbody>
-									
+                                            </c:forEach>
+                                            </tbody>
+
                                     </table>
                                 </div>
 
@@ -250,9 +249,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         if (power == "0")
             admin.style.display="none";
         $(".modify").click(function() {
-        	
-        	document.write("<form action=/DocumentManagingupdateFileofInstructions.do method=post name=formx1 style='display:none'>");
-        	document.write("<input type=hidden name=pid value='"+username+"'");
+            var id= $(this).parent("tr").children("td").html();     	
+        	document.write("<form action=../DocumentManaging/getFileOfInstructionsById.do method=post name=formx1 style='display:none'>");
+        	document.write("<input type=hidden name=pid value='"+id+"'");
+        	document.write("<input type=hidden name=jsp value=Document1-Modify.jsp");
         	document.write("</form>");
         	document.formx1.submit();
         });

@@ -124,6 +124,7 @@ public class DocumentController {
 	@RequestMapping(value="/updateFileofInstructions.do")
 	public  String updateFileofInstructions(HttpServletRequest request,HttpServletResponse response) throws ParseException{
 		
+		System.out.println("更新开始");
 		
 		String pid=request.getParameter("pid");
 		
@@ -139,7 +140,7 @@ public class DocumentController {
 	    if(isExist==null)
 	    {
 	    	request.setAttribute("flag", "fail");
-	    	return "";
+	    	return "forward:/Document1-Modify.jsp";
 	    }
 		
 		Date rectime =  formatter.parse(timeString);
@@ -168,9 +169,18 @@ public class DocumentController {
 		} catch (Exception e) {
 		   request.setAttribute("flag", "fail");
 		}
-		return "forward:Document.jsp";
+		return "forward:/Document.jsp";
 	}
-	
+    @RequestMapping(value="/getFileOfInstructionsById.do")
+	public String getFileOfInstructionsById(HttpServletRequest request,HttpServletResponse response){
+		String pid=request.getParameter("pid");
+		System.out.print(pid);
+		String jsp=request.getParameter("jsp");
+		Pswj pswj=fileOfInstructions.getPswjById(pid);
+		request.setAttribute("file",pswj);
+		return "forward:/"+jsp;
+		
+	}
 	//收文登记文件对应的Controller
 	@RequestMapping(value="/registerFileOfReceving.do")
 	public String registerFileOfReceving(HttpServletRequest request,HttpServletResponse response) throws ParseException{
