@@ -162,7 +162,7 @@
                             会议管理
                         </div>
                         <div class="card-content">
-                            <form class="col s12">
+                            <form class="col s12" id="fileform1">
                                 <div class="row">
                                     <div class="input-field col s4">
                                         <input id="host" name="host" type="text" class="validate" value="XXXXXXXXXXXXXX"/>
@@ -202,7 +202,7 @@
                                 </p>
                             </form>
                             <a class="waves-effect waves-light btn-large" id="modify">修改</a>
-                            <a disabled class="waves-effect waves-light btn-large" id="save">保存</a>
+                            <a disabled class="waves-effect waves-light btn-large" id="save" onclick="document.getElementById('fileform1').submit();">保存</a>
                             <div id="textfield"></div>
                         </div>
                     </div>

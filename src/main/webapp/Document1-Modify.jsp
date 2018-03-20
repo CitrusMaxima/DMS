@@ -163,56 +163,57 @@
                             收文登记表
                         </div>
                         <div class="card-content">
-                            <form class="col s12">
+                            <form class="col s12" action="/DocumentManaging/updateFileofInstructions.do">
+                                <input name="pid" type="hidden" value="${file.pid}">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="title" type="text" class="validate" value="{file.title}">
+                                        <input id="title" type="text" class="validate" value="${file.title}">
                                         <label class="active" for="title">来文标题</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input id="rectime" name="retime" type="text" class="Wdate validate" value="{file.rectime}" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'deadline\')||\'new Date()\'}'})"/>
+                                        <input id="rectime" name="retime" type="text" class="Wdate validate" value="${file.rectime}" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'deadline\')||\'new Date()\'}'})"/>
                                         <label class="active" for="rectime">收文时间</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="deadline" name="deadline" type="text" value="{file.deadline}" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'rectime\')}'})"/>
+                                        <input id="deadline" name="deadline" type="text" value="${file.deadline}" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'rectime\')}'})"/>
                                         <label class="active" for="deadline">时限</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="numbers" name="numbers" type="text" class="validate" value="{file.numbers}">
+                                        <input id="numbers" name="numbers" type="text" class="validate" value="${file.numbers}">
                                         <label class="active" for="numbers">字号</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="Spishi" name="spishi" type="text" class="validate" value="{file.spishi}">
+                                        <input id="Spishi" name="spishi" type="text" class="validate" value="${file.spishi}">
                                         <label class="active" for="Spishi">省领导批示</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="Wpishi" name="wpishi"type="text" class="validate"value="{file.wpishi}">
+                                        <input id="Wpishi" name="wpishi"type="text" class="validate"value="${file.wpishi}">
                                         <label class="active" for="Wpishi">委领导批示</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input id="IsDone" name="isdone" type="text" class="validate"value="{file.isdone}">
+                                        <input id="IsDone" name="isdone" type="text" class="validate"value="${file.isdone}">
                                         <label class="active" for="IsDone">办理情况</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="phone" name="phone" type="text" class="validate"value="{file.phone}">
+                                        <input id="phone" name="phone" type="text" class="validate"value="${file.phone}">
                                         <label class="active" for="phone">承办处电话</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="direction" name="direction" type="text" class="validate"value="{file.direction}">
+                                        <input id="direction" name="direction" type="text" class="validate"value="${file.direction}">
                                         <label class="active" for="direction">流向</label>
                                     </div>
                                 </div>
                             </form>
                             <a class="waves-effect waves-light btn-large" id="modify">修改</a>
-                            <a disabled class="waves-effect waves-light btn-large" id="save">保存</a>
+                            <a disabled class="waves-effect waves-light btn-large" id="save" >保存</a>
                             <div id="textfield"></div>
                         </div>
                     </div>
