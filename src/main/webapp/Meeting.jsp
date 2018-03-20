@@ -167,14 +167,14 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                     <tr>
-                                        <th class="center">会议编号</th>
-                                        <th class="center">会议时间</th>
-                                        <th class="center">是否召开</th>
-                                        <th class="center">会议性质</th>
-                                        <th class="center">内容</th>
-                                        <th class="center">参与者</th>
-                                        <th class="center">会议文档</th>
-                                        <th class="center">删除</th>
+                                        <th class="center single-line">会议编号</th>
+                                        <th class="center single-line">会议时间</th>
+                                        <th class="center single-line">是否召开</th>
+                                        <th class="center single-line">会议性质</th>
+                                        <th class="center single-line">内容</th>
+                                        <th class="center single-line">参与者</th>
+                                        <th class="center single-line">会议文档</th>
+                                        <th class="center single-line">删除</th>
                                     </tr>
                                     </thead>
                                     <tbody>

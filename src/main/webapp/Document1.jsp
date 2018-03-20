@@ -170,17 +170,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <thead>
                                         <tr>
-                                            <th class="center">编号</th>
-                                            <th class="center">收文时间</th>
-                                            <th class="center">来文标题</th>
-                                            <th class="center">字号</th>
-                                            <th class="center">省领导批示</th>
-                                            <th class="center">委领导批示</th>
-                                            <th class="center">时限</th>
-                                            <th class="center">办理情况</th>
-                                            <th class="center">承办处电话</th>
-                                            <th class="center">流向</th>
-                                            <th class="center">删除</th>
+                                            <th class="center single-line">编号</th>
+                                            <th class="center single-line">收文时间</th>
+                                            <th class="center single-line">来文标题</th>
+                                            <th class="center single-line">字号</th>
+                                            <th class="center single-line">省领导批示</th>
+                                            <th class="center single-line">委领导批示</th>
+                                            <th class="center single-line">时限</th>
+                                            <th class="center single-line">办理情况</th>
+                                            <th class="center single-line">承办处电话</th>
+                                            <th class="center single-line">流向</th>
+                                            <th class="center single-line">删除</th>
                                         </tr>
                                         </thead> 
                                         <c:forEach items="${files}"  var="pswj">  

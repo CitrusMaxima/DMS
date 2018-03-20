@@ -169,15 +169,15 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                     <tr>
-                                        <th class="center">编号</th>
-                                        <th class="center">来文时间</th>
-                                        <th class="center">来文标题</th>
-                                        <th class="center">时限</th>
-                                        <th class="center">分管领导</th>
-                                        <th class="center">主要领导批示</th>
-                                        <th class="center">流向</th>
-                                        <th class="center">备注</th>
-                                        <th class="center">删除</th>
+                                        <th class="center single-line">编号</th>
+                                        <th class="center single-line">来文时间</th>
+                                        <th class="center single-line">来文标题</th>
+                                        <th class="center single-line">时限</th>
+                                        <th class="center single-line">分管领导</th>
+                                        <th class="center single-line">主要领导批示</th>
+                                        <th class="center single-line">流向</th>
+                                        <th class="center single-line">备注</th>
+                                        <th class="center single-line">删除</th>
                                     </tr>
                                     </thead>
                                     <tbody>

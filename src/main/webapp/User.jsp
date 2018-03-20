@@ -168,12 +168,12 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                     <tr>
-                                        <th class="center">帐号</th>
-                                        <th class="center">密码</th>
-                                        <th class="center">昵称</th>
-                                        <th class="center">手机号码</th>
-                                        <th class="center">邮箱</th>
-                                        <th class="center">删除</th>
+                                        <th class="center single-line">帐号</th>
+                                        <th class="center single-line">密码</th>
+                                        <th class="center single-line">昵称</th>
+                                        <th class="center single-line">手机号码</th>
+                                        <th class="center single-line">邮箱</th>
+                                        <th class="center single-line">删除</th>
                                     </tr>
                                     </thead>
                                     <tbody>
