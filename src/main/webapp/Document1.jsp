@@ -252,7 +252,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var id= $(this).parent("tr").children("td").html();     	
         	document.write("<form action=../DocumentManaging/getFileOfInstructionsById.do method=post name=formx1 style='display:none'>");
             document.write("<input type=hidden name=pid value='"+id+"'>");
-        	document.write("<input type=text name=jsp value=Document1-Modify.jsp>");
+        	document.write("<input type=hidden name=jsp value=Document1-Modify.jsp>");
         	document.write("</form>");
         	document.formx1.submit();
         });
