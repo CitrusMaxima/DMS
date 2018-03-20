@@ -224,12 +224,8 @@ public class DocumentController {
 		
 		do{
 			sid=numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
-			try {
-				isExist=fileOfReceving.getSwwjById(sid);
-			} catch (Exception e){
-
-			}
-
+			isExist=fileOfReceving.getSwwjById(sid);
+			System.out.println(isExist.toString());
 		}while(isExist!=null);
 		
 	    Date time1=formatter.parse(request.getParameter("time1"));
