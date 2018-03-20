@@ -183,8 +183,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <th class="center">删除</th>
                                         </tr>
                                         </thead> 
-                                        <c:forEach items="${files}"  var="pswj">  
 											    <tbody>
+											     <c:forEach items="${files}"  var="pswj">  
 											    <tr>
 												    <td class="center modify">${pswj.pid}</td>
 												    <td class="center modify time"> <fmt:formatDate value="${pswj.rectime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
@@ -199,8 +199,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												    <td class="center">
 												    <button class="btn btn-danger" >删除</button></td>
 											    </tr>
+											  </c:forEach> 
 											    </tbody>
-										</c:forEach> 
+									
                                     </table>
                                 </div>
 
@@ -249,7 +250,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         if (power == "0")
             admin.style.display="none";
         $(".modify").click(function() {
-            window.location.href="Document1-Modify.jsp";
+        	
+        	document.write("<form action=/DocumentManagingupdateFileofInstructions.do method=post name=formx1 style='display:none'>");
+        	document.write("<input type=hidden name=pid value='"+username+"'");
+        	document.write("</form>");
+        	document.formx1.submit();
         });
     </script>
     </div>
