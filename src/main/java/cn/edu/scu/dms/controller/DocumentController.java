@@ -47,12 +47,20 @@ public class DocumentController {
 		String timeString=request.getParameter("rectime");
 		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
 		System.out.println("登记开始");
+		
+		NumberFormat numberformat1 = NumberFormat.getNumberInstance();     
+		numberformat1.setMinimumIntegerDigits(7);
+		
+		NumberFormat numberformat2 = NumberFormat.getNumberInstance();     
+		numberformat2.setMinimumIntegerDigits(3);
+		
+		
 		String pid=null;
 		Pswj isExist=null;
 		Random ranInt=new Random();
 		
 		do{
-			pid=ranInt.nextInt(100000)+""+ranInt.nextInt(100);
+			pid=numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
 			isExist=fileOfInstructions.getPswjById(pid);
 		}while(isExist!=null);
 
@@ -125,7 +133,7 @@ public class DocumentController {
 		numberformat1.setMinimumIntegerDigits(7);
 		
 		NumberFormat numberformat2 = NumberFormat.getNumberInstance();     
-		numberformat2.setMinimumIntegerDigits(7);
+		numberformat2.setMinimumIntegerDigits(3);
 		
 		
 		System.out.println("收文登记开始");
@@ -171,6 +179,7 @@ public class DocumentController {
 		
 		try {
 			temp =fileOfReceving.getAllFile();
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
