@@ -46,4 +46,12 @@ public class FileOfInstructionsIml implements FileOfInstructionsServices {
 		return true;
 	}
 
+	@Override
+	@Transactional
+	public void update(Pswj pswj) {
+		// TODO Auto-generated method stub
+	    pswjMapper.updateByPrimaryKey(pswj);
+		
+	}
+
 }

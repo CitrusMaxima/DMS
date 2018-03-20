@@ -10,4 +10,5 @@ public interface FileOfInstructionsServices {
 	public List<Pswj> getAllFile();
 	public Boolean deleteFile(String id);
 	public Pswj getPswjById(String id);
+	public void update(Pswj pswj);
 }

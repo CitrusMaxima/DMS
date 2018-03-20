@@ -182,7 +182,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <th class="center single-line">流向</th>
                                             <th class="center single-line">删除</th>
                                         </tr>
-                                        </thead>
                                             <tbody>
                                             <c:forEach items="${files}"  var="pswj">
                                                 <tr>
@@ -201,6 +200,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											    </tr>
                                             </c:forEach>
                                             </tbody>
+
                                     </table>
                                 </div>
 
@@ -249,8 +249,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         if (power == "0")
             admin.style.display="none";
         $(".modify").click(function() {
-            alert($(this).parent("tr").children("td").html());
-            window.location.href="Document1-Modify.jsp";
+            var id= $(this).parent("tr").children("td").html();     	
+        	document.write("<form action=../DocumentManaging/getFileOfInstructionsById.do method=post name=formx1 style='display:none'>");
+            document.write("<input type=text name=pid value='"+id+"'");
+        	document.write("<input type=hidden name=jsp value=Document1-Modify.jsp");
+        	document.write("</form>");
+        	document.formx1.submit();
         });
     </script>
     </div>

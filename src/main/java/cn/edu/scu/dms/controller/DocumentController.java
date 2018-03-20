@@ -121,7 +121,67 @@ public class DocumentController {
 		return "";
 	}
 	
-	
+	@RequestMapping(value="/updateFileofInstructions.do")
+	public  String updateFileofInstructions(HttpServletRequest request,HttpServletResponse response) throws ParseException{
+		
+		System.out.println("更新开始");
+		
+		String pid=request.getParameter("pid");
+		
+
+		Pswj file=new Pswj();
+		
+		String timeString=request.getParameter("rectime");
+		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
+		
+		Pswj isExist=null;
+        
+	    isExist=fileOfInstructions.getPswjById(pid);
+	    if(isExist==null)
+	    {
+	    	request.setAttribute("flag", "fail");
+	    	return "forward:/Document1-Modify.jsp";
+	    }
+		
+		Date rectime =  formatter.parse(timeString);
+		String numbers=request.getParameter("numbers");
+		String title=request.getParameter("title");
+		String spishi=request.getParameter("spishi");
+        String wpishi=request.getParameter("wpishi");
+        formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date deadline=formatter.parse(request.getParameter("deadline"));
+        String isdone=request.getParameter("isdone");
+        String phone=request.getParameter("phone");
+        String direction=request.getParameter("direction");
+        
+        file.setPid(pid);
+        file.setRectime(rectime);
+        file.setNumbers(numbers);
+        file.setTitle(title);
+        file.setSpishi(spishi);
+        file.setWpishi(wpishi);
+        file.setDeadline(deadline);
+        file.setIsdone(isdone);
+        file.setPhone(phone);
+        file.setDirection(direction);
+        try {
+        	fileOfInstructions.update(file);	
+		} catch (Exception e) {
+		   request.setAttribute("flag", "fail");
+		}
+		return "forward:/Document.jsp";
+	}
+    @RequestMapping(value="/getFileOfInstructionsById.do")
+	public String getFileOfInstructionsById(HttpServletRequest request,HttpServletResponse response){
+		String pid=request.getParameter("pid");
+		System.out.print(pid);
+		String jsp=request.getParameter("jsp");
+		System.out.println(jsp);
+		Pswj pswj=fileOfInstructions.getPswjById(pid);
+		request.setAttribute("file",pswj);
+		return "forward:/"+jsp;
+		
+	}
 	//收文登记文件对应的Controller
 	@RequestMapping(value="/registerFileOfReceving.do")
 	public String registerFileOfReceving(HttpServletRequest request,HttpServletResponse response) throws ParseException{
@@ -179,12 +239,13 @@ public class DocumentController {
 		
 		try {
 			temp =fileOfReceving.getAllFile();
+			request.setAttribute("files",temp);
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.out.println("获取文件出错");
 		}
-		
-		return "";
+		return "forward:Document2.jsp";
 	}
 	
 	//报批示文件对应的Controller
@@ -194,7 +255,22 @@ public class DocumentController {
 		Qpwj qpwj=null;
 		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
 		
-		String qpid=request.getParameter("qid");
+
+		NumberFormat numberformat1 = NumberFormat.getNumberInstance();     
+		numberformat1.setMinimumIntegerDigits(7);
+		
+		NumberFormat numberformat2 = NumberFormat.getNumberInstance();     
+		numberformat2.setMinimumIntegerDigits(3);
+		
+		String qpid=null;
+		Pswj isExist=null;
+		Random ranInt=new Random();
+		
+		do{
+			qpid=numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
+			isExist=fileOfInstructions.getPswjById(qpid);
+		}while(isExist!=null);
+		
         Date qptime=formatter.parse(request.getParameter("qptime"));
 		String title=request.getParameter("title");
 		formatter = new SimpleDateFormat( "yyyy-MM-dd"); 
@@ -216,6 +292,7 @@ public class DocumentController {
 		   fileOfApplying.registerFile(qpwj);
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.out.println("包批示文件登记出错");
 		}
         
 		return "";
