@@ -93,8 +93,16 @@ public class DocumentController {
 			 request.setAttribute("flag","fail");
 			return "forward:/Document1-Add.jsp";
 		}
-		request.setAttribute("flag","success");
-		return "forward:/Document1-Add.jsp";
+        
+        List<Pswj> files=null;
+        try {
+			files=fileOfInstructions.getAllFile();
+		} catch (Exception e) {
+		   System.out.println("获取批示文件出错");	
+		}
+        
+		request.setAttribute("files",files);
+		return "forward:/Document1.jsp";
 	}
 
 	@RequestMapping(value="/getFiles.do")
@@ -132,6 +140,7 @@ public class DocumentController {
 		Pswj file=new Pswj();
 		
 		String timeString=request.getParameter("rectime");
+		System.out.println(timeString+"hh");
 		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
 		
 		Pswj isExist=null;
@@ -169,7 +178,16 @@ public class DocumentController {
 		} catch (Exception e) {
 		   request.setAttribute("flag", "fail");
 		}
-		return "forward:/Document.jsp";
+        
+        List<Pswj> files=null;
+        try {
+			files=fileOfInstructions.getAllFile();
+		} catch (Exception e) {
+		   System.out.println("获取批示文件出错");	
+		}
+        
+		request.setAttribute("files",files);
+		return "forward:/Document1.jsp";
 	}
     @RequestMapping(value="/getFileOfInstructionsById.do")
 	public String getFileOfInstructionsById(HttpServletRequest request,HttpServletResponse response){

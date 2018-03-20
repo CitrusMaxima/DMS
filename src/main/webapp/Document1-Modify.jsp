@@ -3,7 +3,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -28,6 +28,10 @@
 </head>
 
 <body>
+<script>
+   
+   
+</script>
 <div id="wrapper">
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
@@ -163,21 +167,21 @@
                             收文登记表
                         </div>
                         <div class="card-content">
-                            <form class="col s12" action="/DocumentManaging/updateFileofInstructions.do">
+                            <form class="col s12" action="DocumentManaging/updateFileofInstructions.do" id="fileform1" method="POST">
                                 <input name="pid" type="hidden" value="${file.pid}">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="title" type="text" class="validate" value="${file.title}">
+                                        <input id="title" type="text" class="validate" name="title" value="${file.title}">
                                         <label class="active" for="title">来文标题</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input id="rectime" name="retime" type="text" class="Wdate validate" value="${file.rectime}" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'deadline\')||\'new Date()\'}'})"/>
+                                        <input id="rectime" name="rectime" type="text" class="Wdate validate" value="<fmt:formatDate value='${file.rectime }' pattern='yyyy-MM-dd HH:mm:ss' />"  onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'deadline\')||\'new Date()\'}'})"/>
                                         <label class="active" for="rectime">收文时间</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="deadline" name="deadline" type="text" value="${file.deadline}" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'rectime\')}'})"/>
+                                        <input id="deadline" name="deadline" type="text" value="<fmt:formatDate value='${file.deadline }' pattern='yyyy-MM-dd' />"  class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'rectime\')}'})"/>
                                         <label class="active" for="deadline">时限</label>
                                     </div>
                                     <div class="input-field col s4">
@@ -213,7 +217,7 @@
                                 </div>
                             </form>
                             <a class="waves-effect waves-light btn-large" id="modify">修改</a>
-                            <a disabled class="waves-effect waves-light btn-large" id="save" >保存</a>
+                            <a disabled class="waves-effect waves-light btn-large" id="save" onclick="document.getElementById('fileform1').submit();">保存</a>
                             <div id="textfield"></div>
                         </div>
                     </div>
