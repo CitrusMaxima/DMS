@@ -182,10 +182,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <th class="center single-line">流向</th>
                                             <th class="center single-line">删除</th>
                                         </tr>
-                                        </thead> 
-                                        <c:forEach items="${files}"  var="pswj">  
-											    <tbody>
-											    <tr>
+                                        </thead>
+                                            <tbody>
+                                            <c:forEach items="${files}"  var="pswj">
+                                                <tr>
 												    <td class="center modify">${pswj.pid}</td>
 												    <td class="center modify"> <fmt:formatDate value="${pswj.rectime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 												    <td class="center modify">${pswj.title}</td>
@@ -199,8 +199,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												    <td class="center">
 												    <button class="btn btn-danger" >删除</button></td>
 											    </tr>
-											    </tbody>
-										</c:forEach> 
+                                            </c:forEach>
+                                            </tbody>
                                     </table>
                                 </div>
 
@@ -249,6 +249,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         if (power == "0")
             admin.style.display="none";
         $(".modify").click(function() {
+            alert($(this).parent("tr").children("td").html());
             window.location.href="Document1-Modify.jsp";
         });
     </script>

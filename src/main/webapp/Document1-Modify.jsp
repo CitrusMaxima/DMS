@@ -172,41 +172,41 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input id="rectime" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'deadline\')||\'new Date()\'}'})"/>
+                                        <input id="rectime" name="retime" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'deadline\')||\'new Date()\'}'})"/>
                                         <label class="active" for="rectime">收文时间</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="deadline" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'rectime\')}'})"/>
+                                        <input id="deadline" name="deadline" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'rectime\')}'})"/>
                                         <label class="active" for="deadline">时限</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="numbers" type="text" class="validate" value="20">
+                                        <input id="numbers" name="numbers" type="text" class="validate" value="20">
                                         <label class="active" for="numbers">字号</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="Spishi" type="text" class="validate" value="XXXXXXXXXXXXXX">
+                                        <input id="Spishi" name="spishi" type="text" class="validate" value="XXXXXXXXXXXXXX">
                                         <label class="active" for="Spishi">省领导批示</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="Wpishi" type="text" class="validate"value="XXXXXXXXXXXXXX">
+                                        <input id="Wpishi" name="wpishi"type="text" class="validate"value="XXXXXXXXXXXXXX">
                                         <label class="active" for="Wpishi">委领导批示</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input id="IsDone" type="text" class="validate"value="XXXXXXXXXXXXXX">
+                                        <input id="IsDone" name="isdone" type="text" class="validate"value="XXXXXXXXXXXXXX">
                                         <label class="active" for="IsDone">办理情况</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="phone" type="text" class="validate"value="XXXXXXXXXXXXXX">
+                                        <input id="phone" name="isdone" type="text" class="validate"value="XXXXXXXXXXXXXX">
                                         <label class="active" for="phone">承办处电话</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="direction" type="text" class="validate"value="XXXXXXXXXXXXXX">
+                                        <input id="direction" name="direction" type="text" class="validate"value="XXXXXXXXXXXXXX">
                                         <label class="active" for="direction">流向</label>
                                     </div>
                                 </div>

@@ -83,7 +83,7 @@
                                     <a href="Document1-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="DocumentManaging/getFiles.do"">查询</a>
+                                    <a href="DocumentManaging/getFiles.do">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -166,39 +166,39 @@
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="title" type="text" class="validate" >
+                                        <input id="title" name="title" type="text" class="validate" >
                                         <label for="title">来文标题</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="time" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'deadline\')||\'new Date()\'}'})"/>
+                                        <input id="time" name="qptime" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'deadline\')||\'new Date()\'}'})"/>
                                         <label for="time">来文时间</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="deadline" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'time\')}'})"/>
+                                        <input id="deadline" name="attribute" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'time\')}'})"/>
                                         <label for="deadline">时限</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="leader" type="text" class="validate" >
+                                        <input id="leader" name="leaderName" type="text" class="validate" >
                                         <label for="leader">分管领导</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="direction" type="text" class="validate" >
+                                        <input id="direction" name="direction" type="text" class="validate" >
                                         <label for="direction">流向</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="Zpishi" type="text" class="validate">
+                                        <input id="Zpishi" name="zpishi" type="text" class="validate">
                                         <label for="Zpishi">主要领导批示</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="note" type="text" class="validate">
+                                        <input id="note" name="note" type="text" class="validate">
                                         <label for="note">备注</label>
                                     </div>
                                 </div>
