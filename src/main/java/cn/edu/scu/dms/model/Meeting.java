@@ -5,81 +5,91 @@ import java.util.Date;
 public class Meeting {
     private String mid;
 
-	private Date mtime;
+    private Date mtime;
 
-	private String host;
+    private String host;
 
-	private String characters;
+    private String place;
 
-	private String place;
+    private String names;
 
-	private String names;
+    private Boolean ishold;
 
-	private Boolean ishold;
+    private String document;
 
-	private String document;
+    private String holder;
 
-	public String getMid() {
-		return mid;
-	}
+    private String content;
 
-	public void setMid(String mid) {
-		this.mid = mid == null ? null : mid.trim();
-	}
+    public String getMid() {
+        return mid;
+    }
 
-	public Date getMtime() {
-		return mtime;
-	}
+    public void setMid(String mid) {
+        this.mid = mid == null ? null : mid.trim();
+    }
 
-	public void setMtime(Date mtime) {
-		this.mtime = mtime;
-	}
+    public Date getMtime() {
+        return mtime;
+    }
 
-	public String getHost() {
-		return host;
-	}
+    public void setMtime(Date mtime) {
+        this.mtime = mtime;
+    }
 
-	public void setHost(String host) {
-		this.host = host == null ? null : host.trim();
-	}
+    public String getHost() {
+        return host;
+    }
 
-	public String getCharacters() {
-		return characters;
-	}
+    public void setHost(String host) {
+        this.host = host == null ? null : host.trim();
+    }
 
-	public void setCharacters(String characters) {
-		this.characters = characters == null ? null : characters.trim();
-	}
+    public String getPlace() {
+        return place;
+    }
 
-	public String getPlace() {
-		return place;
-	}
+    public void setPlace(String place) {
+        this.place = place == null ? null : place.trim();
+    }
 
-	public void setPlace(String place) {
-		this.place = place == null ? null : place.trim();
-	}
+    public String getNames() {
+        return names;
+    }
 
-	public String getNames() {
-		return names;
-	}
+    public void setNames(String names) {
+        this.names = names == null ? null : names.trim();
+    }
 
-	public void setNames(String names) {
-		this.names = names == null ? null : names.trim();
-	}
+    public Boolean getIshold() {
+        return ishold;
+    }
 
-	public Boolean getIshold() {
-		return ishold;
-	}
+    public void setIshold(Boolean ishold) {
+        this.ishold = ishold;
+    }
 
-	public void setIshold(Boolean ishold) {
-		this.ishold = ishold;
-	}
+    public String getDocument() {
+        return document;
+    }
 
-	public String getDocument() {
-		return document;
-	}
+    public void setDocument(String document) {
+        this.document = document == null ? null : document.trim();
+    }
 
-	public void setDocument(String document) {
-		this.document = document == null ? null : document.trim();
-	}
+    public String getHolder() {
+        return holder;
+    }
+
+    public void setHolder(String holder) {
+        this.holder = holder == null ? null : holder.trim();
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
+    }
 }

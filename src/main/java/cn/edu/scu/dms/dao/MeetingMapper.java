@@ -6,8 +6,7 @@ import cn.edu.scu.dms.model.Meeting;
 import cn.edu.scu.dms.model.MeetingStatistical;
 
 public interface MeetingMapper {
-
-	int deleteByPrimaryKey(String mid);
+    int deleteByPrimaryKey(String mid);
 
     int insert(Meeting record);
 
@@ -20,6 +19,8 @@ public interface MeetingMapper {
     int updateByPrimaryKey(Meeting record);
     
     List<Meeting> getAll();
+    
     List<MeetingStatistical>  getMeetingStatisticalsHold();
+    
     List<MeetingStatistical>  getMeetingStatisticalsUnHold();
 }
