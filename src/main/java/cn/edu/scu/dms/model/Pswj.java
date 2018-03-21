@@ -2,8 +2,6 @@ package cn.edu.scu.dms.model;
 
 import java.util.Date;
 
-import cn.edu.scu.dms.tool.CharacTool;
-
 public class Pswj {
     private String pid;
 
@@ -54,7 +52,6 @@ public class Pswj {
     }
 
     public void setTitle(String title) {
-        //title = CharacTool.encoding(title);
         this.title = title == null ? null : title.trim();
     }
 

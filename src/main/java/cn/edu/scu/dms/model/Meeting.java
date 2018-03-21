@@ -2,8 +2,6 @@ package cn.edu.scu.dms.model;
 
 import java.util.Date;
 
-import cn.edu.scu.dms.tool.CharacTool;
-
 public class Meeting {
     private String mid;
 
@@ -17,15 +15,11 @@ public class Meeting {
 
     private String names;
 
-    private Boolean ishold;
-    private CharacTool tool=new CharacTool();
-
     public String getMid() {
         return mid;
     }
 
     public void setMid(String mid) {
-    	mid=tool.encoding(mid);
         this.mid = mid == null ? null : mid.trim();
     }
 
@@ -42,7 +36,6 @@ public class Meeting {
     }
 
     public void setHost(String host) {
-    	host=tool.encoding(host);
         this.host = host == null ? null : host.trim();
     }
 
@@ -51,7 +44,6 @@ public class Meeting {
     }
 
     public void setCharacters(String characters) {
-    	characters=tool.encoding(characters);
         this.characters = characters == null ? null : characters.trim();
     }
 
@@ -60,7 +52,6 @@ public class Meeting {
     }
 
     public void setPlace(String place) {
-    	place=tool.encoding(place);
         this.place = place == null ? null : place.trim();
     }
 
@@ -69,15 +60,6 @@ public class Meeting {
     }
 
     public void setNames(String names) {
-    	names=tool.encoding(names);
         this.names = names == null ? null : names.trim();
-    }
-
-    public Boolean getIshold() {
-        return ishold;
-    }
-
-    public void setIshold(Boolean ishold) {
-        this.ishold = ishold;
     }
 }

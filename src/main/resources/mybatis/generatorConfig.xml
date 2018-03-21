@@ -40,7 +40,7 @@
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
 
-    <!-- 要对那些数据表进行生成操作，必须要有一个. -->
+    <!-- 要对那些数据表进行生成操作，必须要有一个. 
     <table schema="" tableName="user" domainObjectName="User" 
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
@@ -66,15 +66,16 @@
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false"> 
      </table>    
-     <table schema="" tableName="qpwj" domainObjectName="Qpwj" 
-        enableCountByExample="false" enableUpdateByExample="false"
-        enableDeleteByExample="false" enableSelectByExample="false"
-        selectByExampleQueryId="false"> 
-     </table>    
+    
      <table schema="" tableName="swwj" domainObjectName="Swwj" 
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false"> 
-     </table>    
+     </table>    -->
+       <table schema="" tableName="qpwj" domainObjectName="Qpwj" 
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false"> 
+     </table>   
   </context>
 </generatorConfiguration>

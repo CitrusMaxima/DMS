@@ -8,10 +8,9 @@
     <result column="characters" property="characters" jdbcType="VARCHAR" />
     <result column="place" property="place" jdbcType="VARCHAR" />
     <result column="names" property="names" jdbcType="VARCHAR" />
-    <result column="Ishold" property="ishold" jdbcType="BIT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    mid, mtime, host, characters, place, names, Ishold
+    mid, mtime, host, characters, place, names
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -25,11 +24,11 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.scu.dms.model.Meeting" >
     insert into meeting (mid, mtime, host, 
-      characters, place, names, 
-      Ishold)
+      characters, place, names
+      )
     values (#{mid,jdbcType=VARCHAR}, #{mtime,jdbcType=TIMESTAMP}, #{host,jdbcType=VARCHAR}, 
-      #{characters,jdbcType=VARCHAR}, #{place,jdbcType=VARCHAR}, #{names,jdbcType=VARCHAR}, 
-      #{ishold,jdbcType=BIT})
+      #{characters,jdbcType=VARCHAR}, #{place,jdbcType=VARCHAR}, #{names,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.scu.dms.model.Meeting" >
     insert into meeting
@@ -52,9 +51,6 @@
       <if test="names != null" >
         names,
       </if>
-      <if test="ishold != null" >
-        Ishold,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="mid != null" >
@@ -74,9 +70,6 @@
       </if>
       <if test="names != null" >
         #{names,jdbcType=VARCHAR},
-      </if>
-      <if test="ishold != null" >
-        #{ishold,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -98,9 +91,6 @@
       <if test="names != null" >
         names = #{names,jdbcType=VARCHAR},
       </if>
-      <if test="ishold != null" >
-        Ishold = #{ishold,jdbcType=BIT},
-      </if>
     </set>
     where mid = #{mid,jdbcType=VARCHAR}
   </update>
@@ -110,8 +100,7 @@
       host = #{host,jdbcType=VARCHAR},
       characters = #{characters,jdbcType=VARCHAR},
       place = #{place,jdbcType=VARCHAR},
-      names = #{names,jdbcType=VARCHAR},
-      Ishold = #{ishold,jdbcType=BIT}
+      names = #{names,jdbcType=VARCHAR}
     where mid = #{mid,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -179,7 +179,7 @@
                             收文登记表
                         </div>
                         <div class="card-content" >
-                            <form class="col s12" action="DocumentManaging/registerFileOfInstructions.do" id="fileform">
+                            <form class="col s12" action="DocumentManaging/registerFileOfInstructions.do" id="fileform" method="post">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="title" type="text" class="validate" name="title">

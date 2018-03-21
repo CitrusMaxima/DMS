@@ -2,93 +2,87 @@ package cn.edu.scu.dms.model;
 
 import java.util.Date;
 
-import cn.edu.scu.dms.tool.CharacTool;
-
 public class Qpwj {
-    private String qpid;
+  
+	private String qpid;
 
-    private Date qptime;
+	private Date qptime;
 
-    private String title;
+	private String title;
 
-    private Date attribute;
+	private Date attribute;
 
-    private String leaderName;
+	private String leadername;
 
-    private String zpishi;
+	private String zpishi;
 
-    private String direction;
+	private String direction;
 
-    private String note;
-    private CharacTool tool=new CharacTool();
+	private String note;
 
-    public String getQpid() {
-        return qpid;
-    }
+	public String getQpid() {
+		return qpid;
+	}
 
-    public void setQpid(String qpid) {
-    	qpid=tool.encoding(qpid);
-        this.qpid = qpid == null ? null : qpid.trim();
-    }
+	public void setQpid(String qpid) {
+		this.qpid = qpid == null ? null : qpid.trim();
+	}
 
-    public Date getQptime() {
-        return qptime;
-    }
+	public Date getQptime() {
+		return qptime;
+	}
 
-    public void setQptime(Date qptime) {
-        this.qptime = qptime;
-    }
+	public void setQptime(Date qptime) {
+		this.qptime = qptime;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public void setTitle(String title) {
-    	title=tool.encoding(title);
-        this.title = title == null ? null : title.trim();
-    }
+	public void setTitle(String title) {
+		this.title = title == null ? null : title.trim();
+	}
 
-    public Date getAttribute() {
-        return attribute;
-    }
+	public Date getAttribute() {
+		return attribute;
+	}
 
-    public void setAttribute(Date attribute) {
-        this.attribute = attribute;
-    }
+	public void setAttribute(Date attribute) {
+		this.attribute = attribute;
+	}
 
-    public String getLeaderName() {
-        return leaderName;
-    }
+	public String getLeadername() {
+		return leadername;
+	}
 
-    public void setLeaderName(String leaderName) {
-    	leaderName=tool.encoding(leaderName);
-        this.leaderName = leaderName == null ? null : leaderName.trim();
-    }
+	public void setLeadername(String leadername) {
+		this.leadername = leadername == null ? null : leadername.trim();
+	}
 
-    public String getZpishi() {
-        return zpishi;
-    }
+	public String getZpishi() {
+		return zpishi;
+	}
 
-    public void setZpishi(String zpishi) {
-    	zpishi=tool.encoding(zpishi);
-        this.zpishi = zpishi == null ? null : zpishi.trim();
-    }
+	public void setZpishi(String zpishi) {
+		this.zpishi = zpishi == null ? null : zpishi.trim();
+	}
 
-    public String getDirection() {
-        return direction;
-    }
+	public String getDirection() {
+		return direction;
+	}
 
-    public void setDirection(String direction) {
-    	direction=tool.encoding(direction);
-        this.direction = direction == null ? null : direction.trim();
-    }
+	public void setDirection(String direction) {
+		this.direction = direction == null ? null : direction.trim();
+	}
 
-    public String getNote() {
-        return note;
-    }
+	public String getNote() {
+		return note;
+	}
 
-    public void setNote(String note) {
-    	note=tool.encoding(note);
-        this.note = note == null ? null : note.trim();
-    }
+	public void setNote(String note) {
+		this.note = note == null ? null : note.trim();
+	}
+
+	
 }
