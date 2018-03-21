@@ -20,7 +20,7 @@
     <link href="css/morris-0.4.3.min.css" rel="stylesheet" />
     <!-- Custom Styles-->
     <link href="css/custom-styles.css" rel="stylesheet" />
-    <!-- Google Fonts-->
+    <link rel="stylesheet" type="text/css" href="css/mdialog.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/cssCharts.css">
@@ -58,7 +58,7 @@
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
         <li>
-            <a href="PersonalCenter.jsp"><i class="fa fa-user fa-fw"></i> 个人中心</a>
+            <a href="../account/getUser.do"><i class="fa fa-user fa-fw"></i> 个人中心</a>
         </li>
         <li>
             <a href="ModifyPassword.jsp"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
@@ -132,7 +132,7 @@
                             <a href="User-Add.jsp">添加用户</a>
                         </li>
                         <li>
-                            <a href="User.jsp">用户查询</a>
+                            <a href="/user/getuser.do">用户查询</a>
                         </li>
                     </ul>
                 </li>
@@ -198,7 +198,7 @@
 
     <!-- Metis Menu Js -->
     <script src="js/jquery.metisMenu.js"></script>
-    <!-- Morris Chart Js -->
+    <script type="text/javascript" src="js/mdialog.js"></script>
     <script src="js/raphael-2.1.0.min.js"></script>
     <script src="js/morris.js"></script>
 
@@ -207,7 +207,7 @@
     <script src="js/easypiechart-data.js"></script>
 
     <script src="js/jquery.chart.js"></script>
-    <!-- DATA TABLE SCRIPTS -->
+    <script type="text/javascript" src="js/zepto.min.js"></script>
     <script src="js/jquery.dataTables.js"></script>
     <script src="js/dataTables.bootstrap.js"></script>
     <script>

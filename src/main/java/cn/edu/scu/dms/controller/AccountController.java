@@ -9,6 +9,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import cn.edu.scu.dms.services.AccountServices;
 import cn.edu.scu.dms.model.User;
 @Controller
+@RequestMapping(value="/account")
 public class AccountController {
 	
 	@Autowired
@@ -35,16 +38,18 @@ public class AccountController {
 		
 		//查看验证码
 		System.out.println("注册");
-		String checkcode=request.getParameter("checkCode"); 
-		if(checkcode.equals("")||checkcode==null){  
-        	request.setAttribute("flag", "codeNull");
-            return "Register";
-        }else{  
-            if(!checkcode.equalsIgnoreCase((String)request.getSession().getAttribute("randCheckCode"))){  
-            	request.setAttribute("flag", "codeError");
-                return "Register";
-            }
-        } 
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		String checkcode=request.getParameter("checkCode");
+		if(!checkcode.equalsIgnoreCase((String)request.getSession().getAttribute("randCheckCode"))){
+			request.setAttribute("flag", "codeError");
+			return "Register";
+		}
             
 		String name=request.getParameter("name");
 		String pwd=request.getParameter("password");
@@ -62,17 +67,16 @@ public class AccountController {
 		try{
 			int returnResult=accountServices.insertUser(temp);
 		    if(returnResult==0){
-		    	
-		    	request.setAttribute("flag", "namexist");
+		    	request.setAttribute("flag", "nameExist");
 		    	return "Register";
 		
 		    }else{
-		    	
-		        return  "Login";
+				request.setAttribute("flag","success");
+		        return "Login";
 		    }  
 		}catch(Exception e){
 			System.out.println(e);
-			request.setAttribute("flag", "failhhh");
+			request.setAttribute("flag", "fail");
 	    	return "Register";
 			
 		}
@@ -83,8 +87,7 @@ public class AccountController {
         
 		String name =request.getParameter("name");
 		String password=request.getParameter("password");
-		
-	    System.out.println(name+" "+password);
+
 		User temp=new User();
 		
 		User selectUser=accountServices.getUser(name);
@@ -97,20 +100,21 @@ public class AccountController {
 				else
 					request.getSession().setAttribute("power","0");
 				request.getSession().setAttribute("name",selectUser.getName());
+				request.getSession().setAttribute("account",selectUser.getUid());
+				request.getSession().setAttribute("password",selectUser.getPassword());
 				return "Welcome";
 			}else{
-				request.setAttribute("success","false");
+				request.setAttribute("flag","failure");
 				return "Login";
 			}	
 		}else{
-			request.setAttribute("success","false");
+			request.setAttribute("flag","failure");
 			return "Login";
 		}
 	}
 
 	@RequestMapping(value="/getImage.do")
-	public void getImageCode(HttpServletRequest request,HttpServletResponse response) throws IOException
-	{
+	public void getImageCode(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		
 		System.out.println("验证码");
 		//设置不缓存图片
@@ -178,9 +182,76 @@ public class AccountController {
 		ImageIO.write(image,"JPEG",response.getOutputStream());	//输出图片
 	}
 	
-	@RequestMapping(value="updatePassword")
-	public String updatePassword(HttpServletRequest request,HttpServletResponse response){
-		return "";
+	@RequestMapping(value="modifyPassword")
+	public String modifyPassword(HttpServletRequest request,HttpServletResponse response){
+
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		String uid = (String)request.getSession().getAttribute("account");
+		User user = new User();
+		User isExist=accountServices.getUser(uid);
+		String password = request.getParameter("password");
+
+		user.setUid(uid);
+		user.setPassword(password);
+		user.setName(isExist.getName());
+		user.setEmail(isExist.getEmail());
+		user.setPhonenumber(isExist.getPhonenumber());
+		user.setIsmanager(isExist.getIsmanager());
+
+		try {
+			accountServices.update(user);
+		} catch (Exception e) {
+			request.setAttribute("flag", "fail");
+		}
+		request.getSession().setAttribute("password",password);
+		return "forward:/Welcome.jsp";
+	}
+
+	@RequestMapping(value="updateUserInfo")
+	public String updateUserInfo(HttpServletRequest request,HttpServletResponse response){
+
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		String uid = (String)request.getSession().getAttribute("account");
+		User user = new User();
+		User isExist=accountServices.getUser(uid);
+		String name = request.getParameter("name");
+		String phonenumber = request.getParameter("phonenumber");
+		String email = request.getParameter("email");
+
+		user.setUid(uid);
+		user.setPassword(isExist.getPassword());
+		user.setName(name);
+		user.setPhonenumber(phonenumber);
+		user.setEmail(email);
+		user.setIsmanager(isExist.getIsmanager());
+
+		try {
+			accountServices.update(user);
+		} catch (Exception e) {
+			request.setAttribute("flag", "fail");
+		}
+
+		return "forward:/Welcome.jsp";
+	}
+
+	@RequestMapping(value="/getUser.do")
+	public  String getUserById(HttpServletRequest request,HttpServletResponse response){
+		String id = (String)request.getSession().getAttribute("account");
+		User user = accountServices.getUser(id);
+		request.setAttribute("user",user);
+		return "forward:/PersonalCenter.jsp";
 	}
 	
 	/*该方法主要作用是获得随机生成的颜色*/ 

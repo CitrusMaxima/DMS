@@ -21,7 +21,7 @@
     <link href="css/morris-0.4.3.min.css" rel="stylesheet" />
     <!-- Custom Styles-->
     <link href="css/custom-styles.css" rel="stylesheet" />
-    <!-- Google Fonts-->
+    <link rel="stylesheet" type="text/css" href="css/mdialog.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/cssCharts.css">
@@ -59,7 +59,7 @@
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
         <li>
-            <a href="PersonalCenter.jsp"><i class="fa fa-user fa-fw"></i> 个人中心</a>
+            <a href="../account/getUser.do"><i class="fa fa-user fa-fw"></i> 个人中心</a>
         </li>
         <li>
             <a href="ModifyPassword.jsp"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
@@ -133,7 +133,7 @@
                             <a href="User-Add.jsp">添加用户</a>
                         </li>
                         <li>
-                            <a href="User.jsp">用户查询</a>
+                            <a href="/user/getuser.do">用户查询</a>
                         </li>
                     </ul>
                 </li>
@@ -206,7 +206,7 @@
                                 </div>
                             </form>
                             <a class="waves-effect waves-light btn-large" id="modify">修改</a>
-                            <a disabled class="waves-effect waves-light btn-large" id="save" onclick="document.getElementById('fileform1').submit();">保存</a>
+                            <a disabled class="waves-effect waves-light btn-large" id="save" >保存</a>
                             <div id="textfield"></div>
                         </div>
                     </div>
@@ -230,7 +230,7 @@
 
 <!-- Metis Menu Js -->
 <script src="js/jquery.metisMenu.js"></script>
-<!-- Morris Chart Js -->
+<script type="text/javascript" src="js/mdialog.js"></script>
 <script src="js/raphael-2.1.0.min.js"></script>
 <script src="js/morris.js"></script>
 
@@ -239,7 +239,7 @@
 <script src="js/easypiechart-data.js"></script>
 
 <script src="js/jquery.chart.js"></script>
-<!-- DATA TABLE SCRIPTS -->
+<script type="text/javascript" src="js/zepto.min.js"></script>
 <script src="js/jquery.dataTables.js"></script>
 <script src="js/dataTables.bootstrap.js"></script>
 <script language="javascript" type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
@@ -299,6 +299,7 @@
         $(".validate").attr("disabled", true);
         $("#save").attr("disabled", true);
         $("#modify").attr("disabled", false);
+        document.getElementById("fileform1").submit();
         return true;
     });
 </script>

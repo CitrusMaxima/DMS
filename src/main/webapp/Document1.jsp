@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="css/morris-0.4.3.min.css" rel="stylesheet" />
     <!-- Custom Styles-->
     <link href="css/custom-styles.css" rel="stylesheet" />
-    <!-- Google Fonts-->
+    <link rel="stylesheet" type="text/css" href="css/mdialog.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/cssCharts.css">
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- Dropdown Structure -->
 		<ul id="dropdown1" class="dropdown-content">
 			<li>
-				<a href="PersonalCenter.jsp"><i class="fa fa-user fa-fw"></i> 个人中心</a>
+				<a href="../account/getUser.do"><i class="fa fa-user fa-fw"></i> 个人中心</a>
 			</li>
             <li>
                 <a href="ModifyPassword.jsp"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
@@ -133,7 +133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <a href="User-Add.jsp">添加用户</a>
                             </li>
                             <li>
-                                <a href="User.jsp">用户查询</a>
+                                <a href="/user/getuser.do">用户查询</a>
                             </li>
                         </ul>
                     </li>
@@ -224,16 +224,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
     <!-- Metis Menu Js -->
     <script src="js/jquery.metisMenu.js"></script>
-    <!-- Morris Chart Js -->
+    <script type="text/javascript" src="js/mdialog.js"></script>
     <script src="js/raphael-2.1.0.min.js"></script>
     <script src="js/morris.js"></script>
-	
 	
 	<script src="js/easypiechart.js"></script>
 	<script src="js/easypiechart-data.js"></script>
 	
 	 <script src="js/jquery.chart.js"></script>
-	 <!-- DATA TABLE SCRIPTS -->
+	 <script type="text/javascript" src="js/zepto.min.js"></script>
     <script src="js/jquery.dataTables.js"></script>
     <script src="js/dataTables.bootstrap.js"></script>
         <script>
@@ -249,7 +248,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         if (power == "0")
             admin.style.display="none";
         $(".modify").click(function() {
-            var id= $(this).parent("tr").children("td").html();     	
+            var id= $(this).parent("tr").children("td").html();
         	document.write("<form action=../DocumentManaging/getFileOfInstructionsById.do method=post name=formx1 style='display:none'>");
             document.write("<input type=hidden name=pid value='"+id+"'>");
         	document.write("<input type=hidden name=jsp value=Document1-Modify.jsp>");
@@ -257,10 +256,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	document.formx1.submit();
         });
         $(".btn-danger").click(function() {
-            var id= $(this).parent("td").parent("tr").children("td").html();
-        	document.write("<form action=../DocumentManaging/deleteFileOfInstructionById.do method=post name=formx1 style='display:none'>");
-            document.write("<input type=text name=id value='"+id+"'>");
-        	document.formx1.submit();
+            if (confirm("确定要删除吗？")){
+                var id= $(this).parent("td").parent("tr").children("td").html();
+                document.write("<form action=../DocumentManaging/deleteFileOfInstructionById.do method=post name=formx1 style='display:none'>");
+                document.write("<input type=text name=id value='"+id+"'>");
+                document.formx1.submit();
+            }
         });
 
     </script>

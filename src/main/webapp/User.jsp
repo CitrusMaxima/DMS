@@ -3,7 +3,8 @@
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -20,7 +21,7 @@
     <link href="css/morris-0.4.3.min.css" rel="stylesheet" />
     <!-- Custom Styles-->
     <link href="css/custom-styles.css" rel="stylesheet" />
-    <!-- Google Fonts-->
+    <link rel="stylesheet" type="text/css" href="css/mdialog.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/cssCharts.css">
@@ -58,7 +59,7 @@
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
         <li>
-            <a href="PersonalCenter.jsp"><i class="fa fa-user fa-fw"></i> 个人中心</a>
+            <a href="../account/getUser.do"><i class="fa fa-user fa-fw"></i> 个人中心</a>
         </li>
         <li>
             <a href="ModifyPassword.jsp"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
@@ -132,7 +133,7 @@
                             <a href="User-Add.jsp">添加用户</a>
                         </li>
                         <li>
-                            <a href="User.jsp">用户查询</a>
+                            <a href="/user/getuser.do">用户查询</a>
                         </li>
                     </ul>
                 </li>
@@ -177,16 +178,18 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td class="center modify">Citrus</td>
-                                        <td class="center modify">123</td>
-                                        <td class="center modify">杨旭</td>
-                                        <td class="center modify">XXXXXXXXXX</td>
-                                        <td class="center modify">XXXXXXXXXX@XX.com</td>
-                                        <td class="center">
-                                            <button class="btn btn-danger">删除</button>
-                                        </td>
-                                    </tr>
+                                    <c:forEach items="${users}"  var="user">
+                                        <tr>
+                                            <td class="center modify">${user.uid}</td>
+                                            <td class="center modify">${user.password}</td>
+                                            <td class="center modify">${user.name}</td>
+                                            <td class="center modify">${user.phonenumber}</td>
+                                            <td class="center modify">${user.email}</td>
+                                            <td class="center">
+                                                <button class="btn btn-danger">删除</button>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -211,7 +214,7 @@
 
     <!-- Metis Menu Js -->
     <script src="js/jquery.metisMenu.js"></script>
-    <!-- Morris Chart Js -->
+    <script type="text/javascript" src="js/mdialog.js"></script>
     <script src="js/raphael-2.1.0.min.js"></script>
     <script src="js/morris.js"></script>
 
@@ -220,7 +223,7 @@
     <script src="js/easypiechart-data.js"></script>
 
     <script src="js/jquery.chart.js"></script>
-    <!-- DATA TABLE SCRIPTS -->
+    <script type="text/javascript" src="js/zepto.min.js"></script>
     <script src="js/jquery.dataTables.js"></script>
     <script src="js/dataTables.bootstrap.js"></script>
     <script>
@@ -232,7 +235,17 @@
     <script src="js/custom-scripts.js"></script>
     <script type="text/javascript">
         $(".modify").click(function() {
-            window.location.href="User-Modify.jsp";
+            var id= $(this).parent("tr").children("td").html();
+            document.write("<form action=../user/getUserById.do method=post name=formx1 style='display:none'>");
+            document.write("<input type=hidden name=uid value='"+id+"'>");
+            document.write("</form>");
+            document.formx1.submit();
+        });
+        $(".btn-danger").click(function() {
+            var id= $(this).parent("td").parent("tr").children("td").html();
+            document.write("<form action=../user/deleteUserById.do method=post name=formx1 style='display:none'>");
+            document.write("<input type=text name=uid value='"+id+"'>");
+            document.formx1.submit();
         });
     </script>
 </div>

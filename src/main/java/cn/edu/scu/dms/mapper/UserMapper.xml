@@ -18,6 +18,11 @@
     from user
     where uid = #{uid,jdbcType=VARCHAR}
   </select>
+  <select id="getAllUser" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from user
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from user
     where uid = #{uid,jdbcType=VARCHAR}
