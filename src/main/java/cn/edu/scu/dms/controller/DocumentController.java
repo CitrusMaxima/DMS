@@ -13,6 +13,7 @@ import javax.enterprise.inject.New;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.edu.scu.dms.tool.CharacTool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ import cn.edu.scu.dms.services.AccountServices;
 import cn.edu.scu.dms.services.FileOfApplying;
 import cn.edu.scu.dms.services.FileOfInstructionsServices;
 import cn.edu.scu.dms.services.FileOfReceivingServices;
+import cn.edu.scu.dms.tool.CharacTool;
 
 @Controller
 @RequestMapping(value="/DocumentManaging")
@@ -76,6 +78,8 @@ public class DocumentController {
         String isdone=request.getParameter("isdone");
         String phone=request.getParameter("phone");
         String direction=request.getParameter("direction");
+
+		//title = CharacTool.encoding(title);
         
         file.setPid(pid);
         file.setRectime(rectime);
@@ -152,6 +156,8 @@ public class DocumentController {
         String isdone=request.getParameter("isdone");
         String phone=request.getParameter("phone");
         String direction=request.getParameter("direction");
+
+		title = CharacTool.encoding(title);
         
         file.setPid(pid);
         file.setRectime(rectime);

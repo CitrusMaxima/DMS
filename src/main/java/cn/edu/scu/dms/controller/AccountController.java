@@ -55,6 +55,7 @@ public class AccountController {
 		User temp = new User();
 		temp.setUid(name);
 		temp.setPassword(pwd);
+		temp.setName(nickname);
 		temp.setEmail(email);
 		temp.setPhonenumber(phoneNumber);
 		temp.setIsmanager(false);
