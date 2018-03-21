@@ -1,9 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -28,10 +28,6 @@
 </head>
 
 <body>
-<script>
-   
-   
-</script>
 <div id="wrapper">
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
@@ -53,7 +49,7 @@
             <li>
                 <a class="dropdown-button waves-effect waves-dark" data-activates="dropdown1">
                     <i class="fa fa-user fa-fw"></i>
-                    <b>杨旭</b>
+                    <b><%=request.getSession().getAttribute("name")%></b>
                     <i class="material-icons right">arrow_drop_down</i>
                 </a>
             </li>
@@ -87,7 +83,7 @@
                                     <a href="Document1-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="DocumentManaging/getFiles.do">查询</a>
+                                    <a href="/DocumentManaging/getFiles.do">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -98,7 +94,7 @@
                                     <a href="Document2-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document2.jsp">查询</a>
+                                    <a href="/DocumentManaging/getFilesOfReceiving.do">查询</a>
                                 </li>
                             </ul>
                         </li>

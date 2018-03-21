@@ -95,6 +95,7 @@ public class AccountController {
 					request.getSession().setAttribute("power","1");
 				else
 					request.getSession().setAttribute("power","0");
+				request.getSession().setAttribute("name",selectUser.getName());
 				return "Welcome";
 			}else{
 				request.setAttribute("success","false");

@@ -18,7 +18,7 @@
      <mvc:annotation-driven/>
      <!-- 使用注解开发，不用配置controller，需要配置一个组件扫描器 -->  
      <context:component-scan base-package="cn.edu.scu.dms.controller"/>
-     
+
      <!-- 视图解析器 -->                
      <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
            <!-- 配置从项目根目录到指定目录一端路径 ,建议指定浅一点的目录-->

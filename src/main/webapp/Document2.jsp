@@ -3,6 +3,8 @@
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -49,7 +51,7 @@
             <li>
                 <a class="dropdown-button waves-effect waves-dark" data-activates="dropdown1">
                     <i class="fa fa-user fa-fw"></i>
-                    <b>杨旭</b>
+                    <b><%=request.getSession().getAttribute("name")%></b>
                     <i class="material-icons right">arrow_drop_down</i>
                 </a>
             </li>
@@ -83,7 +85,7 @@
                                     <a href="Document1-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="DocumentManaging/getFiles.do">查询</a>
+                                    <a href="/DocumentManaging/getFiles.do">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -94,7 +96,7 @@
                                     <a href="Document2-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document2.jsp">查询</a>
+                                    <a href="/DocumentManaging/getFilesOfReceiving.do">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -181,19 +183,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td class="center modify">1</td>
-                                        <td class="center modify">2017-12-21</td>
-                                        <td class="center modify">XX办事处</td>
-                                        <td class="center modify">20</td>
-                                        <td class="center modify">XXXXXXXXXX</td>
-                                        <td class="center modify">2018-1-23</td>
-                                        <td class="center modify">XXXXXXXXXX</td>
-                                        <td class="center modify">XX办事处</td>
-                                        <td class="center">
-                                            <button class="btn btn-danger">删除</button>
-                                        </td>
-                                    </tr>
+                                    <c:forEach items="${files}"  var="swwj">
+                                        <tr>
+                                            <td class="center modify">${swwj.sid}</td>
+                                            <td class="center modify"><fmt:formatDate value="${swwj.time1}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+                                            <td class="center modify">${swwj.department}</td>
+                                            <td class="center modify">${swwj.number1}</td>
+                                            <td class="center modify">${swwj.title}</td>
+                                            <td class="center modify"><fmt:formatDate value="${swwj.dotime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+                                            <td class="center modify">${swwj.wpishi}</td>
+                                            <td class="center modify">${swwj.direction}</td>
+                                            <td class="center">
+                                                <button class="btn btn-danger">删除</button>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -243,7 +247,12 @@
         if (power == "0")
             admin.style.display="none";
         $(".modify").click(function() {
-            window.location.href="Document2-Modify.jsp";
+            var id= $(this).parent("tr").children("td").html();
+            document.write("<form action=../DocumentManaging/getFileOfReceivingById.do method=post name=formx1 style='display:none'>");
+            document.write("<input type=hidden name=sid value='"+id+"'>");
+            document.write("<input type=hidden name=jsp value=Document2-Modify.jsp>");
+            document.write("</form>");
+            document.formx1.submit();
         });
     </script>
 </div>

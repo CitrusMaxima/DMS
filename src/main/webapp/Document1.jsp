@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<li>
 					<a class="dropdown-button waves-effect waves-dark" data-activates="dropdown1">
 						<i class="fa fa-user fa-fw"></i> 
-						<b>杨旭</b> 
+						<b><%=request.getSession().getAttribute("name")%></b>
 						<i class="material-icons right">arrow_drop_down</i>
 					</a>
 				</li>
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <a href="Document1-Add.jsp">登记</a>
                                     </li>
                                     <li>
-                                        <a href="">查询</a>
+                                        <a href="/DocumentManaging/getFiles.do">查询</a>
                                     </li>
                                 </ul>
                             </li>
@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <a href="Document2-Add.jsp">登记</a>
                                     </li>
                                     <li>
-                                        <a href="Document2.jsp">查询</a>
+                                        <a href="/DocumentManaging/getFilesOfReceiving.do">查询</a>
                                     </li>
                                 </ul>
                             </li>
@@ -251,18 +251,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $(".modify").click(function() {
             var id= $(this).parent("tr").children("td").html();     	
         	document.write("<form action=../DocumentManaging/getFileOfInstructionsById.do method=post name=formx1 style='display:none'>");
-            document.write("<input type=text name=pid value='"+id+"'>");
+            document.write("<input type=hidden name=pid value='"+id+"'>");
         	document.write("<input type=hidden name=jsp value=Document1-Modify.jsp>");
         	document.write("</form>");
         	document.formx1.submit();
         });
         $(".btn-danger").click(function() {
-            var id= $(this).parent("td").parent("tr").children("td").html(); 
+            var id= $(this).parent("td").parent("tr").children("td").html();
         	document.write("<form action=../DocumentManaging/deleteFileOfInstructionById.do method=post name=formx1 style='display:none'>");
             document.write("<input type=text name=id value='"+id+"'>");
         	document.formx1.submit();
         });
-        
+
     </script>
     </div>
 </body>

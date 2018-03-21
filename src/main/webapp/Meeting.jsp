@@ -48,7 +48,7 @@
             <li>
                 <a class="dropdown-button waves-effect waves-dark" data-activates="dropdown1">
                     <i class="fa fa-user fa-fw"></i>
-                    <b>杨旭</b>
+                    <b><%=request.getSession().getAttribute("name")%></b>
                     <i class="material-icons right">arrow_drop_down</i>
                 </a>
             </li>
@@ -82,7 +82,7 @@
                                     <a href="Document1-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="DocumentManaging/getFiles.do">查询</a>
+                                    <a href="/DocumentManaging/getFiles.do">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -93,7 +93,7 @@
                                     <a href="Document2-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document2.jsp">查询</a>
+                                    <a href="/DocumentManaging/getFilesOfReceiving.do">查询</a>
                                 </li>
                             </ul>
                         </li>

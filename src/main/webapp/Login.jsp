@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<h2>文档管理系统</h2>
 		<div class="login-top">
 			<h1>用户登录</h1>
-			<form  action="Login.do" method="GET">
+			<form action="Login.do" method="GET">
 				<input type="text" name="name" value="用户名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '用户名';}">
 				<input type="password" name="password" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
 		    <div class="forgot">

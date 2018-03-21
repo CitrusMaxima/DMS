@@ -1,6 +1,7 @@
 package cn.edu.scu.dms.dao;
 
 import cn.edu.scu.dms.model.Swwj;
+import java.util.List;
 
 public interface SwwjMapper {
     int deleteByPrimaryKey(String sid);
@@ -10,6 +11,7 @@ public interface SwwjMapper {
     int insertSelective(Swwj record);
 
     Swwj selectByPrimaryKey(String sid);
+    List<Swwj> getAllFile();
 
     int updateByPrimaryKeySelective(Swwj record);
 
