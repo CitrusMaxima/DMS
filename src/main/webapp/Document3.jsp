@@ -3,7 +3,8 @@
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -181,19 +182,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <c:forEach items="${files}"  var="qpwj">
                                     <tr>
-                                        <td class="center modify">1</td>
-                                        <td class="center modify">2017-12-21</td>
-                                        <td class="center modify">XXXXXXXXXX</td>
-                                        <td class="center modify">2018-1-23</td>
-                                        <td class="center modify">XXXXXXXXXX</td>
-                                        <td class="center modify">XXXXXXXXXX</td>
-                                        <td class="center modify">XX办事处</td>
-                                        <td class="center modify">XXXXXXXXXX</td>
+                                        <td class="center modify">${qpwj.qpid}</td>
+                                        <td class="center modify"> <fmt:formatDate value="${qpwj.qptime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+                                        <td class="center modify">${qpwj.title}</td>
+                                        <td class="center modify"> <fmt:formatDate value="${qpwj.attribute}" pattern="yyyy-MM-dd" /></td>
+                                        <td class="center modify">${qpwj.leader_name}</td>
+                                        <td class="center modify">${qpwj.zpishi}</td>
+                                        <td class="center modify">${qpwj.direction}</td>
+                                        <td class="center modify">${qpwj.note}</td>
                                         <td class="center">
                                             <button class="btn btn-danger">删除</button>
                                         </td>
                                     </tr>
+                                   </c:forEach> 
                                     </tbody>
                                 </table>
                             </div>

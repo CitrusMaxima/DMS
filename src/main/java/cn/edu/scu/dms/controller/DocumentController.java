@@ -1,5 +1,6 @@
 package cn.edu.scu.dms.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -35,7 +36,7 @@ public class DocumentController {
 	@Autowired
 	FileOfReceivingServices fileOfReceiving;
 	//报批示文件
-	//@Autowired
+	@Autowired
     FileOfApplying fileOfApplying;
 	
 	//批示文件操作对应的Conroller
@@ -117,17 +118,7 @@ public class DocumentController {
 		request.setAttribute("files", files);
 		return "forward:/Document1.jsp";
 	}
-	@RequestMapping(value="/deleteFile.do")
-	public String deleteFileOfInstructions(HttpServletRequest request,HttpServletResponse response){
-		String id=request.getParameter("pid");
-		try {
-			fileOfInstructions.deleteFile(id);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		return "";
-	}
+
 	
 	@RequestMapping(value="/updateFileofInstructions.do")
 	public  String updateFileofInstructions(HttpServletRequest request,HttpServletResponse response) throws ParseException{
@@ -202,6 +193,23 @@ public class DocumentController {
 		return "forward:/"+jsp;
 		
 	}
+    @RequestMapping(value="/deleteFileOfInstructionById.do")
+    public String deleteFileOfInstructionById(HttpServletRequest request,HttpServletResponse response){
+    	
+    	String id=request.getParameter("id");
+    	List<Pswj> files=null;
+    	try {
+    	 fileOfInstructions.deleteFile(id);
+         files=fileOfInstructions.getAllFile();
+    	}catch(Exception e){
+    		System.out.println(e);
+    		request.setAttribute("flag","delete fail");
+    		return "forward:/Document1.jsp";
+    	}
+    	request.setAttribute("files",files);
+		return "forward:/Document1.jsp";
+	}
+    
 	//收文登记文件对应的Controller
 	@RequestMapping(value="/registerFileOfReceiving.do")
 	public String registerFileOfReceiving(HttpServletRequest request,HttpServletResponse response) throws ParseException{
@@ -353,10 +361,8 @@ public class DocumentController {
 		Qpwj qpwj=null;
 		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
 		
-
 		NumberFormat numberformat1 = NumberFormat.getNumberInstance();     
 		numberformat1.setMinimumIntegerDigits(7);
-		
 		NumberFormat numberformat2 = NumberFormat.getNumberInstance();     
 		numberformat2.setMinimumIntegerDigits(3);
 		
@@ -390,22 +396,42 @@ public class DocumentController {
 		   fileOfApplying.registerFile(qpwj);
 		} catch (Exception e) {
 			// TODO: handle exception
+			request.setAttribute("flag","fail");
 			System.out.println("包批示文件登记出错");
+			return "forward:/Document2-Add.jsp";
 		}
-        
-		return "";
+        List<Qpwj> files=null;
+        try {
+			files=fileOfApplying.getAllFile();
+		} catch (Exception e) {
+		   System.out.println("获取批示文件出错");	
+		}
+		request.setAttribute("files",files);
+		return "forward:/Document3.jsp";
 	}
 	@RequestMapping(value="/getFileOfApplying.do")
 	public String getFileOfApplying(HttpServletRequest request,HttpServletResponse response){
-		List<Qpwj> temp=null;
-		
+		List<Qpwj> files=null;
 		try {
-			temp=fileOfApplying.getAllFile();
+			files=fileOfApplying.getAllFile();
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.out.println("获取批示文件出错");
 		}
+		request.setAttribute("files", files);
+		return "forward:/Document1.jsp";
+	}
+	public  String updateFileofApplying(HttpServletRequest request,HttpServletResponse response) throws ParseException{
+		System.out.println("报批示更新开始");
+		
+		String qpid=request.getParameter("qpid");
+		Qpwj file=new Qpwj();
+		
+		
+		
 		
 		return "";
 	}
+	
 	
 }

@@ -186,7 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <c:forEach items="${files}"  var="pswj">
                                                 <tr>
 												    <td class="center modify">${pswj.pid}</td>
-												    <td class="center modify"><fmt:formatDate value="${pswj.rectime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+												    <td class="center modify"> <fmt:formatDate value="${pswj.rectime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 												    <td class="center modify">${pswj.title}</td>
 												    <td class="center modify">${pswj.numbers}</td>
 												    <td class="center modify">${pswj.spishi}</td>
@@ -256,6 +256,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	document.write("</form>");
         	document.formx1.submit();
         });
+        $(".btn-danger").click(function() {
+            var id= $(this).parent("td").parent("tr").children("td").html();
+        	document.write("<form action=../DocumentManaging/deleteFileOfInstructionById.do method=post name=formx1 style='display:none'>");
+            document.write("<input type=text name=id value='"+id+"'>");
+        	document.formx1.submit();
+        });
+
     </script>
     </div>
 </body>
