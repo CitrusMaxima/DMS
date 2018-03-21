@@ -404,7 +404,6 @@ public class DocumentController {
 			isExist=fileOfInstructions.getPswjById(qpid);
 		}while(isExist!=null);
 		
-		System.out.println("报批示文件"+qpid);
 		
         Date qptime=formatter.parse(request.getParameter("qptime"));
 		String title=request.getParameter("title");
@@ -412,7 +411,7 @@ public class DocumentController {
         Date attribute=formatter.parse(request.getParameter("attribute"));
         String leaderName=request.getParameter("leaderName");
         String zpishi=request.getParameter("zpishi");
-        String direction=request.getParameter("direcion");
+        String direction=request.getParameter("direction");
         String note=request.getParameter("note");
         
         qpwj.setQpid(qpid);
@@ -429,7 +428,7 @@ public class DocumentController {
 			// TODO: handle exception
 			request.setAttribute("flag","fail");
 			System.out.println("包批示文件登记出错");
-			return "forward:/Document2-Add.jsp";
+			return "forward:/Document3-Add.jsp";
 		}
         List<Qpwj> files=null;
         try {
@@ -450,7 +449,7 @@ public class DocumentController {
 			System.out.println("获取批示文件出错");
 		}
 		request.setAttribute("files", files);
-		return "forward:/Document1.jsp";
+		return "forward:/Document3.jsp";
 	}
 	
    @RequestMapping(value="/deleteFileOfApplyingById.do")
