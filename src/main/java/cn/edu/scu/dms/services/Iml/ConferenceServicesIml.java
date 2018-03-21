@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.scu.dms.dao.MeetingMapper;
 import cn.edu.scu.dms.model.Meeting;
+import cn.edu.scu.dms.model.MeetingStatistical;
 import cn.edu.scu.dms.services.ConferenceServices;
 
 @Service
@@ -37,6 +38,34 @@ public class ConferenceServicesIml implements ConferenceServices {
     	List<Meeting> temp=null;
     	temp=mapper.getAll();
 		return null;
+	}
+
+    @Transactional
+	public void updateMeeting(Meeting meeting) {
+		mapper.updateByPrimaryKey(meeting);
+	}
+
+	@Transactional
+	public Boolean deleteMeetingById(String mid) {
+		// TODO Auto-generated method stub
+	   mapper.deleteByPrimaryKey(mid);
+	   return true;
+	}
+
+	@Override
+	public List<MeetingStatistical> getMeetingHold() {
+		// TODO Auto-generated method stub
+		List<MeetingStatistical> temp=null;
+		temp=mapper.getMeetingStatisticalsHold();
+		return temp;
+	}
+
+	@Override
+	public List<MeetingStatistical> getMeetingUnHold() {
+		// TODO Auto-generated method stub
+		List<MeetingStatistical> tempList=null;
+		tempList=mapper.getMeetingStatisticalsUnHold();
+		return tempList;
 	}
 
 }

@@ -125,7 +125,6 @@ public class DocumentController {
 		request.setAttribute("files", files);
 		return "forward:/Document1.jsp";
 	}
-
 	
 	@RequestMapping(value="/updateFileofInstructions.do")
 	public  String updateFileofInstructions(HttpServletRequest request,HttpServletResponse response) throws ParseException{

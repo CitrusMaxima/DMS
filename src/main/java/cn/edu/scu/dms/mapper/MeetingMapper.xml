@@ -11,6 +11,10 @@
     <result column="Ishold" jdbcType="BIT" property="ishold" />
     <result column="document" jdbcType="VARCHAR" property="document" />
   </resultMap>
+   <resultMap id="MeetingStatisticalMap" type="cn.edu.scu.dms.model.MeetingStatistical">
+    <id column="year" jdbcType="VARCHAR" property="year" />
+    <result column="total" jdbcType="Integer" property="total" />
+  </resultMap>
   <sql id="Base_Column_List">
     mid, mtime, host, characters, place, names, Ishold, document
   </sql>
@@ -19,6 +23,17 @@
     <include refid="Base_Column_List" />
     from meeting
     where mid = #{mid,jdbcType=VARCHAR}
+  </select>
+  <select id="getMeetingStatisticalsHold"  resultMap="MeetingStatisticalMap">
+    select DATE_FORMAT(mtime,'yyyy')as year,count(mid) as total from  meeting  where Ishold<![CDATA[ > ]]> 0  group by year 
+  </select>
+  <select id="getMeetingStatisticalsUnHold"  resultMap="MeetingStatisticalMap">
+    select DATE_FORMAT(mtime,'yyyy')as year,count(mid) as total from  meeting  where Ishold<![CDATA[ < ]]> 1  group by year 
+  </select>
+  <select id="getAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from meeting
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from meeting

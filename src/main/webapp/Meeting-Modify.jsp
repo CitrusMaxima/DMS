@@ -3,7 +3,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -27,6 +27,16 @@
 </head>
 
 <body>
+<script>
+	
+	Boolean ishold=${meeting.ishold};
+	var chk = document.getElementById('IsHold');
+	if(ishold){
+		chk.checked = true;
+	}els{
+		chk.checked = false;
+	}
+</script>
 <div id="wrapper">
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
@@ -162,42 +172,42 @@
                             会议管理
                         </div>
                         <div class="card-content">
-                            <form class="col s12" id="fileform1">
+                            <form class="col s12" id="fileform1" action="conference/updateConference.do" method="post">
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input id="host" name="host" type="text" class="validate" value="XXXXXXXXXXXXXX"/>
+                                        <input id="host" name="host" type="text" class="validate" value="${meeting.host}"/>
                                         <label class="active" for="host">会议召开人</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="time" name="mtime" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+                                        <input id="time" name="mtime" type="text" class="Wdate validate" value="<fmt:formatDate value='${meeting.mtime }' pattern='yyyy-MM-dd HH:mm:ss' />" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
                                         <label class="active" for="time">会议时间</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="character" name="characters" type="text" class="validate" value="XXXXXXXXXXXXXX">
+                                        <input id="character" name="characters" type="text" class="validate" value="${meeting.characters}">
                                         <label class="active" for="character">会议性质</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="name" name="names" type="text" class="validate" value="XXXXXXXXXXXXXX">
+                                        <input id="name" name="names" type="text" class="validate" value="${meeting.names}">
                                         <label class="active" for="name">参与者</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="place" name="place" type="text" class="validate" value="XXXXXXXXXXXXXX">
+                                        <input id="place" name="place" type="text" class="validate" value="${meeting.place}">
                                         <label for="place">会议地点</label>
                                     </div>
                                 </div>
                                 <div class="row col s12" style="margin-bottom: 0px; ">
                                         <label class="active row" for="document">会议文件</label>
                                         <div class="row">
-                                            <input id="document" name="wname" type="file" multiple onchange="change()" />
+                                            <input id="document" name="wname" type="file" value="${meeting.wname}" multiple onchange="change()" />
                                         </div>
                                         <div id="show" class="row" style="margin-bottom: 0px; "></div>
                                 </div>
                                 <p>
-                                    <input type="checkbox" name="ishold" id="IsHold" name="ishold"/>
+                                    <input type="checkbox" name="ishold" id="IsHold" name="ishold" />
                                     <label for="IsHold">已召开</label>
                                 </p>
                             </form>
@@ -238,7 +248,7 @@
 <!-- DATA TABLE SCRIPTS -->
 <script src="js/jquery.dataTables.js"></script>
 <script src="js/dataTables.bootstrap.js"></script>
-<script language="javascript" type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 <script>
     $(document).ready(function () {
         $(".validate").attr("disabled", true);

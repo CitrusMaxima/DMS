@@ -243,8 +243,21 @@
         if (power == "0")
             admin.style.display="none";
         $(".modify").click(function() {
-            window.location.href="Meeting-Modify.jsp";
+        	var id= $(this).parent("tr").children("td").html();     	
+        	document.write("<form action=../conference/getMeetingById.do method=post name=formx1 style='display:none'>");
+            document.write("<input type=hidden name=pid value='"+id+"'>");
+        	document.write("<input type=hidden name=jsp value=Meeting-Moodify.jsp>");
+        	document.write("</form>");
+        	document.formx1.submit();
         });
+        
+        $(".btn-danger").click(function() {
+            var id= $(this).parent("td").parent("tr").children("td").html();
+        	document.write("<form action=../DocumentManaging/deleteMeetingById.do method=post name=formx1 style='display:none'>");
+            document.write("<input type=text name=id value='"+id+"'>");
+        	document.formx1.submit();
+        });
+
     </script>
 </div>
 </body>
