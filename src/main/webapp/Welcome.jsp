@@ -39,6 +39,10 @@
     if (flag == 'modifySuccess') {
         new TipBox({type:'success',str:'修改成功！',setTime:1500});
     }
+    var login = '<%=request.getSession().getAttribute("login")%>';
+    if (login != 'success'){
+        window.location.href="Login.jsp";
+    }
 </script>
 <div id="wrapper">
     <nav class="navbar navbar-default top-navbar" role="navigation">

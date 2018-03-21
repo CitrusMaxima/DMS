@@ -34,12 +34,9 @@
     if (flag == 'modifyFail'){
         new TipBox({type:'error',str:'修改失败',hasBtn:true});
     }
-    Boolean ishold=${meeting.ishold};
-    var chk = document.getElementById('IsHold');
-    if(ishold){
-        chk.checked = true;
-    }else{
-        chk.checked = false;
+    var login = '<%=request.getSession().getAttribute("login")%>';
+    if (login != 'success'){
+        window.location.href="Login.jsp";
     }
 </script>
 <div id="wrapper">

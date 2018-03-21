@@ -34,9 +34,12 @@
     var flag = '<%=request.getAttribute("flag")%>';
     if (flag == 'nameExist'){
         new TipBox({type:'error',str:'用户名已存在！',hasBtn:true});
-    }
-    if (flag == 'registerFail'){
+    } else if (flag == 'registerFail'){
         new TipBox({type:'error',str:'添加失败！',hasBtn:true});
+    }
+    var login = '<%=request.getSession().getAttribute("login")%>';
+    if (login != 'success'){
+        window.location.href="Login.jsp";
     }
 </script>
 <div id="wrapper">

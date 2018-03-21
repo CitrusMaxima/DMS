@@ -34,6 +34,10 @@
     if (flag == 'registerFail'){
         new TipBox({type:'error',str:'登记失败',hasBtn:true});
     }
+    var login = '<%=request.getSession().getAttribute("login")%>';
+    if (login != 'success'){
+        window.location.href="Login.jsp";
+    }
 </script>
 <div id="wrapper">
     <nav class="navbar navbar-default top-navbar" role="navigation">

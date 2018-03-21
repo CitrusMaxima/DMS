@@ -102,6 +102,7 @@ public class AccountController {
 				request.getSession().setAttribute("name",selectUser.getName());
 				request.getSession().setAttribute("account",selectUser.getUid());
 				request.getSession().setAttribute("password",selectUser.getPassword());
+				request.getSession().setAttribute("login","success");
 				return "Welcome";
 			}else{
 				request.setAttribute("flag","failure");
