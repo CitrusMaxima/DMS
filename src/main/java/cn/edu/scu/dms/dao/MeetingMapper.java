@@ -1,9 +1,12 @@
 package cn.edu.scu.dms.dao;
 
+import java.util.List;
+
 import cn.edu.scu.dms.model.Meeting;
 
 public interface MeetingMapper {
-    int deleteByPrimaryKey(String mid);
+
+	int deleteByPrimaryKey(String mid);
 
     int insert(Meeting record);
 
@@ -14,4 +17,6 @@ public interface MeetingMapper {
     int updateByPrimaryKeySelective(Meeting record);
 
     int updateByPrimaryKey(Meeting record);
+    
+    List<Meeting> getAll();
 }

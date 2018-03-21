@@ -162,7 +162,7 @@
                             会议管理
                         </div>
                         <div class="card-content">
-                            <form class="col s12">
+                            <form class="col s12" action="" method="post" id="fileform">
                                 <div class="row">
                                     <div class="input-field col s4">
                                         <input id="host" name="host" type="text" class="validate"/>
@@ -201,7 +201,7 @@
                                     <label for="IsHold">已召开</label>
                                 </p>
                             </form>
-                            <a class="waves-effect waves-light btn-large" id="save">保存</a>
+                            <a class="waves-effect waves-light btn-large" id="save" onclick="document.getElementById('fileform').submit();">保存</a>
                             <div id="textfield"></div>
                         </div>
                     </div>
@@ -294,6 +294,10 @@
             document.getElementById("show").innerHTML += temp + "&nbsp;&nbsp;&nbsp;";
         }
     }
+    
+    if(document.getElementById("checkId").checked){
+    	alert("checkbox is checked");
+    	}
 </script>
 </body>
 </html>

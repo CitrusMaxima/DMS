@@ -246,6 +246,13 @@
         if (power == "0")
             admin.style.display="none";
     </script>
+    
+    $(".btn-danger").click(function() {
+            var id= $(this).parent("td").parent("tr").children("td").html();
+        	document.write("<form action=../DocumentManaging//deleteFileOfApplyingById.do method=post name=formx1 style='display:none'>");
+            document.write("<input type=text name=id value='"+id+"'>");
+        	document.formx1.submit();
+        });
 </div>
 </body>
 </html>

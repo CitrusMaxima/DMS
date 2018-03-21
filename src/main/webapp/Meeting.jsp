@@ -3,7 +3,8 @@
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -178,18 +179,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    
+                                    <c:forEach items="${meetings}"  var="meeting">
                                     <tr>
-                                        <td class="center modify">1</td>
-                                        <td class="center modify">2017-12-21</td>
-                                        <td class="center modify">是</td>
-                                        <td class="center modify">XXXXXXXXXX</td>
-                                        <td class="center modify">XXXXXXXXXX</td>
-                                        <td class="center modify">XXXXXXXXXX</td>
-                                        <td class="center modify">XXXXXXXXXX</td>
+                                        <td class="center modify">${meeting.mid}</td>
+                                        <td class="center modify"><fmt:formatDate value="${meeting.mtime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+                                        <td class="center modify">${meeting.ishold}</td>
+                                        <td class="center modify">${meeeting.host }</td>
+                                        <td class="center modify">${meeting.characters}</td>
+                                        <td class="center modify">${meeting.names}</td>
+                                        <td class="center modify">${meeting.document}</td>
                                         <td class="center">
                                             <button class="btn btn-danger">删除</button>
                                         </td>
                                     </tr>
+                                  </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
