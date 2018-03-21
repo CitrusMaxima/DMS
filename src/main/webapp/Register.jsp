@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="css/bootstrap.css" rel="stylesheet" />
     <!-- CUSTOM STYLE  -->
     <link href="css/register.css" rel="stylesheet" />
-    
+	  <link rel="stylesheet" type="text/css" href="css/mdialog.css">
     
     <script type="text/javascript">
 	function myReload() {
@@ -41,17 +41,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <%
+    <%--<%
     	String flag = (String)request.getAttribute("flag");
     	PrintWriter pw = response.getWriter();
 		if (flag!=null && flag=="codeError") {
 			pw.print("<script>alert('验证码错误！')</script>");
-		}else if(flag=="namexist"){
+		}else if(flag=="nameExist"){
 			pw.print("<script>alert('用户名已存在！')</script>");
 		} if(flag=="registerfail"){
 			pw.print("<script>alert('注册失败！')</script>");
 		}
-    %>
+    %>--%>
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+	<script type="text/javascript" src="js/mdialog.js"></script>
+	<script type="text/javascript">
+		var flag = '<%=request.getAttribute("flag")%>';
+        if (flag == 'codeError'){
+            new TipBox({type:'error',str:'验证码错误！',setTime:1500});
+        } else if (flag == 'nameExist') {
+            new TipBox({type:'error',str:'用户名已存在！',hasBtn:true});
+		} else if (flag == 'registerfail') {
+            new TipBox({type:'error',str:'注册失败！',hasBtn:true});
+        }
+	</script>
 	<div class="content-wrapper">
         <div class="container">
         	<div class="row pad-botm">
@@ -67,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                            	注册
                         </div>
                         <div class="panel-body">
-                            <form action="/RegisterController" name="register-form" id="register-form" method="post">
+                            <form action="/account/Register.do" name="register-form" id="register-form" method="post">
 	                            <div class="form-group">
 	                                <label>用户名</label>
 	                                <input id="username" name="name" class="form-control" type="text" />
@@ -82,20 +94,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                            </div>
 								<div class="form-group">
 									<label>昵称</label>
-									<input id="nickname" name="name" class="form-control" type="text" />
+									<input id="nickname" name="nickname" class="form-control" type="text" />
 								</div>
 								<div class="form-group">
 									<label>邮箱</label>
-									<input id="email" class="form-control"  type="text" />
+									<input id="email" name="email" class="form-control"  type="text" />
 								</div>
 								<div class="form-group">
 									<label>手机号码</label>
-									<input id="phone-number" class="form-control"  type="text" />
+									<input id="phone-number" name="phoneNumber" class="form-control"  type="text" />
 								</div>
 	                            <div class="form-group">
 	                                <label>验证码</label>
 	                                <input id="checkCode" class="form-control" name="checkCode" type="text" />  
-				            		<img src="getImage.do" id="CreateCheckCode" align="middle">
+				            		<img src="/account/getImage.do" id="CreateCheckCode" align="middle">
 				            		<a onclick="myReload()"> 看不清,换一个</a>
 	                            </div>   
                                 <button type="submit" class="btn btn-danger">注册</button>
@@ -146,15 +158,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $("#textfield").text("手机号码不能为空！");
             return false;
         }
-        var reg_phone=/^1[3,5,8]\d{9}$/;
+        var reg_phone=/^1[3,5,7,8]\d{9}$/;
         if (!reg_phone.test($("#phone-number").val())){
             $("#textfield").text("手机号码不合法！");
             return false;
         }
-		if ($("#checkCode").val() == "") {
+		if ($("#checkCode").val() == "" || $("#checkCode").val() == null) {
             $("#textfield").text("请输入验证码！");
             return false;
         }
+        $("#textfield").text("");
+        return true;
 	});
 	</script>
   </body>

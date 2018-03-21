@@ -20,7 +20,7 @@
     <link href="css/morris-0.4.3.min.css" rel="stylesheet" />
     <!-- Custom Styles-->
     <link href="css/custom-styles.css" rel="stylesheet" />
-    <!-- Google Fonts-->
+    <link rel="stylesheet" type="text/css" href="css/mdialog.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/cssCharts.css">
@@ -58,7 +58,7 @@
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
         <li>
-            <a href="PersonalCenter.jsp"><i class="fa fa-user fa-fw"></i> 个人中心</a>
+            <a href="../account/getUser.do"><i class="fa fa-user fa-fw"></i> 个人中心</a>
         </li>
         <li>
             <a href="ModifyPassword.jsp"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
@@ -105,7 +105,7 @@
                                     <a href="Document3-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document3.jsp">查询</a>
+                                    <a href="/DocumentManaging/getFileOfApplying.do">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -118,7 +118,7 @@
                             <a href="Meeting-Add.jsp">登记</a>
                         </li>
                         <li>
-                            <a href="Meeting.jsp">会议查询</a>
+                            <a href="/conference/getAllConference.do">会议查询</a>
                         </li>
                         <li>
                             <a href="Meeting-Statistics.jsp">会议统计</a>
@@ -132,7 +132,7 @@
                             <a href="User-Add.jsp">添加用户</a>
                         </li>
                         <li>
-                            <a href="User.jsp">用户查询</a>
+                            <a href="/user/getuser.do">用户查询</a>
                         </li>
                     </ul>
                 </li>
@@ -162,7 +162,8 @@
                             修改密码
                         </div>
                         <div class="card-content">
-                            <form class="col s12">
+                            <form class="col s12" action="/account/modifyPassword.do" id="fileform1" method="POST">
+                                <input id="password" type="hidden" value="<%=request.getSession().getAttribute("password") %>">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="old-password" type="password" class="validate">
@@ -171,7 +172,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="new-password" type="password" class="validate">
+                                        <input id="new-password" name="password" type="password" class="validate">
                                         <label for="new-password">新密码</label>
                                     </div>
                                 </div>
@@ -182,7 +183,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <a class="waves-effect waves-light btn-large" id="save">保存</a>
+                            <a class="waves-effect waves-light btn-large" id="save" >保存</a>
                             <div id="textfield"></div>
                         </div>
                     </div>
@@ -206,7 +207,7 @@
 
 <!-- Metis Menu Js -->
 <script src="js/jquery.metisMenu.js"></script>
-<!-- Morris Chart Js -->
+<script type="text/javascript" src="js/mdialog.js"></script>
 <script src="js/raphael-2.1.0.min.js"></script>
 <script src="js/morris.js"></script>
 
@@ -215,7 +216,7 @@
 <script src="js/easypiechart-data.js"></script>
 
 <script src="js/jquery.chart.js"></script>
-<!-- DATA TABLE SCRIPTS -->
+<script type="text/javascript" src="js/zepto.min.js"></script>
 <script src="js/jquery.dataTables.js"></script>
 <script src="js/dataTables.bootstrap.js"></script>
 <script>
@@ -243,6 +244,12 @@
             $("#textfield").text("两次输入密码不同！");
             return false;
         }
+        if ($("#password").val() != $("#old-password").val()) {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("旧密码错误！");
+            return false;
+        }
+        document.getElementById("fileform1").submit();
     });
 </script>
 <script type="text/javascript">

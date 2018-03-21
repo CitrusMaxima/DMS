@@ -82,6 +82,8 @@ public class DocumentController {
         String isdone=request.getParameter("isdone");
         String phone=request.getParameter("phone");
         String direction=request.getParameter("direction");
+
+		//title = CharacTool.encoding(title);
         
         file.setPid(pid);
         file.setRectime(rectime);
@@ -95,7 +97,6 @@ public class DocumentController {
         file.setDirection(direction);
         
         try {
-        	 System.out.println(file.getTitle());
         	 fileOfInstructions.registerFile(file);
 		} catch (Exception e) {
 			 request.setAttribute("flag","fail");
@@ -116,6 +117,7 @@ public class DocumentController {
 	@RequestMapping(value="/getFiles.do")
 	public String getFilesOfInstructions(HttpServletRequest request,HttpServletResponse response){
 		List<Pswj> files=null;
+
 		System.out.print("获取文件");
 		try {
 			files=fileOfInstructions.getAllFile();
@@ -130,7 +132,14 @@ public class DocumentController {
 	public  String updateFileofInstructions(HttpServletRequest request,HttpServletResponse response) throws ParseException{
 		
 		System.out.println("更新开始");
-		
+
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 		String pid=request.getParameter("pid");
 
 		Pswj file=new Pswj();
@@ -151,6 +160,7 @@ public class DocumentController {
 		Date rectime =  formatter.parse(timeString);
 		String numbers=request.getParameter("numbers");
 		String title=request.getParameter("title");
+		System.out.println(title);
 		String spishi=request.getParameter("spishi");
         String wpishi=request.getParameter("wpishi");
         formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -158,6 +168,8 @@ public class DocumentController {
         String isdone=request.getParameter("isdone");
         String phone=request.getParameter("phone");
         String direction=request.getParameter("direction");
+
+		//title = CharacTool.encoding(title);
         
         file.setPid(pid);
         file.setRectime(rectime);
@@ -170,7 +182,7 @@ public class DocumentController {
         file.setPhone(phone);
         file.setDirection(direction);
         try {
-        	fileOfInstructions.update(file);	
+        	fileOfInstructions.update(file);
 		} catch (Exception e) {
 		   request.setAttribute("flag", "fail");
 		}
@@ -188,13 +200,8 @@ public class DocumentController {
     @RequestMapping(value="/getFileOfInstructionsById.do")
 	public String getFileOfInstructionsById(HttpServletRequest request,HttpServletResponse response){
 		String pid=request.getParameter("pid");
-		System.out.print(pid);
 		String jsp=request.getParameter("jsp");
-		System.out.println(jsp);
 		Pswj pswj=fileOfInstructions.getPswjById(pid);
-
-		System.out.println(pswj.toString());
-
 		request.setAttribute("file",pswj);
 		return "forward:/"+jsp;
 		
@@ -219,7 +226,14 @@ public class DocumentController {
 	//收文登记文件对应的Controller
 	@RequestMapping(value="/registerFileOfReceiving.do")
 	public String registerFileOfReceiving(HttpServletRequest request,HttpServletResponse response) throws ParseException{
-		
+
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 		Swwj swwj=new Swwj();
 		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
 		
@@ -307,6 +321,13 @@ public class DocumentController {
 	public  String updateFileofReceiving(HttpServletRequest request,HttpServletResponse response) throws ParseException{
 
 		System.out.println("更新开始");
+
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		String sid=request.getParameter("sid");
 

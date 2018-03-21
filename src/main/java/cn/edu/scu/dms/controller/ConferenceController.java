@@ -19,6 +19,7 @@ import cn.edu.scu.dms.model.Meeting;
 import cn.edu.scu.dms.model.MeetingStatistical;
 import cn.edu.scu.dms.services.ConferenceServices;
 
+import java.io.UnsupportedEncodingException;
 
 
 @Controller
@@ -27,10 +28,10 @@ public class ConferenceController {
 	
 	@Autowired
 	ConferenceServices conferenceServices;
-	
+
 	@RequestMapping(value="/adddConference.do")
 	public String adddConference(HttpServletRequest request,HttpServletResponse response) throws ParseException{
-		
+
 		try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e1) {
@@ -39,24 +40,24 @@ public class ConferenceController {
 		}
 		Meeting meeting=new Meeting();
 		System.out.println("登记开始");
-		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
-		NumberFormat numberformat1 = NumberFormat.getNumberInstance();   
+		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss");
+		NumberFormat numberformat1 = NumberFormat.getNumberInstance();
 		numberformat1.setGroupingUsed(false);
 		numberformat1.setMinimumIntegerDigits(7);
-		
-		NumberFormat numberformat2 = NumberFormat.getNumberInstance();   
+
+		NumberFormat numberformat2 = NumberFormat.getNumberInstance();
 		numberformat2.setGroupingUsed(false);
 		numberformat2.setMinimumIntegerDigits(3);
-		
+
 		String mid=null;
 		Meeting isExist=null;
 		Random ranInt=new Random();
-		
+
 		do{
 			mid=numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
 			isExist=conferenceServices.getMeetingById(mid);
 		}while(isExist!=null);
-		
+
 		String timeString=request.getParameter("mtime");
 		Date mtime =  formatter.parse(timeString);
 		String host =request.getParameter("host");
@@ -67,7 +68,7 @@ public class ConferenceController {
 		String hold=request.getParameter("ishold");
 		if(hold==null)
 			ishold=false;
-		
+
 		meeting.setMid(mid);
 		meeting.setMtime(mtime);
 		meeting.setHost(host);
@@ -81,33 +82,33 @@ public class ConferenceController {
 			 request.setAttribute("flag","fail");
 			return "forward:/Meeting-Add.jsp";
 		}
-		
+
 		List<Meeting> meetings=null;
         try {
 			meetings=conferenceServices.getAllMeetings();
 		} catch (Exception e) {
-		   System.out.println("获取批示文件出错");	
+		   System.out.println("获取批示文件出错");
 		}
-        
+
 		request.setAttribute("meetings",meetings);
 		return "forward:/Meeting.jsp";
 	}
 	@RequestMapping(value="/getAllConference.do")
 	public String getAllConference(HttpServletRequest request,HttpServletResponse response){
-		
+
 		List<Meeting> meetings=null;
 		try {
 			meetings=conferenceServices.getAllMeetings();
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("获取批示文件出错");
+			System.out.println("获取会议列表出错");
 		}
 		request.setAttribute("meetings",meetings);
 		return "forward:/Meeting.jsp";
 	}
 	@RequestMapping(value="/updateConference.do")
 	public  String updateConference(HttpServletRequest request,HttpServletResponse response) throws ParseException{
-	   
+
 	   try {
 		request.setCharacterEncoding("UTF-8");
 	   } catch (UnsupportedEncodingException e1) {
@@ -115,9 +116,9 @@ public class ConferenceController {
 		e1.printStackTrace();
 	   }
 	   String mid=request.getParameter("mid");
-	   
+
 	   Meeting meeting=new Meeting();
-	   java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
+	   java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss");
 
 		String timeString=request.getParameter("mtime");
 		Date mtime = formatter.parse(timeString);
@@ -129,7 +130,7 @@ public class ConferenceController {
 		String hold=request.getParameter("ishold");
 		if(hold==null)
 			ishold=false;
-		
+
 		meeting.setMid(mid);
 		meeting.setMtime(mtime);
 		meeting.setHost(host);
@@ -137,18 +138,18 @@ public class ConferenceController {
 		meeting.setPlace(place);
 		meeting.setNames(names);
 		meeting.setIshold(ishold);
-	    
+
 		try {
         	conferenceServices.updateMeeting(meeting);
 		} catch (Exception e) {
 		   request.setAttribute("flag", "fail");
 		}
-		
+
 		List<Meeting> meetings=null;
         try {
 			meetings=conferenceServices.getAllMeetings();
 		} catch (Exception e) {
-		   System.out.println("获取批示文件出错");	
+		   System.out.println("获取批示文件出错");
 		}
 		request.setAttribute("meetings",meetings);
 		return "forward:/Meeting.jsp";
@@ -161,17 +162,17 @@ public class ConferenceController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		String mid=request.getParameter("mid");
 		String jsp=request.getParameter("jsp");
-		
+
 		Meeting meeting=conferenceServices.getMeetingById(mid);
 		request.setAttribute("meeting",meeting);
-		return "forward:/"+jsp;		
+		return "forward:/"+jsp;
 	}
 	@RequestMapping("/deleteMeetingById.do")
 	public String deleteMeetingById(HttpServletRequest request,HttpServletResponse response){
-        
+
 		try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {
@@ -193,7 +194,7 @@ public class ConferenceController {
 	}
 	@RequestMapping(value="/getMeetingStatistical.do")
 	public String getMeetingStatistical(HttpServletRequest request,HttpServletResponse response){
-		
+
 		try {
 			List<MeetingStatistical> meetingHold=conferenceServices.getMeetingHold();
 			List<MeetingStatistical> meeetingUnHold=conferenceServices.getMeetingUnHold();
@@ -201,7 +202,7 @@ public class ConferenceController {
 			// TODO: handle exception
 			System.out.println("统计会议出错");
 		}
-		
+
 		return "";
 	}
 }

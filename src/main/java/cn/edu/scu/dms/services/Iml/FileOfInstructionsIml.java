@@ -26,7 +26,6 @@ public class FileOfInstructionsIml implements FileOfInstructionsServices {
 	@Transactional
 	public Boolean registerFile(Pswj pswj) {
 		// TODO Auto-generated method stub
-		System.out.println(pswj.getTitle());
 		pswjMapper.insert(pswj);
 		return true;
 	}

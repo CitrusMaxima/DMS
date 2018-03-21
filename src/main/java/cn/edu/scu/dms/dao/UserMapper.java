@@ -1,6 +1,7 @@
 package cn.edu.scu.dms.dao;
 
 import cn.edu.scu.dms.model.User;
+import java.util.List;
 
 public interface UserMapper {
     int deleteByPrimaryKey(String uid);
@@ -10,6 +11,7 @@ public interface UserMapper {
     int insertSelective(User record);
 
     User selectByPrimaryKey(String uid);
+    List<User> getAllUser();
 
     int updateByPrimaryKeySelective(User record);
 
