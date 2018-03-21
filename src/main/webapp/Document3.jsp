@@ -188,7 +188,7 @@
                                         <td class="center modify"> <fmt:formatDate value="${qpwj.qptime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
                                         <td class="center modify">${qpwj.title}</td>
                                         <td class="center modify"> <fmt:formatDate value="${qpwj.attribute}" pattern="yyyy-MM-dd" /></td>
-                                        <td class="center modify">${qpwj.leader_name}</td>
+                                        <td class="center modify">${qpwj.leadername}</td>
                                         <td class="center modify">${qpwj.zpishi}</td>
                                         <td class="center modify">${qpwj.direction}</td>
                                         <td class="center modify">${qpwj.note}</td>

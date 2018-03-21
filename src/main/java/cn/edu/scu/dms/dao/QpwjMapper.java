@@ -4,7 +4,9 @@ import java.util.List;
 import cn.edu.scu.dms.model.Qpwj;
 
 public interface QpwjMapper {
-    int deleteByPrimaryKey(String qpid);
+
+
+	int deleteByPrimaryKey(String qpid);
 
 	int insertSelective(Qpwj record);
 
@@ -12,8 +14,6 @@ public interface QpwjMapper {
 
 
     Qpwj selectByPrimaryKey(String qpid);
-
-    int updateByPrimaryKeySelective(Qpwj record);
 
     int updateByPrimaryKey(Qpwj record);
     

@@ -324,7 +324,7 @@ public class DocumentController {
         qpwj.setQptime(qptime);
         qpwj.setTitle(title);
         qpwj.setAttribute(attribute);
-        qpwj.setLeaderName(leaderName);
+        qpwj.setLeadername(leaderName);
         qpwj.setZpishi(zpishi);
         qpwj.setDirection(direction);
         qpwj.setNote(note);
