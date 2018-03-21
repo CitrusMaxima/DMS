@@ -179,6 +179,12 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
+                                        <input id="content" name="content" type="text" class="validate" >
+                                        <label for="content">会议内容</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
                                         <input id="name" name="names" type="text" class="validate" >
                                         <label for="name">参与者</label>
                                     </div>

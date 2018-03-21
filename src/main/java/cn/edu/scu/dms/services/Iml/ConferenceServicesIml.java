@@ -21,7 +21,7 @@ public class ConferenceServicesIml implements ConferenceServices {
 	public Boolean registerConference(Meeting swwj) {
 		// TODO Auto-generated method stub
 		mapper.insert(swwj);
-		return null;
+		return true;
 	}
 
 	@Transactional
@@ -37,7 +37,7 @@ public class ConferenceServicesIml implements ConferenceServices {
 		// TODO Auto-generated method stub
     	List<Meeting> temp=null;
     	temp=mapper.getAll();
-		return null;
+		return temp;
 	}
 
     @Transactional

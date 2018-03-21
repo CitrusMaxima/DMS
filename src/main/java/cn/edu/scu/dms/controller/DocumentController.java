@@ -397,7 +397,7 @@ public class DocumentController {
 		return "forward:/Document2.jsp";
 	}
     
-	//报批示文件对应的Controller
+	//报签批文件对应的Controller
 	@RequestMapping(value="/registerFileOfApplying.do")
 	public String registerFileOfApplying(HttpServletRequest request,HttpServletResponse response) throws ParseException{
 		
@@ -433,7 +433,7 @@ public class DocumentController {
         Date attribute=formatter.parse(request.getParameter("attribute"));
         String leaderName=request.getParameter("leaderName");
         String zpishi=request.getParameter("zpishi");
-        String direction=request.getParameter("direcion");
+        String direction=request.getParameter("direction");
         String note=request.getParameter("note");
         
         qpwj.setQpid(qpid);
@@ -450,7 +450,7 @@ public class DocumentController {
 			// TODO: handle exception
 			request.setAttribute("flag","fail");
 			System.out.println("包批示文件登记出错");
-			return "forward:/Document2-Add.jsp";
+			return "forward:/Document3-Add.jsp";
 		}
         List<Qpwj> files=null;
         try {
@@ -468,10 +468,10 @@ public class DocumentController {
 			files=fileOfApplying.getAllFile();
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("获取批示文件出错");
+			System.out.println("获取签批文件出错");
 		}
 		request.setAttribute("files", files);
-		return "forward:/Document1.jsp";
+		return "forward:/Document3.jsp";
 	}
 	
    @RequestMapping(value="/deleteFileOfApplyingById.do")

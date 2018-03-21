@@ -169,10 +169,12 @@
                                     <thead>
                                     <tr>
                                         <th class="center single-line">会议编号</th>
+                                        <th class="center single-line">会议召开人</th>
                                         <th class="center single-line">会议时间</th>
                                         <th class="center single-line">是否召开</th>
                                         <th class="center single-line">会议性质</th>
-                                        <th class="center single-line">内容</th>
+                                        <th class="center single-line">会议地点</th>
+                                        <th class="center single-line">会议内容</th>
                                         <th class="center single-line">参与者</th>
                                         <th class="center single-line">会议文档</th>
                                         <th class="center single-line">删除</th>
@@ -188,6 +190,8 @@
                                         <td class="center modify">${meeeting.host }</td>
                                         <td class="center modify">${meeting.characters}</td>
                                         <td class="center modify">${meeting.names}</td>
+                                        <td class="center modify">${meeting.document}</td>
+                                        <td class="center modify">${meeting.document}</td>
                                         <td class="center modify">${meeting.document}</td>
                                         <td class="center">
                                             <button class="btn btn-danger">删除</button>

@@ -13,7 +13,7 @@
   </resultMap>
    <resultMap id="MeetingStatisticalMap" type="cn.edu.scu.dms.model.MeetingStatistical">
     <id column="year" jdbcType="VARCHAR" property="year" />
-    <result column="total" jdbcType="Integer" property="total" />
+    <result column="total" jdbcType="INTEGER" property="total" />
   </resultMap>
   <sql id="Base_Column_List">
     mid, mtime, host, characters, place, names, Ishold, document
