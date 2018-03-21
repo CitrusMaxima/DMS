@@ -82,8 +82,6 @@ public class DocumentController {
         String isdone=request.getParameter("isdone");
         String phone=request.getParameter("phone");
         String direction=request.getParameter("direction");
-
-		//title = CharacTool.encoding(title);
         
         file.setPid(pid);
         file.setRectime(rectime);
@@ -99,7 +97,7 @@ public class DocumentController {
         try {
         	 fileOfInstructions.registerFile(file);
 		} catch (Exception e) {
-			 request.setAttribute("flag","fail");
+        	request.setAttribute("flag","registerFail");
 			return "forward:/Document1-Add.jsp";
 		}
         
@@ -109,7 +107,7 @@ public class DocumentController {
 		} catch (Exception e) {
 		   System.out.println("获取批示文件出错");	
 		}
-        
+		request.setAttribute("flag","registerSuccess");
 		request.setAttribute("files",files);
 		return "forward:/Document1.jsp";
 	}
@@ -153,7 +151,7 @@ public class DocumentController {
 	    isExist=fileOfInstructions.getPswjById(pid);
 	    if(isExist==null)
 	    {
-	    	request.setAttribute("flag", "fail");
+	    	request.setAttribute("flag", "modifyFail");
 	    	return "forward:/Document1-Modify.jsp";
 	    }
 		
@@ -184,7 +182,7 @@ public class DocumentController {
         try {
         	fileOfInstructions.update(file);
 		} catch (Exception e) {
-		   request.setAttribute("flag", "fail");
+			request.setAttribute("flag", "modifyFail");
 		}
         
         List<Pswj> files=null;
@@ -193,7 +191,7 @@ public class DocumentController {
 		} catch (Exception e) {
 		   System.out.println("获取批示文件出错");	
 		}
-        
+		request.setAttribute("flag", "modifySuccess");
 		request.setAttribute("files",files);
 		return "forward:/Document1.jsp";
 	}
@@ -216,10 +214,11 @@ public class DocumentController {
          files=fileOfInstructions.getAllFile();
     	}catch(Exception e){
     		System.out.println(e);
-    		request.setAttribute("flag","delete fail");
+    		request.setAttribute("flag","deleteFail");
     		return "forward:/Document1.jsp";
     	}
     	request.setAttribute("files",files);
+		request.setAttribute("flag","deleteSuccess");
 		return "forward:/Document1.jsp";
 	}
     
@@ -277,7 +276,7 @@ public class DocumentController {
 	    	 fileOfReceiving.registerFile(swwj);
 		} catch (Exception e) {
 			// TODO: handle exception
-			request.setAttribute("flag","fail");
+			request.setAttribute("flag","registerFail");
 			return "forward:/Document2-Add.jsp";
 		}
 
@@ -287,6 +286,7 @@ public class DocumentController {
 		} catch (Exception e) {
 			System.out.println("获取批示文件出错");
 		}
+		request.setAttribute("flag","registerSuccess");
 		request.setAttribute("files",files);
 		return "forward:/Document2.jsp";
 	}
@@ -342,7 +342,7 @@ public class DocumentController {
 		isExist=fileOfReceiving.getSwwjById(sid);
 		if(isExist==null)
 		{
-			request.setAttribute("flag", "fail");
+			request.setAttribute("flag","modifyFail");
 			return "forward:/Document2-Modify.jsp";
 		}
 
@@ -367,7 +367,7 @@ public class DocumentController {
 		try {
 			fileOfReceiving.update(file);
 		} catch (Exception e) {
-			request.setAttribute("flag", "fail");
+			request.setAttribute("flag","modifyFail");
 		}
 
 		List<Swwj> files=null;
@@ -376,7 +376,7 @@ public class DocumentController {
 		} catch (Exception e) {
 			System.out.println("获取收文文件出错");
 		}
-
+		request.setAttribute("flag","modifySuccess");
 		request.setAttribute("files",files);
 		return "forward:/Document2.jsp";
 	}
@@ -390,10 +390,11 @@ public class DocumentController {
          files= fileOfReceiving.getAllFile();
     	}catch(Exception e){
     		System.out.println(e);
-    		request.setAttribute("flag","delete fail");
+    		request.setAttribute("flag","deleteFail");
     		return "forward:/Document2.jsp";
     	}
     	request.setAttribute("files",files);
+		request.setAttribute("flag","deleteSuccess");
 		return "forward:/Document2.jsp";
 	}
     
@@ -448,7 +449,7 @@ public class DocumentController {
 		   fileOfApplying.registerFile(qpwj);
 		} catch (Exception e) {
 			// TODO: handle exception
-			request.setAttribute("flag","fail");
+			request.setAttribute("flag","registerFail");
 			System.out.println("包批示文件登记出错");
 			return "forward:/Document3-Add.jsp";
 		}
@@ -459,6 +460,7 @@ public class DocumentController {
 		   System.out.println("获取批示文件出错");	
 		}
 		request.setAttribute("files",files);
+		request.setAttribute("flag","registerSuccess");
 		return "forward:/Document3.jsp";
 	}
 	@RequestMapping(value="/getFileOfApplying.do")
@@ -484,10 +486,11 @@ public class DocumentController {
          files=fileOfApplying.getAllFile();
     	}catch(Exception e){
     		System.out.println(e);
-    		request.setAttribute("flag","delete fail");
+    		request.setAttribute("flag","deleteFail");
     		return "forward:/Document3.jsp";
     	}
     	request.setAttribute("files",files);
+	   request.setAttribute("flag","deleteSuccessS");
 		return "forward:/Document3.jsp";
 	}
 	

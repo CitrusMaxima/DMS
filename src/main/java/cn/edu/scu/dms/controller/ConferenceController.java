@@ -79,7 +79,7 @@ public class ConferenceController {
 		try {
 			conferenceServices.registerConference(meeting);
 		} catch (Exception e) {
-			 request.setAttribute("flag","fail");
+			 request.setAttribute("flag","registerFail");
 			return "forward:/Meeting-Add.jsp";
 		}
 
@@ -89,7 +89,7 @@ public class ConferenceController {
 		} catch (Exception e) {
 		   System.out.println("获取批示文件出错");
 		}
-
+		request.setAttribute("flag","registerSuccess");
 		request.setAttribute("meetings",meetings);
 		return "forward:/Meeting.jsp";
 	}
@@ -142,7 +142,7 @@ public class ConferenceController {
 		try {
         	conferenceServices.updateMeeting(meeting);
 		} catch (Exception e) {
-		   request.setAttribute("flag", "fail");
+		   request.setAttribute("flag", "modifyFail");
 		}
 
 		List<Meeting> meetings=null;
@@ -152,6 +152,7 @@ public class ConferenceController {
 		   System.out.println("获取批示文件出错");
 		}
 		request.setAttribute("meetings",meetings);
+		request.setAttribute("flag","modifySuccess");
 		return "forward:/Meeting.jsp";
 	 }
 	@RequestMapping(value="/getMeetingById.do")
@@ -186,10 +187,11 @@ public class ConferenceController {
              meetings=conferenceServices.getAllMeetings();
 	    }catch(Exception e){
 	    		System.out.println(e);
-	    		request.setAttribute("flag","delete fail");
+	    		request.setAttribute("flag","deleteFail");
 	    		return "forward:/Meeting.jsp";
 	    }
 	    request.setAttribute("meetings",meetings);
+		request.setAttribute("flag","deleteSuccess");
 		return "forward:/Meeting.jsp";
 	}
 	@RequestMapping(value="/getMeetingStatistical.do")

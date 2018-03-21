@@ -28,6 +28,14 @@
 </head>
 
 <body>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/mdialog.js"></script>
+<script type="text/javascript">
+    var flag = '<%=request.getAttribute("flag")%>';
+    if (flag == 'modifyFail'){
+        new TipBox({type:'error',str:'修改失败',hasBtn:true});
+    }
+</script>
 <div id="wrapper">
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
@@ -277,10 +285,6 @@
         }
         $("#textfield").removeClass("alert alert-warning");
         $("#textfield").text("");
-        $(".validate").attr("disabled", true);
-        $("#save").attr("disabled", true);
-        $("#IsAdmin").attr("disabled", true);
-        $("#modify").attr("disabled", false);
         document.getElementById("fileform1").submit();
         return true;
     });
