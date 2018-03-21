@@ -107,7 +107,7 @@
                                     <a href="Document3-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document3.jsp">查询</a>
+                                    <a href="/DocumentManaging/getFileOfApplying.do">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -120,7 +120,7 @@
                             <a href="Meeting-Add.jsp">登记</a>
                         </li>
                         <li>
-                            <a href="Meeting.jsp">会议查询</a>
+                            <a href="/conference/getAllConference.do">会议查询</a>
                         </li>
                         <li>
                             <a href="Meeting-Statistics.jsp">会议统计</a>
@@ -254,6 +254,13 @@
             document.write("</form>");
             document.formx1.submit();
         });
+        $(".btn-danger").click(function() {
+            var id= $(this).parent("td").parent("tr").children("td").html();
+        	document.write("<form action=../DocumentManaging/deleteFileOfReceivingById.do method=post name=formx1 style='display:none'>");
+            document.write("<input type=text name=id value='"+id+"'>");
+        	document.formx1.submit();
+        });
+
     </script>
 </div>
 </body>

@@ -127,7 +127,6 @@ public class DocumentController {
 		request.setAttribute("files", files);
 		return "forward:/Document1.jsp";
 	}
-
 	
 	@RequestMapping(value="/updateFileofInstructions.do")
 	public  String updateFileofInstructions(HttpServletRequest request,HttpServletResponse response) throws ParseException{
@@ -381,7 +380,23 @@ public class DocumentController {
 		request.setAttribute("files",files);
 		return "forward:/Document2.jsp";
 	}
-	
+    @RequestMapping(value="/deleteFileOfReceivingById.do")
+	public String deleteFileOfReceivingById(HttpServletRequest request,HttpServletResponse response){
+    	
+    	String id=request.getParameter("id");
+    	List<Swwj> files=null;
+    	try {
+    	 fileOfReceiving.deleteFile(id);
+         files= fileOfReceiving.getAllFile();
+    	}catch(Exception e){
+    		System.out.println(e);
+    		request.setAttribute("flag","delete fail");
+    		return "forward:/Document2.jsp";
+    	}
+    	request.setAttribute("files",files);
+		return "forward:/Document2.jsp";
+	}
+    
 	//报批示文件对应的Controller
 	@RequestMapping(value="/registerFileOfApplying.do")
 	public String registerFileOfApplying(HttpServletRequest request,HttpServletResponse response) throws ParseException{
@@ -458,4 +473,23 @@ public class DocumentController {
 		request.setAttribute("files", files);
 		return "forward:/Document1.jsp";
 	}
+	
+   @RequestMapping(value="/deleteFileOfApplyingById.do")
+   public String deleteFileOfApplyingById(HttpServletRequest request,HttpServletResponse response){
+    	
+    	String id=request.getParameter("id");
+    	List<Qpwj> files=null;
+    	try {
+    	 fileOfApplying.deleteFile(id);
+         files=fileOfApplying.getAllFile();
+    	}catch(Exception e){
+    		System.out.println(e);
+    		request.setAttribute("flag","delete fail");
+    		return "forward:/Document3.jsp";
+    	}
+    	request.setAttribute("files",files);
+		return "forward:/Document3.jsp";
+	}
+	
+	
 }

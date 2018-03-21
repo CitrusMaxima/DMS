@@ -51,11 +51,7 @@
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false">     
     </table>    
-    <table schema="" tableName="meeting" domainObjectName="Meeting" 
-        enableCountByExample="false" enableUpdateByExample="false"
-        enableDeleteByExample="false" enableSelectByExample="false"
-        selectByExampleQueryId="false">    
-    </table> 
+   
     <table schema="" tableName="member" domainObjectName="Member" 
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
@@ -66,16 +62,22 @@
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false"> 
      </table>    
-    
+    <table schema="" tableName="qpwj" domainObjectName="Qpwj" 
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false"> 
+     </table>   
      <table schema="" tableName="swwj" domainObjectName="Swwj" 
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false"> 
      </table>    -->
-       <table schema="" tableName="qpwj" domainObjectName="Qpwj" 
+     
+      <table schema="" tableName="meeting" domainObjectName="Meeting" 
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
-        selectByExampleQueryId="false"> 
-     </table>   
+        selectByExampleQueryId="false">    
+    </table> 
+       
   </context>
 </generatorConfiguration>

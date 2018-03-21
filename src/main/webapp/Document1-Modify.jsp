@@ -105,7 +105,7 @@
                                     <a href="Document3-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document3.jsp">查询</a>
+                                    <a href="/DocumentManaging/getFileOfApplying.do">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -118,7 +118,7 @@
                             <a href="Meeting-Add.jsp">登记</a>
                         </li>
                         <li>
-                            <a href="Meeting.jsp">会议查询</a>
+                            <a href="/conference/getAllConference.do">会议查询</a>
                         </li>
                         <li>
                             <a href="Meeting-Statistics.jsp">会议统计</a>

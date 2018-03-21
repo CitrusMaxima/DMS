@@ -104,7 +104,7 @@
                                     <a href="Document3-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document3.jsp">查询</a>
+                                    <a href="/DocumentManaging/getFileOfApplying.do">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -117,7 +117,7 @@
                             <a href="Meeting-Add.jsp">登记</a>
                         </li>
                         <li>
-                            <a href="Meeting.jsp">会议查询</a>
+                            <a href="/conference/getAllConference.do">会议查询</a>
                         </li>
                         <li>
                             <a href="Meeting-Statistics.jsp">会议统计</a>
@@ -162,7 +162,7 @@
                             会议管理
                         </div>
                         <div class="card-content">
-                            <form class="col s12">
+                            <form class="col s12" action="" method="post" id="fileform">
                                 <div class="row">
                                     <div class="input-field col s4">
                                         <input id="host" name="host" type="text" class="validate"/>
@@ -201,7 +201,7 @@
                                     <label for="IsHold">已召开</label>
                                 </p>
                             </form>
-                            <a class="waves-effect waves-light btn-large" id="save">保存</a>
+                            <a class="waves-effect waves-light btn-large" id="save" onclick="document.getElementById('fileform').submit();">保存</a>
                             <div id="textfield"></div>
                         </div>
                     </div>
@@ -237,7 +237,7 @@
 <script type="text/javascript" src="js/zepto.min.js"></script>
 <script src="js/jquery.dataTables.js"></script>
 <script src="js/dataTables.bootstrap.js"></script>
-<script language="javascript" type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 <script>
     $(document).ready(function () {
         $('#dataTables-example').dataTable();
@@ -294,6 +294,10 @@
             document.getElementById("show").innerHTML += temp + "&nbsp;&nbsp;&nbsp;";
         }
     }
+    
+    if(document.getElementById("checkId").checked){
+    	alert("checkbox is checked");
+    	}
 </script>
 </body>
 </html>

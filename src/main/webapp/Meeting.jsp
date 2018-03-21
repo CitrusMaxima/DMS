@@ -3,7 +3,8 @@
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -104,7 +105,7 @@
                                     <a href="Document3-Add.jsp">登记</a>
                                 </li>
                                 <li>
-                                    <a href="Document3.jsp">查询</a>
+                                    <a href="/DocumentManaging/getFileOfApplying.do">查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -117,7 +118,7 @@
                             <a href="Meeting-Add.jsp">登记</a>
                         </li>
                         <li>
-                            <a href="Meeting.jsp">会议查询</a>
+                            <a href="/conference/getAllConference.do">会议查询</a>
                         </li>
                         <li>
                             <a href="Meeting-Statistics.jsp">会议统计</a>
@@ -178,18 +179,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    
+                                    <c:forEach items="${meetings}"  var="meeting">
                                     <tr>
-                                        <td class="center modify">1</td>
-                                        <td class="center modify">2017-12-21</td>
-                                        <td class="center modify">是</td>
-                                        <td class="center modify">XXXXXXXXXX</td>
-                                        <td class="center modify">XXXXXXXXXX</td>
-                                        <td class="center modify">XXXXXXXXXX</td>
-                                        <td class="center modify">XXXXXXXXXX</td>
+                                        <td class="center modify">${meeting.mid}</td>
+                                        <td class="center modify"><fmt:formatDate value="${meeting.mtime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+                                        <td class="center modify">${meeting.ishold}</td>
+                                        <td class="center modify">${meeeting.host }</td>
+                                        <td class="center modify">${meeting.characters}</td>
+                                        <td class="center modify">${meeting.names}</td>
+                                        <td class="center modify">${meeting.document}</td>
                                         <td class="center">
                                             <button class="btn btn-danger">删除</button>
                                         </td>
                                     </tr>
+                                  </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -239,8 +243,21 @@
         if (power == "0")
             admin.style.display="none";
         $(".modify").click(function() {
-            window.location.href="Meeting-Modify.jsp";
+        	var id= $(this).parent("tr").children("td").html();     	
+        	document.write("<form action=../conference/getMeetingById.do method=post name=formx1 style='display:none'>");
+            document.write("<input type=hidden name=pid value='"+id+"'>");
+        	document.write("<input type=hidden name=jsp value=Meeting-Moodify.jsp>");
+        	document.write("</form>");
+        	document.formx1.submit();
         });
+        
+        $(".btn-danger").click(function() {
+            var id= $(this).parent("td").parent("tr").children("td").html();
+        	document.write("<form action=../DocumentManaging/deleteMeetingById.do method=post name=formx1 style='display:none'>");
+            document.write("<input type=text name=id value='"+id+"'>");
+        	document.formx1.submit();
+        });
+
     </script>
 </div>
 </body>
