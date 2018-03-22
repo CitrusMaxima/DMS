@@ -253,7 +253,7 @@
 <script src="js/jquery.chart.js"></script>
 <script src="js/jquery.dataTables.js"></script>
 <script src="js/dataTables.bootstrap.js"></script>
-<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
 <script>
     $(document).ready(function () {
         $('#dataTables-example').dataTable();

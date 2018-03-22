@@ -182,7 +182,7 @@
                                         <label class="active" for="holder">会议召开人</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="time" name="mtime" type="text" class="Wdate validate" value="<fmt:formatDate value='${meeting.mtime }' pattern='yyyy-MM-dd HH:mm:ss' />"  onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'deadline\')||\'new Date()\'}'})"/>
+                                        <input id="time" name="mtime" type="text" class="Wdate validate" value="<fmt:formatDate value='${meeting.mtime}' pattern='yyyy-MM-dd HH:mm:ss' />"  onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
                                         <label class="active" for="time">会议时间</label>
                                     </div>
                                     <div class="input-field col s4">
@@ -254,7 +254,7 @@
 <script src="js/jquery.chart.js"></script>
 <script src="js/jquery.dataTables.js"></script>
 <script src="js/dataTables.bootstrap.js"></script>
-<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
 <script>
     $(document).ready(function () {
         $(".validate").attr("disabled", true);
