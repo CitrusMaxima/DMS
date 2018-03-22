@@ -127,7 +127,7 @@
                             <a href="/conference/getAllConference.do">会议查询</a>
                         </li>
                         <li>
-                            <a href="Meeting-Statistics.jsp">会议统计</a>
+                            <a href="/conference/getMeetingStatistical.do">会议统计</a>
                         </li>
                     </ul>
                 </li>
@@ -187,6 +187,19 @@
                     </div>
                 </div>
 
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="card-action">
+                            Line Chart
+                        </div>
+                        <div class="card-content">
+                            <div id="morris-line-chart"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             </div>
@@ -278,9 +291,29 @@
                         resize: true
                     });
 
+                    /* MORRIS LINE CHART
+                     ----------------------------------------*/
+                    Morris.Line({
+                        element: '会议总统计图',
+                        data: arr3,
+
+                        xkey: 'y',
+                        ykeys: ['a', 'b','c'],
+                        labels: ['共计','已召开', '未召开'],
+                        fillOpacity: 0.6,
+                        hideHover: 'auto',
+                        behaveLikeLine: true,
+                        resize: true,
+                        pointFillColors:['#ffffff'],
+                        pointStrokeColors: ['black'],
+                        lineColors:['#e96562','#414e63','gray']
+
+                    });
+
 
                     $('.bar-chart').cssCharts({type:"bar"});
                     $('.donut-chart').cssCharts({type:"donut"}).trigger('show-donut-chart');
+                    $('.line-chart').cssCharts({type:"line"});
 
                 },
 
@@ -311,27 +344,44 @@
                 mainApp.initFunction();
             });
 
-            var a = new Array("y: '2006',a: 70,b: 65",
-                "y: '2007',a: 75,b: 65",
-                "y: '2008',a: 50,b: 40",
-                "y: '2009',a: 75,b: 65",
-                "y: '2010',a: 50,b: 40",
-                "y: '2011',a: 75,b: 65",
-                "y: '2012',a: 30,b: 55");
-            var b = new Array("label: '未召开',value: 30", "label: '已召开',value: 70");
+            var a = [];
+            <%
+            List<String> valueList = (List<String>) request.getAttribute("s1");
+            for (String currentValue : valueList) {%>
+            a.push("<%=currentValue%>");
+            <% } %>
+
+            var b = [];
+            <%
+            List<String> valueList2 = (List<String>) request.getAttribute("s2");
+            for (String currentValue2 : valueList2) {%>
+            b.push("<%=currentValue2%>");
+            <% } %>
+
+            var c = new Array("y: '2014', a: 140, b: 90, c: 50",
+                "y: '2015', a: 350, b: 185, c: 165",
+                "y: '2016', a: 255, b: 90, c: 165",
+                "y: '2017', a: 124, b: 84, c: 38",
+                "y: '2018', a: 285, b: 112, c: 173");
+
             var arr1 = [];
             var arr2 = [];
+            var arr3 = [];
             var obj1 = new Object();
             var obj2 = new Object();
+            var obj3 = new Object();
             for(var i=0; i<a.length; i++){
                 obj1[i] = eval('(' + "{"+a[i].toString()+"}" + ')');
                 arr1.push(obj1[i]);
             }
             for(var j=0; j<b.length; j++){
-                obj2[i] = eval('(' + "{"+b[j].toString()+"}" + ')');
-                arr2.push(obj2[i]);
+                obj2[j] = eval('(' + "{"+b[j].toString()+"}" + ')');
+                arr2.push(obj2[j]);
             }
-
+            for(var k=0; k<c.length; k++){
+                obj3[k] = eval('(' + "{"+c[k].toString()+"}" + ')');
+                arr3.push(obj3[k]);
+            }
             $(".dropdown-button").dropdown();
 
         }(jQuery));

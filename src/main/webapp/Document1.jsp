@@ -140,7 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <a href="/conference/getAllConference.do">会议查询</a>
                             </li>
                             <li>
-                                <a href="Meeting-Statistics.jsp">会议统计</a>
+                                <a href="/conference/getMeetingStatistical.do">会议统计</a>
                             </li>
                         </ul>
                     </li>

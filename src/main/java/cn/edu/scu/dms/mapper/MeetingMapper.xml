@@ -26,10 +26,10 @@
     where mid = #{mid,jdbcType=VARCHAR}
   </select>
   <select id="getMeetingStatisticalsHold"  resultMap="MeetingStatisticalMap">
-    select DATE_FORMAT(mtime,'yyyy')as year,count(mid) as total from  meeting  where Ishold<![CDATA[ > ]]> 0  group by year 
+    select DATE_FORMAT(mtime,'%Y')as year,count(mid) as total from  meeting  where Ishold<![CDATA[ > ]]> 0  group by year
   </select>
   <select id="getMeetingStatisticalsUnHold"  resultMap="MeetingStatisticalMap">
-    select DATE_FORMAT(mtime,'yyyy')as year,count(mid) as total from  meeting  where Ishold<![CDATA[ < ]]> 1  group by year 
+    select DATE_FORMAT(mtime,'%Y')as year,count(mid) as total from  meeting  where Ishold<![CDATA[ < ]]> 1  group by year
   </select>
   <select id="getAll" resultMap="BaseResultMap">
     select 

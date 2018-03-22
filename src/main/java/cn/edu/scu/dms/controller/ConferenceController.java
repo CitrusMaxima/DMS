@@ -207,7 +207,10 @@ public class ConferenceController {
 			List<MeetingStatistical> meetingHold=conferenceServices.getMeetingHold();
 			List<MeetingStatistical> meetingUnHold=conferenceServices.getMeetingUnHold();
 			ConferenceTool tool=new ConferenceTool(meetingHold, meetingUnHold);
-			
+
+			System.out.println(tool.getArrayString());
+			System.out.println(tool.getTotal());
+
 			request.setAttribute("s1", tool.getArrayString());
 			request.setAttribute("s2", tool.getTotal());
 			
@@ -216,6 +219,6 @@ public class ConferenceController {
 			System.out.println("统计会议出错");
 		}
 
-		return "forward:/Meeting-Statistical.jsp";
+		return "forward:/Meeting-Statistics.jsp";
 	}
 }
