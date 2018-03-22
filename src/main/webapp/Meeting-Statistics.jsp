@@ -193,7 +193,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="card-action">
-                            Line Chart
+                            会议总统计图
                         </div>
                         <div class="card-content">
                             <div id="morris-line-chart"></div>
@@ -285,8 +285,8 @@
                         element: 'morris-donut-chart',
                         data:arr2,
                         colors: [
-                            '#414e63',
-                            '#e96562'
+                            '#e96562',
+                            '#414e63'
                         ],
                         resize: true
                     });
@@ -294,7 +294,7 @@
                     /* MORRIS LINE CHART
                      ----------------------------------------*/
                     Morris.Line({
-                        element: '会议总统计图',
+                        element: 'morris-line-chart',
                         data: arr3,
 
                         xkey: 'y',

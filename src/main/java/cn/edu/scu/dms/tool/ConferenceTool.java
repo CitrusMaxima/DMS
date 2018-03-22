@@ -75,8 +75,8 @@ public class ConferenceTool {
 	    	}
 	    }
 	    
-	   String totalString1="label: '未召开',value: "+total1;
-	   String titalString2="label: '已召开',value: "+total2;
+	   String totalString1="label: '已召开',value: "+total1;
+	   String titalString2="label: '未召开',value: "+total2;
 	   total.add(totalString1);
 	   total.add(titalString2);
 		
