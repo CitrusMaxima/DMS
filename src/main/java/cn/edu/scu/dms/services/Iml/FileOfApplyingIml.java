@@ -11,7 +11,7 @@ import cn.edu.scu.dms.model.Qpwj;
 import cn.edu.scu.dms.services.FileOfApplyingServices;
 
 @Service
-public class FileOfApplyingServicesIml implements FileOfApplyingServices {
+public class FileOfApplyingIml implements FileOfApplyingServices {
 
 	@Autowired
 	QpwjMapper qpwjMapper;
