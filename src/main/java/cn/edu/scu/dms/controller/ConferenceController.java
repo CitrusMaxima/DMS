@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import cn.edu.scu.dms.model.Meeting;
 import cn.edu.scu.dms.model.MeetingStatistical;
 import cn.edu.scu.dms.services.ConferenceServices;
+import cn.edu.scu.dms.tool.ConferenceTool;
 
 import java.io.UnsupportedEncodingException;
 
@@ -204,12 +205,17 @@ public class ConferenceController {
 
 		try {
 			List<MeetingStatistical> meetingHold=conferenceServices.getMeetingHold();
-			List<MeetingStatistical> meeetingUnHold=conferenceServices.getMeetingUnHold();
+			List<MeetingStatistical> meetingUnHold=conferenceServices.getMeetingUnHold();
+			ConferenceTool tool=new ConferenceTool(meetingHold, meetingUnHold);
+			
+			request.setAttribute("s1", tool.getArrayString());
+			request.setAttribute("s2", tool.getTotal());
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("统计会议出错");
 		}
 
-		return "";
+		return "forward:/Meeting-Statistical.jsp";
 	}
 }
