@@ -358,11 +358,12 @@
             b.push("<%=currentValue2%>");
             <% } %>
 
-            var c = new Array("y: '2014', a: 140, b: 90, c: 50",
-                "y: '2015', a: 350, b: 185, c: 165",
-                "y: '2016', a: 255, b: 90, c: 165",
-                "y: '2017', a: 124, b: 84, c: 38",
-                "y: '2018', a: 285, b: 112, c: 173");
+            var c = [];
+            <%
+            List<String> valueList3 = (List<String>) request.getAttribute("s3");
+            for (String currentValue3 : valueList3) {%>
+            c.push("<%=currentValue3%>");
+            <% } %>
 
             var arr1 = [];
             var arr2 = [];
