@@ -221,7 +221,7 @@ public class AccountController {
 		return "forward:/Welcome.jsp";
 	}
 
-	@RequestMapping(value="updateUserInfo")
+	@RequestMapping(value="updateUserInfo.do")
 	public String updateUserInfo(HttpServletRequest request,HttpServletResponse response){
 
 		try {

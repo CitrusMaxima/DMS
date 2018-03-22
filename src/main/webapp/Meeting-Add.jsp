@@ -174,43 +174,43 @@
                             会议管理
                         </div>
                         <div class="card-content">
-                            <form class="col s12" action="" method="post" id="fileform">
+                            <form class="col s12" action="/conference/adddConference.do" method="post" id="fileform">
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input id="host" name="host" type="text" class="validate"/>
-                                        <label for="host">会议召开人</label>
+                                        <input id="holder" name="holder" type="text" class="validate"/>
+                                        <label for="holder">会议召开人</label>
                                     </div>
                                     <div class="input-field col s4">
                                         <input id="time" name="mtime" type="text" class="Wdate validate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
                                         <label for="time">会议时间</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="character" name="characters" type="text" class="validate" >
-                                        <label for="character">会议性质</label>
+                                        <input id="host" name="host" type="text" class="validate" />
+                                        <label for="host">会议性质</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="content" name="content" type="text" class="validate" >
+                                        <input id="content" name="content" type="text" class="validate" />
                                         <label for="content">会议内容</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="name" name="names" type="text" class="validate" >
-                                        <label for="name">参与者</label>
+                                        <input id="names" name="names" type="text" class="validate" />
+                                        <label for="names">参与者</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="place" name="place" type="text" class="validate" >
+                                        <input id="place" name="place" type="text" class="validate" />
                                         <label for="place">会议地点</label>
                                     </div>
                                 </div>
                                 <div class="row col s12" style="margin-bottom: 0px; ">
                                         <label class="active row" for="document">会议文件</label>
                                         <div class="row">
-                                            <input id="document" name="wname" type="file" multiple onchange="change()" />
+                                            <input id="document" name="document" type="file" multiple onchange="change()" />
                                         </div>
                                         <div id="show" class="row" style="margin-bottom: 0px; "></div>
                                 </div>
@@ -264,7 +264,7 @@
 
 <script type="text/javascript">
     $("#save").click(function () {
-        if ($("#host").val() == "") {
+        if ($("#holder").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("会议召开人不能为空！");
             return false;
@@ -274,12 +274,17 @@
             $("#textfield").text("会议时间不能为空！");
             return false;
         }
-        if ($("#character").val() == "") {
+        if ($("#host").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("会议性质不能为空！");
             return false;
         }
-        if ($("#name").val() == "") {
+        if ($("#content").val() == "") {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("会议内容不能为空！");
+            return false;
+        }
+        if ($("#names").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("参与者不能为空！");
             return false;
@@ -291,6 +296,10 @@
         }
         $("#textfield").removeClass("alert alert-warning");
         $("#textfield").text("");
+        var multiple  = document.createElement("textarea");
+        multiple.name = "temp";
+        multiple.value = document.getElementById("show").innerHTML;
+        document.getElementById('fileform').appendChild(multiple);
         document.getElementById('fileform').submit();
         return true;
     });
@@ -308,13 +317,13 @@
         for(var i=0;i<length;i++){
             var temp = obj.files[i].name;
             //alert(temp);
-            document.getElementById("show").innerHTML += temp + "&nbsp;&nbsp;&nbsp;";
+            document.getElementById("show").innerHTML += temp;
+            if (i != length-1){
+                document.getElementById("show").innerHTML += "&nbsp;&nbsp;&nbsp;";
+            }
         }
     }
-    
-    if(document.getElementById("checkId").checked){
-    	alert("checkbox is checked");
-    	}
+
 </script>
 </body>
 </html>

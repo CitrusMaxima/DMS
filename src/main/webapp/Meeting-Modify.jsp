@@ -182,7 +182,7 @@
                                         <label class="active" for="holder">会议召开人</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="time" name="mtime" type="text" class="Wdate validate" value="<fmt:formatDate value='${meeting.mtime }' pattern='yyyy-MM-dd HH:mm:ss' />" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+                                        <input id="time" name="mtime" type="text" class="Wdate validate" value="<fmt:formatDate value='${meeting.mtime }' pattern='yyyy-MM-dd HH:mm:ss' />"  onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'deadline\')||\'new Date()\'}'})"/>
                                         <label class="active" for="time">会议时间</label>
                                     </div>
                                     <div class="input-field col s4">
@@ -192,8 +192,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="content" name="content" type="text" class="${meeting.content}" >
-                                        <label for="content">会议内容</label>
+                                        <input id="content" name="content" type="text" class="validate" value="${meeting.content}" >
+                                        <label class="active" for="content">会议内容</label>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -205,15 +205,14 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="place" name="place" type="text" class="validate" value="${meeting.place}">
-                                        <label for="place">会议地点</label>
+                                        <label class="active" for="place">会议地点</label>
                                     </div>
                                 </div>
-                                <div class="row col s12" style="margin-bottom: 0px; ">
-                                        <label class="active row" for="document">会议文件</label>
-                                        <div class="row">
-                                            <input id="document" name="wname" type="file" value="${meeting.wname}" multiple onchange="change()" />
-                                        </div>
-                                        <div id="show" class="row" style="margin-bottom: 0px; "></div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input readonly="readonly" id="document" name="document" type="text" value="${meeting.document}" />
+                                        <label class="active" for="document">会议文件</label>
+                                    </div>
                                 </div>
                                 <p>
                                     <input type="checkbox" name="ishold" id="IsHold" />
@@ -283,6 +282,11 @@
             $("#textfield").text("会议性质不能为空！");
             return false;
         }
+        if ($("#content").val() == "") {
+            $("#textfield").addClass("alert alert-warning");
+            $("#textfield").text("会议内容不能为空！");
+            return false;
+        }
         if ($("#name").val() == "") {
             $("#textfield").addClass("alert alert-warning");
             $("#textfield").text("参与者不能为空！");
@@ -311,16 +315,6 @@
         $("#IsHold").attr("disabled", false);
     });
 
-    function change(){
-        document.getElementById("show").innerHTML = "";
-        var obj = document.getElementById("document");
-        var length = obj.files.length;
-        for(var i=0;i<length;i++){
-            var temp = obj.files[i].name;
-            //alert(temp);
-            document.getElementById("show").innerHTML += temp + "&nbsp;&nbsp;&nbsp;";
-        }
-    }
 </script>
 </body>
 </html>

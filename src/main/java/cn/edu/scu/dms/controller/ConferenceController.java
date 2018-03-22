@@ -70,13 +70,16 @@ public class ConferenceController {
 		String document=request.getParameter("document");
 		String holder=request.getParameter("holder");
 		String content=request.getParameter("content");
+
+		String test = request.getParameter("temp");
 		
 		meeting.setMid(mid);
 		meeting.setMtime(mtime);
 		meeting.setPlace(place);
+		meeting.setHost(host);
 		meeting.setNames(names);
 		meeting.setIshold(ishold);
-		meeting.setDocument(document);
+		meeting.setDocument(test);
 		meeting.setHolder(holder);
 		meeting.setContent(content);
 		

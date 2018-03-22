@@ -205,7 +205,12 @@
                                         <td class="center modify">${meeting.mid}</td>
                                         <td class="center modify">${meeting.holder}</td>
                                         <td class="center modify"><fmt:formatDate value="${meeting.mtime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-                                        <td class="center modify">${meeting.ishold}</td>
+                                        <c:if test="${meeting.ishold eq true}">
+                                            <td class="center modify">是</td>
+                                        </c:if>
+                                        <c:if test="${meeting.ishold eq false}">
+                                            <td class="center modify">否</td>
+                                        </c:if>
                                         <td class="center modify">${meeting.host }</td>
                                         <td class="center modify">${meeting.place}</td>
                                         <td class="center modify">${meeting.content}</td>
@@ -273,8 +278,8 @@
         
         $(".btn-danger").click(function() {
             var id= $(this).parent("td").parent("tr").children("td").html();
-        	document.write("<form action=../DocumentManaging/deleteMeetingById.do method=post name=formx1 style='display:none'>");
-            document.write("<input type=text name=id value='"+id+"'>");
+        	document.write("<form action=../conference/deleteMeetingById.do method=post name=formx1 style='display:none'>");
+            document.write("<input type=text name=mid value='"+id+"'>");
         	document.formx1.submit();
         });
 
