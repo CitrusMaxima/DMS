@@ -165,12 +165,6 @@ public class ConferenceController {
 	 }
 	@RequestMapping(value="/getMeetingById.do")
 	public String getMeetingById(HttpServletRequest request,HttpServletResponse response){
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
 		String mid=request.getParameter("mid");
 		String jsp=request.getParameter("jsp");

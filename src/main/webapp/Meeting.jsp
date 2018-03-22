@@ -203,13 +203,13 @@
                                     <c:forEach items="${meetings}"  var="meeting">
                                     <tr>
                                         <td class="center modify">${meeting.mid}</td>
+                                        <td class="center modify">${meeting.holder}</td>
                                         <td class="center modify"><fmt:formatDate value="${meeting.mtime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
                                         <td class="center modify">${meeting.ishold}</td>
-                                        <td class="center modify">${meeeting.host }</td>
-                                        <td class="center modify">${meeting.characters}</td>
+                                        <td class="center modify">${meeting.host }</td>
+                                        <td class="center modify">${meeting.place}</td>
+                                        <td class="center modify">${meeting.content}</td>
                                         <td class="center modify">${meeting.names}</td>
-                                        <td class="center modify">${meeting.document}</td>
-                                        <td class="center modify">${meeting.document}</td>
                                         <td class="center modify">${meeting.document}</td>
                                         <td class="center">
                                             <button class="btn btn-danger">删除</button>
@@ -265,8 +265,8 @@
         $(".modify").click(function() {
         	var id= $(this).parent("tr").children("td").html();     	
         	document.write("<form action=../conference/getMeetingById.do method=post name=formx1 style='display:none'>");
-            document.write("<input type=hidden name=pid value='"+id+"'>");
-        	document.write("<input type=hidden name=jsp value=Meeting-Moodify.jsp>");
+            document.write("<input type=hidden name=mid value='"+id+"'>");
+        	document.write("<input type=hidden name=jsp value=Meeting-Modify.jsp>");
         	document.write("</form>");
         	document.formx1.submit();
         });

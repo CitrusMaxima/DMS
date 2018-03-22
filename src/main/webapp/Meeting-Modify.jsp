@@ -174,25 +174,32 @@
                             会议管理
                         </div>
                         <div class="card-content">
-                            <form class="col s12" id="fileform1" action="conference/updateConference.do" method="post">
+                            <form class="col s12" id="fileform1" action="conference/updateConference.do" method="POST">
+                                <input name="mid" type="hidden" value="${meeting.mid}">
                                 <div class="row">
                                     <div class="input-field col s4">
-                                        <input id="host" name="host" type="text" class="validate" value="${meeting.host}"/>
-                                        <label class="active" for="host">会议召开人</label>
+                                        <input id="holder" name="holder" type="text" class="validate" value="${meeting.holder}"/>
+                                        <label class="active" for="holder">会议召开人</label>
                                     </div>
                                     <div class="input-field col s4">
                                         <input id="time" name="mtime" type="text" class="Wdate validate" value="<fmt:formatDate value='${meeting.mtime }' pattern='yyyy-MM-dd HH:mm:ss' />" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
                                         <label class="active" for="time">会议时间</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <input id="character" name="characters" type="text" class="validate" value="${meeting.characters}">
-                                        <label class="active" for="character">会议性质</label>
+                                        <input id="host" name="host" type="text" class="validate" value="${meeting.host}">
+                                        <label class="active" for="host">会议性质</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="name" name="names" type="text" class="validate" value="${meeting.names}">
-                                        <label class="active" for="name">参与者</label>
+                                        <input id="content" name="content" type="text" class="${meeting.content}" >
+                                        <label for="content">会议内容</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="names" name="names" type="text" class="validate" value="${meeting.names}">
+                                        <label class="active" for="names">参与者</label>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -209,7 +216,7 @@
                                         <div id="show" class="row" style="margin-bottom: 0px; "></div>
                                 </div>
                                 <p>
-                                    <input type="checkbox" name="ishold" id="IsHold" name="ishold" />
+                                    <input type="checkbox" name="ishold" id="IsHold" />
                                     <label for="IsHold">已召开</label>
                                 </p>
                             </form>
@@ -291,8 +298,7 @@
         document.getElementById('fileform1').submit();
         return true;
     });
-</script>
-<script type="text/javascript">
+
     var power = '<%=request.getSession().getAttribute("power")%>' ;
     var admin = document.getElementById("admin");
     if (power == "0")
