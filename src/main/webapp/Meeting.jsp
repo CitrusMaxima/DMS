@@ -277,10 +277,12 @@
         });
         
         $(".btn-danger").click(function() {
-            var id= $(this).parent("td").parent("tr").children("td").html();
-        	document.write("<form action=../conference/deleteMeetingById.do method=post name=formx1 style='display:none'>");
-            document.write("<input type=text name=mid value='"+id+"'>");
-        	document.formx1.submit();
+            if (confirm("确定要删除吗？")){
+                var id= $(this).parent("td").parent("tr").children("td").html();
+                document.write("<form action=../conference/deleteMeetingById.do method=post name=formx1 style='display:none'>");
+                document.write("<input type=text name=mid value='"+id+"'>");
+                document.formx1.submit();
+            }
         });
 
     </script>
