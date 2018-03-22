@@ -35,14 +35,16 @@ public class FileOfApplyingIml implements FileOfApplying {
 	@Transactional
 	public Boolean deleteFile(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		qpwjMapper.deleteByPrimaryKey(id);
+		return true;
 	}
 
 	@Override
 	@Transactional
 	public Qpwj getQpwjById(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		Qpwj qpwj = qpwjMapper.selectByPrimaryKey(id);
+		return qpwj;
 	}
 
 	@Override

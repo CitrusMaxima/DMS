@@ -32,6 +32,18 @@
 </head>
 
 <body>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/mdialog.js"></script>
+<script type="text/javascript">
+    var flag = '<%=request.getAttribute("flag")%>';
+    if (flag == 'modifySuccess') {
+        new TipBox({type:'success',str:'修改成功！',setTime:1500});
+    }
+    var login = '<%=request.getSession().getAttribute("login")%>';
+    if (login != 'success'){
+        window.location.href="Login.jsp";
+    }
+</script>
 <div id="wrapper">
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
@@ -161,7 +173,6 @@
 
     <!-- Metis Menu Js -->
     <script src="js/jquery.metisMenu.js"></script>
-    <script type="text/javascript" src="js/mdialog.js"></script>
     <script src="js/raphael-2.1.0.min.js"></script>
     <script src="js/morris.js"></script>
 
@@ -170,7 +181,6 @@
     <script src="js/easypiechart-data.js"></script>
 
     <script src="js/jquery.chart.js"></script>
-    <script type="text/javascript" src="js/zepto.min.js"></script>
     <script src="js/jquery.dataTables.js"></script>
     <script src="js/dataTables.bootstrap.js"></script>
     <script>

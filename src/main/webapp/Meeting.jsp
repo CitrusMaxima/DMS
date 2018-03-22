@@ -28,6 +28,24 @@
 </head>
 
 <body>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/mdialog.js"></script>
+<script type="text/javascript">
+    var flag = '<%=request.getAttribute("flag")%>';
+    if (flag == 'registerSuccess'){
+        new TipBox({type:'success',str:'登记成功',setTime:1500});
+    } else if (flag == 'modifySuccess') {
+        new TipBox({type:'success',str:'修改成功！',setTime:1500});
+    } else if (flag == 'deleteSuccess') {
+        new TipBox({type:'success',str:'删除成功！',setTime:1500});
+    } else if (flag == 'deleteFail') {
+        new TipBox({type:'error',str:'删除失败！',hasBtn:true});
+    }
+    var login = '<%=request.getSession().getAttribute("login")%>';
+    if (login != 'success'){
+        window.location.href="Login.jsp";
+    }
+</script>
 <div id="wrapper">
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
@@ -169,10 +187,12 @@
                                     <thead>
                                     <tr>
                                         <th class="center single-line">会议编号</th>
+                                        <th class="center single-line">会议召开人</th>
                                         <th class="center single-line">会议时间</th>
                                         <th class="center single-line">是否召开</th>
                                         <th class="center single-line">会议性质</th>
-                                        <th class="center single-line">内容</th>
+                                        <th class="center single-line">会议地点</th>
+                                        <th class="center single-line">会议内容</th>
                                         <th class="center single-line">参与者</th>
                                         <th class="center single-line">会议文档</th>
                                         <th class="center single-line">删除</th>
@@ -188,6 +208,8 @@
                                         <td class="center modify">${meeeting.host }</td>
                                         <td class="center modify">${meeting.characters}</td>
                                         <td class="center modify">${meeting.names}</td>
+                                        <td class="center modify">${meeting.document}</td>
+                                        <td class="center modify">${meeting.document}</td>
                                         <td class="center modify">${meeting.document}</td>
                                         <td class="center">
                                             <button class="btn btn-danger">删除</button>
@@ -218,7 +240,6 @@
 
     <!-- Metis Menu Js -->
     <script src="js/jquery.metisMenu.js"></script>
-    <script type="text/javascript" src="js/mdialog.js"></script>
     <script src="js/raphael-2.1.0.min.js"></script>
     <script src="js/morris.js"></script>
 
@@ -227,7 +248,6 @@
     <script src="js/easypiechart-data.js"></script>
 
     <script src="js/jquery.chart.js"></script>
-    <script type="text/javascript" src="js/zepto.min.js"></script>
     <script src="js/jquery.dataTables.js"></script>
     <script src="js/dataTables.bootstrap.js"></script>
     <script>

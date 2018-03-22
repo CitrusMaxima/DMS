@@ -76,7 +76,7 @@ public class AccountController {
 		    }  
 		}catch(Exception e){
 			System.out.println(e);
-			request.setAttribute("flag", "fail");
+			request.setAttribute("flag", "registerfail");
 	    	return "Register";
 			
 		}
@@ -108,6 +108,7 @@ public class AccountController {
 				request.getSession().setAttribute("name",selectUser.getName());
 				request.getSession().setAttribute("account",selectUser.getUid());
 				request.getSession().setAttribute("password",selectUser.getPassword());
+				request.getSession().setAttribute("login","success");
 				return "Welcome";
 			}else{
 				request.setAttribute("flag","failure");
@@ -213,9 +214,10 @@ public class AccountController {
 		try {
 			accountServices.update(user);
 		} catch (Exception e) {
-			request.setAttribute("flag", "fail");
+			request.setAttribute("flag", "modifyFail");
 		}
 		request.getSession().setAttribute("password",password);
+		request.setAttribute("flag", "modifySuccess");
 		return "forward:/Welcome.jsp";
 	}
 
@@ -246,9 +248,9 @@ public class AccountController {
 		try {
 			accountServices.update(user);
 		} catch (Exception e) {
-			request.setAttribute("flag", "fail");
+			request.setAttribute("flag", "modifyFail");
 		}
-
+		request.setAttribute("flag", "modifySuccess");
 		return "forward:/Welcome.jsp";
 	}
 

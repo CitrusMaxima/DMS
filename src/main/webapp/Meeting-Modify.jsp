@@ -27,15 +27,17 @@
 </head>
 
 <body>
-<script>
-	
-	Boolean ishold=${meeting.ishold};
-	var chk = document.getElementById('IsHold');
-	if(ishold){
-		chk.checked = true;
-	}els{
-		chk.checked = false;
-	}
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/mdialog.js"></script>
+<script type="text/javascript">
+    var flag = '<%=request.getAttribute("flag")%>';
+    if (flag == 'modifyFail'){
+        new TipBox({type:'error',str:'修改失败',hasBtn:true});
+    }
+    var login = '<%=request.getSession().getAttribute("login")%>';
+    if (login != 'success'){
+        window.location.href="Login.jsp";
+    }
 </script>
 <div id="wrapper">
     <nav class="navbar navbar-default top-navbar" role="navigation">
@@ -212,7 +214,7 @@
                                 </p>
                             </form>
                             <a class="waves-effect waves-light btn-large" id="modify">修改</a>
-                            <a disabled class="waves-effect waves-light btn-large" id="save" onclick="document.getElementById('fileform1').submit();">保存</a>
+                            <a disabled class="waves-effect waves-light btn-large" id="save" >保存</a>
                             <div id="textfield"></div>
                         </div>
                     </div>
@@ -236,7 +238,6 @@
 
 <!-- Metis Menu Js -->
 <script src="js/jquery.metisMenu.js"></script>
-<script type="text/javascript" src="js/mdialog.js"></script>
 <script src="js/raphael-2.1.0.min.js"></script>
 <script src="js/morris.js"></script>
 
@@ -245,7 +246,6 @@
 <script src="js/easypiechart-data.js"></script>
 
 <script src="js/jquery.chart.js"></script>
-<script type="text/javascript" src="js/zepto.min.js"></script>
 <script src="js/jquery.dataTables.js"></script>
 <script src="js/dataTables.bootstrap.js"></script>
 <script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
@@ -288,10 +288,7 @@
         }
         $("#textfield").removeClass("alert alert-warning");
         $("#textfield").text("");
-        $(".validate").attr("disabled", true);
-        $("#save").attr("disabled", true);
-        $("#modify").attr("disabled", false);
-        $("#IsHold").attr("disabled", true);
+        document.getElementById('fileform1').submit();
         return true;
     });
 </script>

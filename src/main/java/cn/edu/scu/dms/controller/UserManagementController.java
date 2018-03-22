@@ -54,9 +54,13 @@ public class UserManagementController {
 		user.setIsmanager(isAdmin);
 
 		try {
-			account.insertUser(user);
+			int returnResult = account.insertUser(user);
+			if (returnResult == 0){
+				request.setAttribute("flag", "nameExist");
+				return "forward:/User-Add.jsp";
+			}
 		} catch (Exception e) {
-			request.setAttribute("flag","fail");
+			request.setAttribute("flag","registerFail");
 			return "forward:/User-Add.jsp";
 		}
 
@@ -66,7 +70,7 @@ public class UserManagementController {
 		} catch (Exception e) {
 			System.out.println("获取用户列表出错");
 		}
-
+		request.setAttribute("flag","registerSuccess");
 		request.setAttribute("users",users);
 		return "forward:/User.jsp";
 	}
@@ -106,7 +110,7 @@ public class UserManagementController {
 		User isExist=account.getUser(uid);
 		if(isExist==null)
 		{
-			request.setAttribute("flag", "fail");
+			request.setAttribute("flag", "modifyFail");
 			return "forward:/User-Modify.jsp";
 		}
 
@@ -132,7 +136,7 @@ public class UserManagementController {
 		try {
 			account.update(user);
 		} catch (Exception e) {
-			request.setAttribute("flag", "fail");
+			request.setAttribute("flag", "modifyFail");
 		}
 
 		List<User> users=null;
@@ -143,6 +147,7 @@ public class UserManagementController {
 		}
 
 		request.setAttribute("users",users);
+		request.setAttribute("flag","modifySuccess");
 		return "forward:/User.jsp";
 	}
 	@RequestMapping(value="/deleteUserById.do")
@@ -154,10 +159,11 @@ public class UserManagementController {
 			users=account.getAllUser();
 		}catch(Exception e){
 			System.out.println(e);
-			request.setAttribute("flag","delete fail");
+			request.setAttribute("flag","deleteFail");
 			return "forward:/User.jsp";
 		}
 		request.setAttribute("users",users);
+		request.setAttribute("flag","deleteSuccess");
 		return "forward:/User.jsp";
 	}
 }
