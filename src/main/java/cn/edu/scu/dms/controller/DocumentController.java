@@ -55,10 +55,12 @@ public class DocumentController {
 		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
 		System.out.println("登记开始");
 		
-		NumberFormat numberformat1 = NumberFormat.getNumberInstance();     
+		NumberFormat numberformat1 = NumberFormat.getNumberInstance();    
+		numberformat1.setGroupingUsed(false);
 		numberformat1.setMinimumIntegerDigits(7);
 		
-		NumberFormat numberformat2 = NumberFormat.getNumberInstance();     
+		NumberFormat numberformat2 = NumberFormat.getNumberInstance(); 
+		numberformat2.setGroupingUsed(false);
 		numberformat2.setMinimumIntegerDigits(3);
 		
 		
@@ -237,10 +239,12 @@ public class DocumentController {
 		Swwj swwj=new Swwj();
 		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
 		
-		NumberFormat numberformat1 = NumberFormat.getNumberInstance();     
+		NumberFormat numberformat1 = NumberFormat.getNumberInstance();  
+		numberformat1.setGroupingUsed(false);
 		numberformat1.setMinimumIntegerDigits(7);
 		
-		NumberFormat numberformat2 = NumberFormat.getNumberInstance();     
+		NumberFormat numberformat2 = NumberFormat.getNumberInstance();   
+		numberformat1.setGroupingUsed(false);
 		numberformat2.setMinimumIntegerDigits(3);
 		
 		
@@ -411,9 +415,11 @@ public class DocumentController {
 		Qpwj qpwj=new Qpwj();
 		java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss"); 
 		
-		NumberFormat numberformat1 = NumberFormat.getNumberInstance();     
+		NumberFormat numberformat1 = NumberFormat.getNumberInstance();   
+		numberformat1.setGroupingUsed(false);
 		numberformat1.setMinimumIntegerDigits(7);
-		NumberFormat numberformat2 = NumberFormat.getNumberInstance();     
+		NumberFormat numberformat2 = NumberFormat.getNumberInstance();   
+		numberformat2.setGroupingUsed(false);
 		numberformat2.setMinimumIntegerDigits(3);
 		
 		String qpid=null;

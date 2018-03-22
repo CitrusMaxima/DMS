@@ -92,6 +92,7 @@
                 "y: '2011',a: 75,b: 65",
                 "y: '2012',a: 30,b: 55");
     var b = new Array("label: '未召开',value: 30", "label: '已召开',value: 50");
+    
     var arr1 = [];
     var arr2 = [];
     var obj1 = new Object();

@@ -60,22 +60,26 @@ public class ConferenceController {
 
 		String timeString=request.getParameter("mtime");
 		Date mtime =  formatter.parse(timeString);
-		String host =request.getParameter("host");
-		String characters=request.getParameter("characters");
+		String host =request.getParameter("host");//会议性质
 		String place=request.getParameter("place");
 		String names=request.getParameter("names");
 		Boolean ishold=true;
 		String hold=request.getParameter("ishold");
 		if(hold==null)
 			ishold=false;
-
+		String document=request.getParameter("document");
+		String holder=request.getParameter("holder");
+		String content=request.getParameter("content");
+		
 		meeting.setMid(mid);
 		meeting.setMtime(mtime);
-		meeting.setHost(host);
-		meeting.setCharacters(characters);
 		meeting.setPlace(place);
 		meeting.setNames(names);
 		meeting.setIshold(ishold);
+		meeting.setDocument(document);
+		meeting.setHolder(holder);
+		meeting.setContent(content);
+		
 		try {
 			conferenceServices.registerConference(meeting);
 		} catch (Exception e) {
@@ -123,21 +127,25 @@ public class ConferenceController {
 		String timeString=request.getParameter("mtime");
 		Date mtime = formatter.parse(timeString);
 		String host =request.getParameter("host");
-		String characters=request.getParameter("characters");
 		String place=request.getParameter("place");
 		String names=request.getParameter("names");
 		Boolean ishold=true;
 		String hold=request.getParameter("ishold");
 		if(hold==null)
 			ishold=false;
+		String document=request.getParameter("document");
+		String holder=request.getParameter("holder");
+		String content=request.getParameter("content");
 
 		meeting.setMid(mid);
 		meeting.setMtime(mtime);
 		meeting.setHost(host);
-		meeting.setCharacters(characters);
 		meeting.setPlace(place);
 		meeting.setNames(names);
 		meeting.setIshold(ishold);
+		meeting.setDocument(document);
+		meeting.setHolder(holder);
+		meeting.setContent(content);
 
 		try {
         	conferenceServices.updateMeeting(meeting);

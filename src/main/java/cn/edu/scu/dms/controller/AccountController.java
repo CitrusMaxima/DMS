@@ -85,6 +85,12 @@ public class AccountController {
 	@RequestMapping(value="/Login.do",method=RequestMethod.GET)
 	public  String loginControl(HttpServletRequest request,HttpServletResponse response) {
         
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String name =request.getParameter("name");
 		String password=request.getParameter("password");
 

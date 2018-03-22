@@ -12,7 +12,7 @@
     <result column="holder" jdbcType="VARCHAR" property="holder" />
     <result column="content" jdbcType="VARCHAR" property="content" />
   </resultMap>
-   <resultMap id="MeetingStatisticalMap" type="cn.edu.scu.dms.model.MeetingStatistical">
+  <resultMap id="MeetingStatisticalMap" type="cn.edu.scu.dms.model.MeetingStatistical">
     <id column="year" jdbcType="VARCHAR" property="year" />
     <result column="total" jdbcType="INTEGER" property="total" />
   </resultMap>
@@ -25,7 +25,7 @@
     from meeting
     where mid = #{mid,jdbcType=VARCHAR}
   </select>
-  select id="getMeetingStatisticalsHold"  resultMap="MeetingStatisticalMap">
+  <select id="getMeetingStatisticalsHold"  resultMap="MeetingStatisticalMap">
     select DATE_FORMAT(mtime,'yyyy')as year,count(mid) as total from  meeting  where Ishold<![CDATA[ > ]]> 0  group by year 
   </select>
   <select id="getMeetingStatisticalsUnHold"  resultMap="MeetingStatisticalMap">
@@ -151,144 +151,4 @@
       content = #{content,jdbcType=VARCHAR}
     where mid = #{mid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="cn.edu.scu.dms.model.Meeting">
-    <id column="mid" jdbcType="VARCHAR" property="mid" />
-    <result column="mtime" jdbcType="TIMESTAMP" property="mtime" />
-    <result column="host" jdbcType="VARCHAR" property="host" />
-    <result column="characters" jdbcType="VARCHAR" property="characters" />
-    <result column="place" jdbcType="VARCHAR" property="place" />
-    <result column="names" jdbcType="VARCHAR" property="names" />
-    <result column="Ishold" jdbcType="BIT" property="ishold" />
-    <result column="document" jdbcType="VARCHAR" property="document" />
-  </resultMap>
-   <resultMap id="MeetingStatisticalMap" type="cn.edu.scu.dms.model.MeetingStatistical">
-    <id column="year" jdbcType="VARCHAR" property="year" />
-    <result column="total" jdbcType="INTEGER" property="total" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    mid, mtime, host, characters, place, names, Ishold, document
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from meeting
-    where mid = #{mid,jdbcType=VARCHAR}
-  </select>
-  <select id="getMeetingStatisticalsHold" resultMap="MeetingStatisticalMap">
-    select DATE_FORMAT(mtime,'yyyy')as year,count(mid) as total from  meeting  where Ishold<![CDATA[ > ]]> 0  group by year 
-  </select>
-  <select id="getMeetingStatisticalsUnHold" resultMap="MeetingStatisticalMap">
-    select DATE_FORMAT(mtime,'yyyy')as year,count(mid) as total from  meeting  where Ishold<![CDATA[ < ]]> 1  group by year 
-  </select>
-  <select id="getAll" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from meeting
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from meeting
-    where mid = #{mid,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="cn.edu.scu.dms.model.Meeting">
-    insert into meeting (mid, mtime, host, 
-      characters, place, names, 
-      Ishold, document)
-    values (#{mid,jdbcType=VARCHAR}, #{mtime,jdbcType=TIMESTAMP}, #{host,jdbcType=VARCHAR}, 
-      #{characters,jdbcType=VARCHAR}, #{place,jdbcType=VARCHAR}, #{names,jdbcType=VARCHAR}, 
-      #{ishold,jdbcType=BIT}, #{document,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="cn.edu.scu.dms.model.Meeting">
-    insert into meeting
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="mid != null">
-        mid,
-      </if>
-      <if test="mtime != null">
-        mtime,
-      </if>
-      <if test="host != null">
-        host,
-      </if>
-      <if test="characters != null">
-        characters,
-      </if>
-      <if test="place != null">
-        place,
-      </if>
-      <if test="names != null">
-        names,
-      </if>
-      <if test="ishold != null">
-        Ishold,
-      </if>
-      <if test="document != null">
-        document,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="mid != null">
-        #{mid,jdbcType=VARCHAR},
-      </if>
-      <if test="mtime != null">
-        #{mtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="host != null">
-        #{host,jdbcType=VARCHAR},
-      </if>
-      <if test="characters != null">
-        #{characters,jdbcType=VARCHAR},
-      </if>
-      <if test="place != null">
-        #{place,jdbcType=VARCHAR},
-      </if>
-      <if test="names != null">
-        #{names,jdbcType=VARCHAR},
-      </if>
-      <if test="ishold != null">
-        #{ishold,jdbcType=BIT},
-      </if>
-      <if test="document != null">
-        #{document,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.scu.dms.model.Meeting">
-    update meeting
-    <set>
-      <if test="mtime != null">
-        mtime = #{mtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="host != null">
-        host = #{host,jdbcType=VARCHAR},
-      </if>
-      <if test="characters != null">
-        characters = #{characters,jdbcType=VARCHAR},
-      </if>
-      <if test="place != null">
-        place = #{place,jdbcType=VARCHAR},
-      </if>
-      <if test="names != null">
-        names = #{names,jdbcType=VARCHAR},
-      </if>
-      <if test="ishold != null">
-        Ishold = #{ishold,jdbcType=BIT},
-      </if>
-      <if test="document != null">
-        document = #{document,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where mid = #{mid,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.scu.dms.model.Meeting">
-    update meeting
-    set mtime = #{mtime,jdbcType=TIMESTAMP},
-      host = #{host,jdbcType=VARCHAR},
-      characters = #{characters,jdbcType=VARCHAR},
-      place = #{place,jdbcType=VARCHAR},
-      names = #{names,jdbcType=VARCHAR},
-      Ishold = #{ishold,jdbcType=BIT},
-      document = #{document,jdbcType=VARCHAR}
-    where mid = #{mid,jdbcType=VARCHAR}
-  </update>
- 
 </mapper>
