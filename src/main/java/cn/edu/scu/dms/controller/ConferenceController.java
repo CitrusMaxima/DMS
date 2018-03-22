@@ -213,6 +213,7 @@ public class ConferenceController {
 			
 			request.setAttribute("s1", tool.getArrayString());
 			request.setAttribute("s2", tool.getTotal());
+			request.setAttribute("s3", tool.getArrayStringAndTotal());
 			
 		} catch (Exception e) {
 			// TODO: handle exception
