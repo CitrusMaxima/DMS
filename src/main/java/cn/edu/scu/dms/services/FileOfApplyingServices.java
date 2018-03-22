@@ -11,6 +11,5 @@ public interface FileOfApplyingServices {
 	public List<Qpwj> getAllFile();
 	public Boolean deleteFile(String id);
 	public Qpwj getQpwjById(String id);
-	public void update(Qpwj qpsj);
 
 }

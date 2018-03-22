@@ -46,12 +46,4 @@ public class FileOfApplyingIml implements FileOfApplyingServices {
 		Qpwj qpwj = qpwjMapper.selectByPrimaryKey(id);
 		return qpwj;
 	}
-
-	@Override
-	@Transactional
-	public void update(Qpwj qpsj) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
