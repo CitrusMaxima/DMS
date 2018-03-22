@@ -1,7 +1,6 @@
 package cn.edu.scu.dms.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.nio.file.Files;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-import javax.enterprise.inject.New;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,8 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import cn.edu.scu.dms.model.Pswj;
 import cn.edu.scu.dms.model.Qpwj;
 import cn.edu.scu.dms.model.Swwj;
-import cn.edu.scu.dms.services.AccountServices;
-import cn.edu.scu.dms.services.FileOfApplying;
+import cn.edu.scu.dms.services.FileOfApplyingServices;
 import cn.edu.scu.dms.services.FileOfInstructionsServices;
 import cn.edu.scu.dms.services.FileOfReceivingServices;
 
@@ -37,7 +34,7 @@ public class DocumentController {
 	FileOfReceivingServices fileOfReceiving;
 	//报批示文件
 	@Autowired
-    FileOfApplying fileOfApplying;
+    FileOfApplyingServices fileOfApplyingServices;
 	
 	//批示文件操作对应的Conroller
 	@RequestMapping(value="/registerFileOfInstructions.do")
@@ -451,7 +448,7 @@ public class DocumentController {
         qpwj.setDirection(direction);
         qpwj.setNote(note);
         try {
-		   fileOfApplying.registerFile(qpwj);
+		   fileOfApplyingServices.registerFile(qpwj);
 		} catch (Exception e) {
 			// TODO: handle exception
 			request.setAttribute("flag","registerFail");
@@ -460,7 +457,7 @@ public class DocumentController {
 		}
         List<Qpwj> files=null;
         try {
-			files=fileOfApplying.getAllFile();
+			files= fileOfApplyingServices.getAllFile();
 		} catch (Exception e) {
 		   System.out.println("获取批示文件出错");	
 		}
@@ -472,7 +469,7 @@ public class DocumentController {
 	public String getFileOfApplying(HttpServletRequest request,HttpServletResponse response){
 		List<Qpwj> files=null;
 		try {
-			files=fileOfApplying.getAllFile();
+			files= fileOfApplyingServices.getAllFile();
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("获取签批文件出错");
@@ -487,8 +484,8 @@ public class DocumentController {
     	String id=request.getParameter("id");
     	List<Qpwj> files=null;
     	try {
-    	 fileOfApplying.deleteFile(id);
-         files=fileOfApplying.getAllFile();
+    	 fileOfApplyingServices.deleteFile(id);
+         files= fileOfApplyingServices.getAllFile();
     	}catch(Exception e){
     		System.out.println(e);
     		request.setAttribute("flag","deleteFail");
