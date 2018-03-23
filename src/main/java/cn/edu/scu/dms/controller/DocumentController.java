@@ -66,7 +66,7 @@ public class DocumentController {
 		Random ranInt=new Random();
 		
 		do{
-			pid=numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
+			pid="P-" + numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
 			isExist=fileOfInstructions.getPswjById(pid);
 		}while(isExist!=null);
 
@@ -250,7 +250,7 @@ public class DocumentController {
 		Random ranInt=new Random();
 		
 		do{
-			sid=numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
+			sid="S-" + numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
 			isExist=fileOfReceiving.getSwwjById(sid);
 		}while(isExist!=null);
 		
@@ -425,7 +425,7 @@ public class DocumentController {
 		Random ranInt=new Random();
 		
 		do{
-			qpid=numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
+			qpid="Q-" + numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
 			isExist=fileOfInstructions.getPswjById(qpid);
 		}while(isExist!=null);
 		

@@ -55,7 +55,7 @@ public class ConferenceController {
 		Random ranInt=new Random();
 
 		do{
-			mid=numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
+			mid="M-" + numberformat1.format(ranInt.nextInt(1000000))+numberformat2.format(ranInt.nextInt(100));
 			isExist=conferenceServices.getMeetingById(mid);
 		}while(isExist!=null);
 
