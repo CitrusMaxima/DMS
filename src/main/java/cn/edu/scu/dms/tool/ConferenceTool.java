@@ -108,6 +108,7 @@ public class ConferenceTool {
 	    			totalString=null;
 	    			temp2.remove(0);
 	    		}
+	    		continue;
 	    	 }else if(meet1!=null&&meet2==null){
 	    		 	
 	    		   int year1=Integer.parseInt(meet1.getYear());
@@ -117,13 +118,13 @@ public class ConferenceTool {
 	    		   yearString=null;
 	    		   totalString=null;
 	    		   temp1.remove(0);
-	    		
+	    		continue;
 	    	 }else if(meet1==null&&meet2!=null){
 	    		 
 	    		   int year2=Integer.parseInt(meet2.getYear());
 	    		   yearString="y: '"+year2+"',";
 	    		   totalString="a: "+meet2.getTotal()+",b: "+0+",c: "+meet2.getTotal();
-	    		   arrayStringAndTotal.add(totalString);
+	    		   arrayStringAndTotal.add(yearString+totalString);
 	    		   yearString=null;
 	    		   totalString=null;
 	    		   temp2.remove(0);
@@ -248,6 +249,7 @@ public class ConferenceTool {
 	    			totalString=null;
 	    			temp2.remove(0);
 	    		}
+	    		continue;
 	    	 }else if(meet1!=null&&meet2==null){
 	    		 	
 	    		   int year1=Integer.parseInt(meet1.getYear());
@@ -257,13 +259,13 @@ public class ConferenceTool {
 	    		   yearString=null;
 	    		   totalString=null;
 	    		   temp1.remove(0);
-	    		
+				continue;
 	    	 }else if(meet1==null&&meet2!=null){
 	    		 
 	    		   int year2=Integer.parseInt(meet2.getYear());
 	    		   yearString="y: '"+year2+"',";
 	    		   totalString="a: "+0+",b: "+meet2.getTotal();
-	    		   arrayString.add(totalString);
+	    		   arrayString.add(yearString+totalString);
 	    		   yearString=null;
 	    		   totalString=null;
 	    		   temp2.remove(0);
