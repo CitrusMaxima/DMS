@@ -3,6 +3,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -215,7 +216,13 @@
                                     </div>
                                 </div>
                                 <p>
-                                    <input type="checkbox" name="ishold" id="IsHold" />
+                                    <%--<input type="checkbox" name="ishold" id="IsHold" />--%>
+                                    <c:if test="${meeting.ishold eq true}">
+                                        <input type="checkbox" name="ishold" id="IsHold" checked="checked"/>
+                                    </c:if>
+                                    <c:if test="${meeting.ishold eq false}">
+                                        <input type="checkbox" name="ishold" id="IsHold" />
+                                    </c:if>
                                     <label for="IsHold">已召开</label>
                                 </p>
                             </form>

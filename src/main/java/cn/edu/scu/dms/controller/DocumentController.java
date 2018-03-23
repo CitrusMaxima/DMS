@@ -492,7 +492,7 @@ public class DocumentController {
     		return "forward:/Document3.jsp";
     	}
     	request.setAttribute("files",files);
-	   request.setAttribute("flag","deleteSuccessS");
+	   request.setAttribute("flag","deleteSuccess");
 		return "forward:/Document3.jsp";
 	}
 	
