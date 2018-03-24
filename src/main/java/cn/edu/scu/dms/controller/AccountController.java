@@ -82,7 +82,7 @@ public class AccountController {
 		}
 	}
 	
-	@RequestMapping(value="/Login.do",method=RequestMethod.GET)
+	@RequestMapping(value="/Login.do",method=RequestMethod.POST)
 	public  String loginControl(HttpServletRequest request,HttpServletResponse response) {
         
 		try {
