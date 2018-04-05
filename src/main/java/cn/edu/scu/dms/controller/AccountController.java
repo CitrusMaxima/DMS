@@ -45,12 +45,6 @@ public class AccountController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
-		String checkcode=request.getParameter("checkCode");
-		if(!checkcode.equalsIgnoreCase((String)request.getSession().getAttribute("randCheckCode"))){
-			request.setAttribute("flag", "codeError");
-			return "Register";
-		}
             
 		String name=request.getParameter("name");
 		String pwd=request.getParameter("password");
@@ -67,14 +61,12 @@ public class AccountController {
 		temp.setIsmanager(false);
 		try{
 			int returnResult=accountServices.insertUser(temp);
-		    if(returnResult==0){
-		    	request.setAttribute("flag", "nameExist");
-		    	return "Register";
-		
-		    }else{
+		    if(returnResult!=0){
 				request.setAttribute("flag","success");
 		        return "Login";
-		    }  
+		    } else {
+		    	return "Register";
+			}
 		}catch(Exception e){
 			System.out.println(e);
 			request.setAttribute("flag", "registerfail");
@@ -83,7 +75,7 @@ public class AccountController {
 		}
 	}
 
-	@RequestMapping(value="checkRegister.do",method = RequestMethod.GET)
+	@RequestMapping(value="/checkRegister.do",method = RequestMethod.GET)
 	public void checkRegister(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
 
 		request.setCharacterEncoding("utf-8");
@@ -95,6 +87,23 @@ public class AccountController {
 			User returnResult=accountServices.getUser(name);
 			if (returnResult != null) {
 				out.println("用户名【" + name + "】已经存在！");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@RequestMapping(value="/checkCode.do",method = RequestMethod.GET)
+	public void checkCode(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
+
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String checkCode=request.getParameter("checkCode");
+
+		try{
+			if(!checkCode.equalsIgnoreCase((String)request.getSession().getAttribute("randCheckCode"))){
+				out.println("验证码错误！");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
