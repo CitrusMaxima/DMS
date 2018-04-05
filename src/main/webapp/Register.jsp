@@ -82,33 +82,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <form action="/account/Register.do" name="register-form" id="register-form" method="post">
 	                            <div class="form-group">
 	                                <label>用户名</label>
-	                                <input id="username" name="name" class="form-control" type="text" />
+	                                <input id="username" name="name" class="form-control" type="text" onblur="checkName()"/>
+									<p class="help-block" id="textfield-name"></p>
 	                            </div>
                                 <div class="form-group">
                                 	<label>密码</label>
-                    				<input id="password" class="form-control" type="password" name="password"/>
+                    				<input id="password" class="form-control" type="password" name="password" onblur="checkPassword()"/>
+									<p class="help-block" id="textfield-password"></p>
 	                            </div>
 	                         	<div class="form-group">
 	                              	<label>确认密码</label>
-	                                <input id="re-password" class="form-control"  type="password" />
+	                                <input id="re-password" class="form-control"  type="password" onblur="checkRePassword()"/>
+									<p class="help-block" id="textfield-repassword"></p>
 	                            </div>
 								<div class="form-group">
 									<label>昵称</label>
-									<input id="nickname" name="nickname" class="form-control" type="text" />
+									<input id="nickname" name="nickname" class="form-control" type="text" onblur="checkNickName()"/>
+									<p class="help-block" id="textfield-nickname"></p>
 								</div>
 								<div class="form-group">
 									<label>邮箱</label>
-									<input id="email" name="email" class="form-control"  type="text" />
+									<input id="email" name="email" class="form-control" type="text" onblur="checkEmail()"/>
+									<p class="help-block" id="textfield-email"></p>
 								</div>
 								<div class="form-group">
 									<label>手机号码</label>
-									<input id="phone-number" name="phoneNumber" class="form-control"  type="text" />
+									<input id="phone-number" name="phoneNumber" class="form-control" type="text" onblur="checkPhone()"/>
+									<p class="help-block" id="textfield-phone"></p>
 								</div>
 	                            <div class="form-group">
 	                                <label>验证码</label>
-	                                <input id="checkCode" class="form-control" name="checkCode" type="text" />  
+	                                <input id="checkCode" class="form-control" name="checkCode" type="text" onblur="checkCode()"/>
 				            		<img src="/account/getImage.do" id="CreateCheckCode" align="middle">
 				            		<a onclick="myReload()"> 看不清,换一个</a>
+									<p class="help-block" id="textfield-checkCode"></p>
 	                            </div>   
                                 <button type="submit" class="btn btn-danger">注册</button>
                                 <span style="float:right">已经有帐号？请<a href="Login.jsp">登录</a></span>
@@ -124,52 +131,96 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript">
 	$(".btn-danger").click(function () {
-		if ($("#username").val() == "") {
-            $("#textfield").text("用户名不能为空！");
+		if (
+		checkName() &&
+		checkPassword() &&
+		checkRePassword() &&
+		checkNickName() &&
+		checkEmail() &&
+		checkPhone() &&
+		checkCode()
+		)
+        	return true;
+		return false;
+	});
+
+    function checkName() {
+        if ($("#username").val() == "") {
+            $("#textfield-name").text("用户名不能为空！");
             return false;
         }
-		var reg_user = /^[A-Za-z0-9]+$/;
-		if (!reg_user.test($("#username").val())){
-			$("#textfield").text("用户名不合法！");
-			return false;
-		}
-		if ($("#password").val() == "") {
-            $("#textfield").text("密码不能为空！");
+        var reg_user = /^[A-Za-z0-9]+$/;
+        if (!reg_user.test($("#username").val())){
+            $("#textfield-name").text("用户名不合法！");
             return false;
         }
+        $("#textfield-name").text("");
+        return true;
+    }
+
+    function checkPassword() {
+        if ($("#password").val() == "") {
+            $("#textfield-password").text("密码不能为空！");
+            return false;
+        }
+        $("#textfield-password").text("");
+        return true;
+    }
+
+    function checkRePassword() {
         if ($("#password").val() != $("#re-password").val()) {
-            $("#textfield").text("两次输入密码不同！");
+            $("#textfield-repassword").text("两次输入密码不同！");
             return false;
         }
+        $("#textfield-repassword").text("");
+        return true;
+    }
+
+    function checkNickName() {
         if ($("#nickname").val() == "") {
-            $("#textfield").text("昵称不能为空！");
+            $("#textfield-nickname").text("昵称不能为空！");
             return false;
         }
+        $("#textfield-nickname").text("");
+        return true;
+    }
+
+    function checkEmail() {
         if ($("#email").val() == "") {
-            $("#textfield").text("邮箱不能为空！");
+            $("#textfield-email").text("邮箱不能为空！");
             return false;
         }
         var reg_email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
         if (!reg_email.test($("#email").val())){
-            $("#textfield").text("邮箱不合法！");
+            $("#textfield-email").text("邮箱不合法！");
             return false;
-		}
+        }
+        $("#textfield-email").text("");
+        return true;
+    }
+
+    function checkPhone() {
         if ($("#phone-number").val() == "") {
-            $("#textfield").text("手机号码不能为空！");
+            $("#textfield-phone").text("手机号码不能为空！");
             return false;
         }
         var reg_phone=/^1[3,5,7,8]\d{9}$/;
         if (!reg_phone.test($("#phone-number").val())){
-            $("#textfield").text("手机号码不合法！");
+            $("#textfield-phone").text("手机号码不合法！");
             return false;
         }
-		if ($("#checkCode").val() == "" || $("#checkCode").val() == null) {
-            $("#textfield").text("请输入验证码！");
-            return false;
-        }
-        $("#textfield").text("");
+        $("#textfield-phone").text("");
         return true;
-	});
+    }
+
+    function checkCode() {
+        if ($("#checkCode").val() == "" || $("#checkCode").val() == null) {
+            $("#textfield-checkCode").text("请输入验证码！");
+            return false;
+        }
+        $("#textfield-checkCode").text("");
+        return true;
+    }
 	</script>
   </body>
 </html>
