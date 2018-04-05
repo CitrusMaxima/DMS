@@ -9,10 +9,12 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -78,6 +80,24 @@ public class AccountController {
 			request.setAttribute("flag", "registerfail");
 	    	return "Register";
 			
+		}
+	}
+
+	@RequestMapping(value="checkRegister.do",method = RequestMethod.GET)
+	public void checkRegister(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
+
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String name=request.getParameter("name");
+
+		try{
+			User returnResult=accountServices.getUser(name);
+			if (returnResult != null) {
+				out.println("用户名【" + name + "】已经存在！");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	

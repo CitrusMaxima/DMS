@@ -112,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 	                            <div class="form-group">
 	                                <label>验证码</label>
-	                                <input id="checkCode" class="form-control" name="checkCode" type="text" onblur="checkCode()"/>
+	                                <input id="checkCode" class="form-control" name="checkCode" type="text" onblur="check_Code()"/>
 				            		<img src="/account/getImage.do" id="CreateCheckCode" align="middle">
 				            		<a onclick="myReload()"> 看不清,换一个</a>
 									<p class="help-block" id="textfield-checkCode"></p>
@@ -138,7 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		checkNickName() &&
 		checkEmail() &&
 		checkPhone() &&
-		checkCode()
+		check_Code()
 		)
         	return true;
 		return false;
@@ -154,8 +154,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $("#textfield-name").text("用户名不合法！");
             return false;
         }
-        $("#textfield-name").text("");
-        return true;
+
+        var name = document.getElementById("username").value;
+        var xmlhttp;
+        if(window.XMLHttpRequest){
+            //针对FireFox,Mozillar,Opera,Safari,IE7,IE8
+            xmlhttp = new XMLHttpRequest();
+
+            //对某些特定版本的mozillar浏览器的bug进行修正
+            if(xmlhttp.overrideMineType){
+                xmlhttp.overrideMineType("text/xml");
+            }
+        }else if(window.ActiveXObject){
+            //针对IE5，IE5.5，IE6
+
+            //两个可以用于创建XMLHTTPRequest对象的控件名称。保存在一个JS数组中。
+            var activexName = ["MSXML2.XMLHTTP","Microsoft.XMLHTTP"];
+            for(var i = 0; i<activeName.length; i++){
+                //取出一个控件名进行创建，如果成功就终止循环
+                try{
+                    xmlhttp = new ActiveXObject(activexName[i]);
+                    break;
+                }catch(e){}
+            }
+        }
+
+        xmlhttp.onreadystatechange = function() {
+            //判断对象的状态是否交互完成
+            if(xmlhttp.readyState == 4){
+
+                //判断http的交互是否成功
+                if(xmlhttp.status == 200){
+
+                    //获取服务器端返回的数据（文本）
+                    var responseText = xmlhttp.responseText;
+
+                    //将数据显示在页面上
+                    var divNode = document.getElementById("textfield-name");
+                    divNode.innerHTML = responseText;
+                    if (responseText == null || responseText == "")
+                        return true;
+					else
+                        return false;
+                }
+            }
+		}
+        //设置连接信息(请求方式，请求的url,true表示异步方式交互)
+        xmlhttp.open("GET","/account/checkRegister.do?name=" + name, true);
+
+        //发送数据，开始和服务器进行交互。
+        xmlhttp.send(null);
+
+        //$("#textfield-name").text("");
+        var text = document.getElementById("textfield-name");
+        if (text.innerHTML == "")
+        	return true;
+        else
+            return false;
     }
 
     function checkPassword() {
@@ -213,7 +268,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         return true;
     }
 
-    function checkCode() {
+    function check_Code() {
         if ($("#checkCode").val() == "" || $("#checkCode").val() == null) {
             $("#textfield-checkCode").text("请输入验证码！");
             return false;
@@ -221,6 +276,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $("#textfield-checkCode").text("");
         return true;
     }
+
 	</script>
   </body>
 </html>
