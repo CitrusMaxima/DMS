@@ -68,7 +68,7 @@ public class ConferenceController {
 		String hold=request.getParameter("ishold");
 		if(hold==null)
 			ishold=false;
-		String document=request.getParameter("document");
+		//String document=request.getParameter("document");
 		String holder=request.getParameter("holder");
 		String content=request.getParameter("content");
 

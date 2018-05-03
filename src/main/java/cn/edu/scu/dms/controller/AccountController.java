@@ -76,21 +76,23 @@ public class AccountController {
 	}
 
 	@RequestMapping(value="/checkRegister.do",method = RequestMethod.GET)
-	public void checkRegister(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
+	public String checkRegister(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
 
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-		PrintWriter out = response.getWriter();
 		String name=request.getParameter("name");
 
 		try{
 			User returnResult=accountServices.getUser(name);
 			if (returnResult != null) {
-				out.println("用户名【" + name + "】已经存在！");
-			}
+				return "用户名【" + name + "】已经存在！";
+			}else
+				return "NOT FOUND";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		return "NOT FOUND";
 	}
 
 	@RequestMapping(value="/checkCode.do",method = RequestMethod.GET)
@@ -122,7 +124,7 @@ public class AccountController {
 		String name =request.getParameter("name");
 		String password=request.getParameter("password");
 
-		User temp=new User();
+		//User temp=new User();
 		
 		User selectUser=accountServices.getUser(name);
 		
@@ -181,7 +183,7 @@ public class AccountController {
 			g2d.draw(line);		//绘制直线
 		}
 		//输出由英文，数字，和中文随机组成的验证文字，具体的组合方式根据生成随机数确定。
-		String sRand="";
+		StringBuffer sRand= new StringBuffer();
 		String ctmp="";
 		int itmp=0;
 		//制定输出的验证码为四位
@@ -196,7 +198,7 @@ public class AccountController {
 					 ctmp=String.valueOf((char)itmp);
 					 break;
 			}
-			sRand+=ctmp;
+			sRand.append(ctmp);
 			Color color=new Color(20+random.nextInt(110),20+random.nextInt(110),random.nextInt(110));
 			g.setColor(color);
 			//将生成的随机数进行随机缩放并旋转制定角度 PS.建议不要对文字进行缩放与旋转,因为这样图片可能不正常显示

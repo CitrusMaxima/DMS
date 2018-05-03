@@ -131,7 +131,7 @@ public class ConferenceTool {
 	    		 
 	    	 }
 	    	
-	    }while(!((temp1==null||temp1.isEmpty())&&(temp2==null||temp2.isEmpty())));
+	    }while(!(temp1.isEmpty()&&temp2.isEmpty()));
 		
 	}
 	public void mergeTotal(){
@@ -272,7 +272,7 @@ public class ConferenceTool {
 	    		 
 	    	 }
 	    	
-	    }while(!((temp1==null||temp1.isEmpty())&&(temp2==null||temp2.isEmpty())));
+	    }while(!(temp1.isEmpty()&&temp2.isEmpty()));
 	}
 	
 	public List<String> getArrayString() {
